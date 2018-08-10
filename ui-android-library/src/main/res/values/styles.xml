@@ -1,0 +1,63 @@
+<resources
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <style name="xy_button">
+        <item name="android:paddingLeft">8dp</item>
+        <item name="android:paddingRight">8dp</item>
+        <item name="android:paddingTop">8dp</item>
+        <item name="android:paddingBottom">8dp</item>
+        <item name="android:gravity">center</item>
+        <item name="android:background">@drawable/xy_button_background</item>
+        <item name="android:textColor">@color/xy_ui_text_light</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textSize">16sp</item>
+        <item name="android:baselineAligned">false</item>
+    </style>
+
+    <style name="xy_edittext">
+        <item name="android:padding">8dp</item>
+        <item name="android:gravity">left|center_vertical</item>
+        <item name="android:textColor">@color/xy_ui_text_dark</item>
+        <item name="android:textStyle">normal</item>
+        <item name="android:textSize">16sp</item>
+        <item name="android:baselineAligned">false</item>
+    </style>
+
+    <style name="xy_textview">
+        <item name="android:gravity">left|center_vertical</item>
+        <item name="android:textColor">@color/xy_ui_text_dark</item>
+        <item name="android:textStyle">normal</item>
+        <item name="android:textSize">16sp</item>
+        <item name="android:baselineAligned">false</item>
+    </style>
+
+    <style name="xy_checkbox" parent="android:Widget.CompoundButton.CheckBox">
+        <item name="android:gravity">left|center_vertical</item>
+        <item name="android:textColor">@color/xy_ui_text_dark</item>
+        <item name="android:textStyle">normal</item>
+        <item name="android:textSize">16sp</item>
+        <item name="android:textAppearance">?android:attr/textAppearanceMedium</item>
+        <item name="android:baselineAligned">false</item>
+    </style>
+
+    <style name="xy_toolbar">
+        <item name="android:windowBackground">@color/xy_ui_palette_primary</item>
+    </style>
+
+    <style name="xy_awesome_button" parent="xy_button">
+
+    </style>
+
+    <style name="xy_awesome_textview" parent="xy_textview">
+
+    </style>
+
+    <style name="xy_full_screen_dialog">
+        <item name="android:windowFrame">@null</item>
+        <item name="android:windowIsFloating">true</item>
+        <item name="android:windowContentOverlay">@null</item>
+        <item name="android:windowAnimationStyle">@android:style/Animation.Dialog</item>
+        <item name="android:windowSoftInputMode">stateUnspecified|adjustPan</item>
+    </style>
+
+</resources>

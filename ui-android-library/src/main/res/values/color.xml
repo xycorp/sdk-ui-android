@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- http://paletton.com/palette.php?uid=43e0u0kw0ppmuvXtdv1BrkMJTfv -->
+
+    <!-- Applied Colors Should all be in xml files and refer only to these -->
+
+    <color name="xy_ui_palette_light">#ffffff</color>
+    <color name="xy_ui_palette_neutral">#dddddd</color>
+    <color name="xy_ui_palette_dark">#000000</color>
+    <color name="xy_ui_palette_primary">#007f6e</color>
+    <color name="xy_ui_palette_primary_dark">#007f6e</color>
+    <color name="xy_ui_palette_compliment">#30a090</color>
+    <color name="xy_ui_palette_highlight">#e2fbf7</color>
+    <color name="xy_ui_palette_accent">#e2fbf7</color>
+    <color name="xy_ui_palette_alert">#ff0000</color>
+
+    <color name="xy_ui_palette_light_25">#3fffffff</color>
+    <color name="xy_ui_palette_neutral_25">#3fdddddd</color>
+    <color name="xy_ui_palette_dark_25">#3f000000</color>
+    <color name="xy_ui_palette_primary_25">#3f007f6e</color>
+    <color name="xy_ui_palette_primary_dark_25">#3f007f6e</color>
+    <color name="xy_ui_palette_compliment_25">#3f30a090</color>
+    <color name="xy_ui_palette_highlight_25">#3fe2fbf7</color>
+    <color name="xy_ui_palette_accent_25">#3fe2fbf7</color>
+    <color name="xy_ui_palette_alert_25">#3fff0000</color>
+
+    <color name="xy_ui_palette_light_50">#7fffffff</color>
+    <color name="xy_ui_palette_neutral_50">#7fdddddd</color>
+    <color name="xy_ui_palette_dark_50">#7f000000</color>
+    <color name="xy_ui_palette_primary_50">#7f007f6e</color>
+    <color name="xy_ui_palette_primary_dark_50">#7f007f6e</color>
+    <color name="xy_ui_palette_compliment_50">#7f30a090</color>
+    <color name="xy_ui_palette_highlight_50">#7fe2fbf7</color>
+    <color name="xy_ui_palette_accent_50">#7fe2fbf7</color>
+    <color name="xy_ui_palette_alert_50">#7fff0000</color>
+
+    <color name="xy_ui_palette_light_75">#cfffffff</color>
+    <color name="xy_ui_palette_neutral_75">#cfdddddd</color>
+    <color name="xy_ui_palette_dark_75">#cf000000</color>
+    <color name="xy_ui_palette_primary_75">#cf007f6e</color>
+    <color name="xy_ui_palette_primary_dark_75">#cf007f6e</color>
+    <color name="xy_ui_palette_compliment_75">#cf30a090</color>
+    <color name="xy_ui_palette_highlight_75">#cfe2fbf7</color>
+    <color name="xy_ui_palette_accent_75">#cfe2fbf7</color>
+    <color name="xy_ui_palette_alert_75">#cfff0000</color>
+
+    <!-- http://paletton.com/palette.php?uid=43e0u0kw0ppmuvXtdv1BrkMJTfv -->
+
+    <color name="xy_border">#e2fbf7</color>
+    <color name="xy_connected_circle">#77ffffff</color>
+
+    <color name="xy_text_light_enabled">#ffffff</color>
+    <color name="xy_text_light">#ffffff</color>
+    <color name="xy_text_dark">#000000</color>
+    <color name="xy_text_light_disabled">#77ffffff</color>
+    <color name="xy_text_shadow">#7f000000</color>
+
+    <color name="xy_background_light">#ffffff</color>
+    <color name="xy_background_dark">#007f6e</color>
+    <color name="xy_background_pressed">#30a090</color>
+    <color name="xy_background_disabled">#e0e3e5</color>
+    <color name="xy_background_alert">#ff0000</color>
+    <color name="xy_background_desktop">#dddddd</color>
+    <!--old disabled color<color name="xy_background_disabled">#B5AD9E</color>-->
+
+    <!--old Android color values removed in 3.0 AndroidStudio update-->
+    <color name="md_deep_orange_500">#ff5722</color>
+    <color name="md_white_1000">#ffffff</color>
+
+</resources>

@@ -1,0 +1,88 @@
+buildscript {
+    repositories {
+        mavenCentral()
+        mavenLocal()
+        jcenter()
+        google()
+    }
+
+    dependencies {
+        classpath 'com.android.tools.build:gradle:3.1.4'
+        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
+    }
+}
+
+repositories {
+    mavenCentral()
+    maven { url 'https://jitpack.io' }
+}
+
+apply plugin: 'com.android.library'
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-kapt'
+
+kotlin {
+    experimental {
+        coroutines 'enable'
+    }
+}
+
+dependencies {
+    implementation fileTree(include: ['*.jar'], dir: 'libs')
+    api project(path: ':xycore')
+    api "org.jetbrains.kotlin:kotlin-stdlib-jdk8:$kotlin_version"
+    api "org.jetbrains.kotlinx:kotlinx-coroutines-core:0.22.5"
+    api "khttp:khttp:0.1.0"
+    api 'org.slf4j:slf4j-nop:1.7.25'
+    api 'com.facebook.android:facebook-android-sdk:4.33.0'
+    api 'com.android.support.constraint:constraint-layout:1.1.2'
+
+    api "com.android.support:cardview-v7:$android_support_version"
+    api "com.android.support:appcompat-v7:$android_support_version"
+    api "com.android.support:customtabs:$android_support_version"
+    api "com.android.support:recyclerview-v7:$android_support_version"
+
+    api "me.everything:overscroll-decor-android:1.0.4"
+
+}
+
+android {
+    compileSdkVersion 27
+    buildToolsVersion '27.0.3'
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+
+    defaultConfig {
+        minSdkVersion 19
+        targetSdkVersion 27
+        defaultPublishConfig 'release'
+        publishNonDefault true
+
+        javaCompileOptions {
+            annotationProcessorOptions {
+                includeCompileClasspath = true
+            }
+        }
+    }
+
+    buildTypes {
+        release {
+            debuggable false
+            minifyEnabled true
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+        debug {
+            minifyEnabled false
+            debuggable true
+        }
+    }
+}
+
+configurations.all {
+    resolutionStrategy {
+        force "com.android.support:support-v4:$android_support_version"
+    }
+}

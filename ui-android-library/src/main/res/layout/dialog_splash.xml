@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="utf-8"?>
+<merge
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context=".dialogs.XYSplashDialog"
+    android:theme="@style/XYTheme"
+    >
+
+    <RelativeLayout
+        android:id="@+id/still_splash_layout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:visibility="visible">
+
+        <ImageView
+            android:contentDescription="@string/imgdesc_xy_find_it"
+            android:layout_width="202dp"
+            android:layout_height="108dp"
+            android:layout_alignParentEnd="true"
+            android:layout_gravity="right|top"
+            android:layout_marginTop="15dp"
+            android:background="@drawable/xy_load_logo" />
+
+        <ImageView
+            android:contentDescription="@string/imgdesc_xy_logo"
+            android:layout_width="339dp"
+            android:layout_height="371dp"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentLeft="true"
+            android:layout_gravity="left|bottom"
+            android:layout_marginBottom="0dp"
+            android:background="@drawable/xy_load_beacon" />
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/animation_splash_layout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/xy_background_dark"
+        android:paddingBottom="16dp"
+        android:paddingTop="16dp"
+        android:visibility="invisible">
+
+
+        <ImageView
+            android:contentDescription="@string/imgdesc_loading_spinner"
+            android:id="@+id/splash_ring1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:src="@drawable/splash_ring1" />
+
+        <ImageView
+            android:contentDescription="@string/imgdesc_loading_spinner"
+            android:id="@+id/splash_ring2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:src="@drawable/splash_ring2" />
+
+        <ImageView
+            android:contentDescription="@string/imgdesc_loading_spinner"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:src="@drawable/splash_ring3" />
+
+        <ImageView
+            android:contentDescription="@string/imgdesc_loading_spinner"
+            android:id="@+id/splash_signal0"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:alpha="0.4"
+            android:src="@drawable/splash_signal1" />
+
+        <ImageView
+            android:contentDescription="@string/imgdesc_loading_spinner"
+            android:id="@+id/splash_signal1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:alpha="0.7"
+            android:src="@drawable/splash_signal1" />
+
+        <ImageView
+            android:contentDescription="@string/imgdesc_loading_spinner"
+            android:id="@+id/splash_signal2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:alpha="0.5"
+            android:src="@drawable/splash_signal1" />
+
+
+        <ImageView
+            android:contentDescription="@string/imgdesc_loading_spinner"
+            android:id="@+id/splash_signal_small"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:alpha="0.3"
+            android:src="@drawable/splash_signal2" />
+
+
+        <ImageView
+            android:contentDescription="@string/imgdesc_loading_spinner"
+            android:id="@+id/splash_center_hex"
+            android:layout_width="70dp"
+            android:layout_height="70dp"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
+            android:src="@drawable/hex_white" />
+
+
+        <ImageView
+            android:contentDescription="@string/imgdesc_loading_spinner"
+            android:layout_width="70dp"
+            android:layout_height="70dp"
+            android:layout_alignBottom="@id/splash_center_hex"
+            android:layout_alignLeft="@id/splash_center_hex"
+            android:layout_alignRight="@id/splash_center_hex"
+            android:layout_alignTop="@id/splash_center_hex"
+            android:scaleType="fitXY"
+            android:src="@drawable/xyicon_white" />
+
+        <network.xyo.ui.views.XYTextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:gravity="center"
+            android:textColor="@color/xy_text_light"
+            android:text="@string/loading"
+            android:textSize="25sp" />
+
+
+    </RelativeLayout>
+
+
+</merge>

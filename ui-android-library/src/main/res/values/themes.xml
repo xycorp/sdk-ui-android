@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<!-- Generated with http://android-holo-colors.com -->
+<resources xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <style name="XYTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+
+        <item name="windowNoTitle">true</item>
+        <item name="windowActionBar">true</item>
+
+        <item name="colorPrimary">@color/xy_ui_palette_primary</item>
+        <item name="colorPrimaryDark">@color/xy_ui_palette_primary_dark</item>
+        <item name="colorAccent">@color/xy_ui_palette_accent</item>
+
+        <item name="android:textColorHighlight">@color/xy_ui_palette_highlight</item>
+        <item name="android:windowBackground">@color/xy_ui_palette_neutral</item>
+        <item name="android:actionBarSize">48dip</item>
+
+    </style>
+
+</resources>

@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">XYO Android UI</string>
+    <string name="imgdesc_xy_logo">xyo logo</string>
+    <string name="action_bar_size">22dp</string>
+    <string name="imgdesc_xy_find_it">xyo ui</string>
+    <string name="imgdesc_loading_spinner">loading spinner</string>
+    <string name="loading">Loading…</string>
+</resources>
