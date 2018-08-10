@@ -13,10 +13,10 @@ import android.view.View
 import android.view.animation.AlphaAnimation
 import network.xyo.core.XYBase
 import network.xyo.ui.R
+import network.xyo.ui.ui
 
 
-class XYSignalBars @JvmOverloads constructor(context: Context, attrs: AttributeSet? = null, defStyle: Int = 0) :
-        View(context, attrs, defStyle) {
+class XYSignalBars @JvmOverloads constructor(context: Context, attrs: AttributeSet? = null, defStyle: Int = 0) : View(context, attrs, defStyle) {
 
     private var barMaxCount = 3
     private var barCount = 0
@@ -34,22 +34,22 @@ class XYSignalBars @JvmOverloads constructor(context: Context, attrs: AttributeS
         var color = Color.WHITE
         if (attrs != null) {
             val value = attrs.getAttributeResourceValue("http://schemas.android.com/apk/res/android", "color", 0)
-            color = if (value != 0) {
-                @Suppress("DEPRECATION") resources.getColor(value)
+            if (value != 0) {
+                color = @Suppress("DEPRECATION")resources.getColor(value)
             } else {
-                attrs.getAttributeIntValue("http://schemas.android.com/apk/res/android", "color", Color.WHITE)
+                color = attrs.getAttributeIntValue("http://schemas.android.com/apk/res/android", "color", Color.WHITE)
             }
         }
 
         if (attrs != null) {
-            val attributeArray = context.obtainStyledAttributes(
+            val attributyeArray = context.obtainStyledAttributes(
                     attrs,
                     R.styleable.XYSignalBars,
                     0, 0)
 
-            if (attributeArray != null) {
-                barMaxCount = attributeArray.getInt(R.styleable.XYSignalBars_maxBars, 3)
-                attributeArray.recycle()
+            if (attributyeArray != null) {
+                barMaxCount = attributyeArray.getInt(R.styleable.XYSignalBars_maxBars, 3)
+                attributyeArray.recycle()
             }
         }
 
@@ -102,16 +102,18 @@ class XYSignalBars @JvmOverloads constructor(context: Context, attrs: AttributeS
         }
     }
 
-    fun setBarCount(updatedBarCount: Int, animate: Boolean) {
-        XYBase.logInfo("XYSignalBars", "setBarCount: $updatedBarCount")
-        if (barCount != updatedBarCount) {
-            barCount = updatedBarCount
-            invalidate()
-        }
-        if (animate) {
-            val animation = AlphaAnimation(0.0f, 1.0f)
-            animation.setDuration(500)
-            this.startAnimation(animation)
+    fun setBarCount(updatedBarCount: Int, animate:Boolean) {
+        XYBase.logInfo("arie", "setBarCount: $updatedBarCount")
+        ui {
+            if (barCount != updatedBarCount) {
+                barCount = updatedBarCount
+                invalidate()
+            }
+            if (animate) {
+                val animation = AlphaAnimation(0.0f, 1.0f)
+                animation.setDuration(500)
+                this@XYSignalBars.startAnimation(animation)
+            }
         }
     }
 
@@ -121,4 +123,7 @@ class XYSignalBars @JvmOverloads constructor(context: Context, attrs: AttributeS
 
     companion object {
         private val barWidthPercent = 0.70f
+    }
+
+}
     

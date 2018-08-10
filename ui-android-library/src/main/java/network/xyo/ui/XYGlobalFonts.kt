@@ -61,11 +61,15 @@ class XYGlobalFonts : XYBase() {
         }
 
         fun setPreferenceFont(context: Context, view: View) {
-            val titleView = view.findViewById<View>(android.R.id.title) as TextView
-            setViewFont(context, titleView)
+            val titleView = view.findViewById<View>(android.R.id.title) as? TextView
+            if (titleView != null) {
+                XYGlobalFonts.setViewFont(context, titleView)
+            }
 
-            val summaryView = view.findViewById<View>(android.R.id.summary) as TextView
-            setViewFont(context, summaryView)
+            val summaryView = view.findViewById<View>(android.R.id.summary) as? TextView
+            if (summaryView != null) {
+                XYGlobalFonts.setViewFont(context, summaryView)
+            }
         }
 
         fun setViewFontAwesome(context: Context, view: TextView) {

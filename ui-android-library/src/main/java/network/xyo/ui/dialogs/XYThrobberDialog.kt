@@ -10,6 +10,7 @@ import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
 import android.view.View
 import network.xyo.ui.R
+import network.xyo.ui.ui
 
 class XYThrobberDialog(context: Context) : Dialog(context) {
 
@@ -20,12 +21,23 @@ class XYThrobberDialog(context: Context) : Dialog(context) {
         if (window != null) {
             this.window!!.setBackgroundDrawable(ColorDrawable(android.graphics.Color.TRANSPARENT))
 
-            val dividerId = this.context.resources.getIdentifier("android:id/titleDivider",
-                    null, null)
+            val dividerId = this.context.resources.getIdentifier("android:id/titleDivider", null, null)
             val divider = this.findViewById<View>(dividerId)
             if (divider != null) {
                 divider.visibility = View.GONE
             }
+        }
+    }
+
+    override fun show() {
+        ui {
+            super.show()
+        }
+    }
+
+    override fun hide() {
+        ui {
+            super.hide()
         }
     }
 
