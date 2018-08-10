@@ -31,3 +31,5 @@
 -keepattributes EnclosingMethod
 
 -keep public class network.xyo.** { *; }
+
+-dontwarn java.lang.invoke.**

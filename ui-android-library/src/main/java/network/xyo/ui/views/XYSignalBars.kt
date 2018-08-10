@@ -34,22 +34,22 @@ class XYSignalBars @JvmOverloads constructor(context: Context, attrs: AttributeS
         var color = Color.WHITE
         if (attrs != null) {
             val value = attrs.getAttributeResourceValue("http://schemas.android.com/apk/res/android", "color", 0)
-            if (value != 0) {
-                color = @Suppress("DEPRECATION")resources.getColor(value)
+            color = if (value != 0) {
+                @Suppress("DEPRECATION")resources.getColor(value)
             } else {
-                color = attrs.getAttributeIntValue("http://schemas.android.com/apk/res/android", "color", Color.WHITE)
+                attrs.getAttributeIntValue("http://schemas.android.com/apk/res/android", "color", Color.WHITE)
             }
         }
 
         if (attrs != null) {
-            val attributyeArray = context.obtainStyledAttributes(
+            val attributeArray = context.obtainStyledAttributes(
                     attrs,
                     R.styleable.XYSignalBars,
                     0, 0)
 
-            if (attributyeArray != null) {
-                barMaxCount = attributyeArray.getInt(R.styleable.XYSignalBars_maxBars, 3)
-                attributyeArray.recycle()
+            if (attributeArray != null) {
+                barMaxCount = attributeArray.getInt(R.styleable.XYSignalBars_maxBars, 3)
+                attributeArray.recycle()
             }
         }
 
@@ -111,7 +111,7 @@ class XYSignalBars @JvmOverloads constructor(context: Context, attrs: AttributeS
             }
             if (animate) {
                 val animation = AlphaAnimation(0.0f, 1.0f)
-                animation.setDuration(500)
+                animation.duration = 500
                 this@XYSignalBars.startAnimation(animation)
             }
         }
