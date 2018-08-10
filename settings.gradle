@@ -1,5 +1,5 @@
 include ':ui-android-sample'
 include ':ui-android-library'
 
-include 'xycore'
-project(':xycore').projectDir = new File(settingsDir, '../sdk-core-android/core-android-library')
+//include 'xycore'
+//project(':xycore').projectDir = new File(settingsDir, '../sdk-core-android/core-android-library')
