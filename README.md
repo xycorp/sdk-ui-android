@@ -11,7 +11,7 @@ A UI framework for adding XYO themed toolbars and dialogs to your existing code.
   
 ### Installing
 
-You can add adk-ui-android to your existing project by cloning the project and manually adding it
+You can add sdk-ui-android to your existing app by cloning the project and manually adding it
 to your build.gradle:
 ```bash
 git clone git@github.com:XYOracleNetwork/sdk-ui-android.git
@@ -30,7 +30,7 @@ dependencies {
 }
 ```
 
-###Usage
+### Usage
 Most of the UI components can be added to an existing XML layout file. Look at the ui-android-sample
 folder for examples
 ```xml
