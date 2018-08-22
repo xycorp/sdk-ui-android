@@ -4,11 +4,11 @@ import android.app.Activity
 import android.content.Context
 import android.content.ContextWrapper
 import android.os.Handler
-import android.support.v7.widget.AppCompatButton
 import android.util.AttributeSet
 import android.view.ContextThemeWrapper
 import android.view.View
 import android.view.inputmethod.InputMethodManager
+import androidx.appcompat.widget.AppCompatButton
 import network.xyo.ui.R
 
 import network.xyo.ui.XYGlobalFonts

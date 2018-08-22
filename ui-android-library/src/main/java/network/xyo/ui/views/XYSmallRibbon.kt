@@ -1,13 +1,12 @@
 package network.xyo.ui.views
 
 import android.content.Context
-import android.support.v7.widget.LinearLayoutManager
 import android.util.AttributeSet
 import android.util.TypedValue
 import android.view.View
-import me.everything.android.ui.overscroll.IOverScrollState
-import me.everything.android.ui.overscroll.OverScrollDecoratorHelper
+import androidx.recyclerview.widget.LinearLayoutManager
 import network.xyo.core.XYBase
+import network.xyo.ui.helpers.overscroll.*
 import network.xyo.ui.ui
 
 open class XYSmallRibbon(context: Context, attrs: AttributeSet?, defStyle: Int) : XYRibbon(context, attrs, defStyle) {
@@ -30,7 +29,7 @@ open class XYSmallRibbon(context: Context, attrs: AttributeSet?, defStyle: Int) 
     init {
         XYBase.logInfo(TAG, "init")
         setAdapter(adapter)
-        layoutManager = object : LinearLayoutManager(context, android.support.v7.widget.LinearLayoutManager.HORIZONTAL, false) {
+        layoutManager = object : LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false) {
             override fun supportsPredictiveItemAnimations(): Boolean {
                 return true
             }
@@ -51,37 +50,41 @@ open class XYSmallRibbon(context: Context, attrs: AttributeSet?, defStyle: Int) 
 
         this.itemAnimator = null
 
-        val decor = OverScrollDecoratorHelper.setUpOverScroll(this, OverScrollDecoratorHelper.ORIENTATION_HORIZONTAL)
+        val decor = OverScrollDecoratorHelper.setUpStaticOverScroll(this, OverScrollDecoratorHelper.ORIENTATION_HORIZONTAL)
 
         this.overScrollMode = View.OVER_SCROLL_ALWAYS
 
-        decor.setOverScrollUpdateListener { _, _, offset ->
-            if (offset > _bounceTrigger) {
-                _reloadTriggered = true
+        decor.setOverScrollUpdateListener(object : IOverScrollUpdateListener {
+            override fun onOverScrollUpdate(decor: IOverScrollDecor, state: Int, offset: Float) {
+                if (offset > _bounceTrigger) {
+                    _reloadTriggered = true
+                }
             }
-        }
+        })
 
-        decor.setOverScrollStateListener { _, _, newState ->
-            when (newState) {
-                IOverScrollState.STATE_IDLE -> {
-                    XYBase.logInfo(TAG, "onOverScrollStateChange: STATE_IDLE")
-                    if (_reloadTriggered) {
-                        XYBase.logInfo(TAG, "onOverScrollStateChange: _reloadTriggered")
+        decor.setOverScrollStateListener(object : IOverScrollStateListener {
+            override fun onOverScrollStateChange(decor: IOverScrollDecor, oldState: Int, newState: Int) {
+                when (newState) {
+                    IOverScrollState.STATE_IDLE -> {
+                        XYBase.logInfo(TAG, "onOverScrollStateChange: STATE_IDLE")
+                        if (_reloadTriggered) {
+                            XYBase.logInfo(TAG, "onOverScrollStateChange: _reloadTriggered")
 
-                        (listener as Listener).pull()
+                            (listener as Listener).pull()
 
-                        _reloadTriggered = false
-                        _pendingAnimation = true
+                            _reloadTriggered = false
+                            _pendingAnimation = true
+                        }
                     }
-                }
-                IOverScrollState.STATE_DRAG_START_SIDE -> XYBase.logInfo(TAG, "onOverScrollUpdate: STATE_DRAG_START_SIDE")
-                IOverScrollState.STATE_DRAG_END_SIDE -> XYBase.logInfo(TAG, "onOverScrollUpdate: STATE_DRAG_END_SIDE")
-                IOverScrollState.STATE_BOUNCE_BACK -> XYBase.logInfo(TAG, "onOverScrollUpdate: STATE_BOUNCE_BACK")
-                else -> {
-                }
-            }// Dragging started at the left-end.
-            // Dragging started at the right-end.
-        }
+                    IOverScrollState.STATE_DRAG_START_SIDE -> XYBase.logInfo(TAG, "onOverScrollUpdate: STATE_DRAG_START_SIDE")
+                    IOverScrollState.STATE_DRAG_END_SIDE -> XYBase.logInfo(TAG, "onOverScrollUpdate: STATE_DRAG_END_SIDE")
+                    IOverScrollState.STATE_BOUNCE_BACK -> XYBase.logInfo(TAG, "onOverScrollUpdate: STATE_BOUNCE_BACK")
+                    else -> {
+                    }
+                }// Dragging started at the left-end.
+                // Dragging started at the right-end.
+            }
+        })
     }
 
     override fun scrollToPosition(position: Int) {

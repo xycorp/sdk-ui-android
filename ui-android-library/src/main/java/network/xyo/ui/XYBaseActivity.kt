@@ -1,12 +1,11 @@
 package network.xyo.ui
 
-import android.app.Activity
 import android.os.Bundle
 import android.os.PersistableBundle
-import android.support.v7.app.AppCompatActivity
 import android.view.View
 import android.view.inputmethod.InputMethodManager
 import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
 import network.xyo.core.XYBase
 
 import network.xyo.ui.dialogs.XYThrobberDialog
@@ -22,8 +21,7 @@ abstract class XYBaseActivity : AppCompatActivity() {
 
     val tag: String
         get () {
-            val parts = this.localClassName.split('.')
-            return parts[parts.lastIndex]
+            return sourceNameFromAny(this)
         }
 
     fun logInfo(message: String) {
@@ -38,12 +36,12 @@ abstract class XYBaseActivity : AppCompatActivity() {
         XYBase.logError(tag, message, debug)
     }
 
-    fun logException(exception: Exception, debug: Boolean) {
-        XYBase.logException(tag, exception, debug)
+    fun logError(exception: Exception, debug: Boolean) {
+        XYBase.logError(tag, exception, debug)
     }
 
-    fun logException(tag: String, exception: Exception, debug: Boolean) {
-        XYBase.logException(tag, exception, debug)
+    fun logError(tag: String, exception: Exception, debug: Boolean) {
+        XYBase.logError(tag, exception, debug)
     }
 
     fun logStatus(tag: String, message: String, debug: Boolean) {
@@ -249,7 +247,7 @@ abstract class XYBaseActivity : AppCompatActivity() {
 
     fun hideKeyboard() {
         XYBase.logInfo(tag, "hideKeyboard")
-        val imm = getSystemService(Activity.INPUT_METHOD_SERVICE) as InputMethodManager
+        val imm = getSystemService(AppCompatActivity.INPUT_METHOD_SERVICE) as InputMethodManager
         //Find the currently focused view, so we can grab the correct window token from it.
         var view = currentFocus
         //If no view currently has focus, create a new one, just so we can grab a window token from it
@@ -264,6 +262,18 @@ abstract class XYBaseActivity : AppCompatActivity() {
         private val TAG = XYBaseActivity::class.java.simpleName
 
         var _activityCount = 0
+
+        fun classNameFromObject(objectToCheck: Any) : String {
+            val parts = objectToCheck.javaClass.kotlin.simpleName?.split('.')
+            if (parts == null) {
+                return "Unknown"
+            }
+            return parts[parts.lastIndex]
+        }
+
+        fun sourceNameFromAny(source: Any) : String {
+            return (source as? String) ?: classNameFromObject(source)
+        }
 
         val isForeground: Boolean
             get() = _activityCount > 0
