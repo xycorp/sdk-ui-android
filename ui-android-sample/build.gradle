@@ -8,7 +8,7 @@ android {
     buildToolsVersion "27.0.3"
     defaultConfig {
         applicationId "network.xyo.ui.sample"
-        minSdkVersion 19
+        minSdkVersion 21
         targetSdkVersion 28
         versionCode 1
         versionName "1.0"
@@ -44,5 +44,6 @@ dependencies {
     api project(path: ':xycore')
     //implementation 'com.github.XYOracleNetwork:sdk-core-android:master-SNAPSHOT'
 
-    implementation "androidx.appcompat:appcompat:$androidx_version"
+    api "org.jetbrains.kotlin:kotlin-stdlib-jdk8:$kotlin_version"
+    api "androidx.appcompat:appcompat:$androidx_version"
 }
