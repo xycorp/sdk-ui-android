@@ -4,12 +4,12 @@ import android.app.Activity
 import android.content.Context
 import android.content.res.Resources
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.util.TypedValue
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.fragment.app.Fragment
 import network.xyo.core.XYBase
 
 import network.xyo.ui.dialogs.XYThrobberDialog
@@ -28,11 +28,11 @@ open class XYBaseFragment : Fragment() {
         XYBase.logError(TAG, message, debug)
     }
 
-    fun logException(exception: Exception, debug: Boolean) {
+    fun logError(exception: Exception, debug: Boolean) {
         XYBase.logError(TAG, exception, debug)
     }
 
-    fun logException(tag: String, exception: Exception, debug: Boolean) {
+    fun logError(tag: String, exception: Exception, debug: Boolean) {
         XYBase.logError(tag, exception, debug)
     }
 
