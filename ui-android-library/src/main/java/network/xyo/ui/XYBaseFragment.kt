@@ -4,7 +4,7 @@ import android.app.Activity
 import android.content.Context
 import android.content.res.Resources
 import android.os.Bundle
-import android.support.v4.app.Fragment
+import androidx.fragment.app.Fragment
 import android.util.TypedValue
 import android.view.LayoutInflater
 import android.view.View
@@ -29,11 +29,11 @@ open class XYBaseFragment : Fragment() {
     }
 
     fun logException(exception: Exception, debug: Boolean) {
-        XYBase.logException(TAG, exception, debug)
+        XYBase.logError(TAG, exception, debug)
     }
 
     fun logException(tag: String, exception: Exception, debug: Boolean) {
-        XYBase.logException(tag, exception, debug)
+        XYBase.logError(tag, exception, debug)
     }
 
     fun logStatus(tag: String, message: String, debug: Boolean) {

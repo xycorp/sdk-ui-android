@@ -4,12 +4,12 @@ apply plugin: 'kotlin-kapt'
 
 
 android {
-    compileSdkVersion 27
+    compileSdkVersion 28
     buildToolsVersion "27.0.3"
     defaultConfig {
         applicationId "network.xyo.ui.sample"
-        minSdkVersion 19
-        targetSdkVersion 27
+        minSdkVersion 21
+        targetSdkVersion 28
         versionCode 1
         versionName "1.0"
 
@@ -34,13 +34,13 @@ buildscript {
         google()
     }
     dependencies {
-        classpath 'com.android.tools.build:gradle:3.1.4'
+        classpath 'com.android.tools.build:gradle:3.2.0-rc01'
     }
 }
 
 dependencies {
     implementation fileTree(include: ['*.jar'], dir: 'libs')
     api project(path: ':ui-android-library')
-    //api project(path: ':xycore')
-    implementation 'com.github.XYOracleNetwork:sdk-core-android:master-SNAPSHOT'
+    api project(path: ':xycore')
+    //implementation 'com.github.XYOracleNetwork:sdk-core-android:master-SNAPSHOT'
 }

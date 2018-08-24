@@ -96,14 +96,13 @@ class XYSignalBars @JvmOverloads constructor(context: Context, attrs: AttributeS
             rect.right = left + barWidth * barWidthPercent + barWidth * (1 - barWidthPercent) / 2
             rect.bottom = (measuredHeight - paddingBottom).toFloat()
 
-            val currPaint = if (i < barCount) paintFill else paintEmpty
+            val currPaint = (if (i < barCount) paintFill else paintEmpty) ?: return
             val radius = dpToPx(resources, 2)
             canvas.drawRoundRect(rect, radius.toFloat(), radius.toFloat(), currPaint)
         }
     }
 
     fun setBarCount(updatedBarCount: Int, animate:Boolean) {
-        XYBase.logInfo("arie", "setBarCount: $updatedBarCount")
         ui {
             if (barCount != updatedBarCount) {
                 barCount = updatedBarCount

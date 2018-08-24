@@ -1,7 +1,7 @@
 package network.xyo.ui.views
 
 import android.content.Context
-import android.support.v7.widget.LinearLayoutManager
+import androidx.recyclerview.widget.LinearLayoutManager
 import android.util.AttributeSet
 import android.util.TypedValue
 import android.view.View
@@ -30,7 +30,7 @@ open class XYSmallRibbon(context: Context, attrs: AttributeSet?, defStyle: Int) 
     init {
         XYBase.logInfo(TAG, "init")
         setAdapter(adapter)
-        layoutManager = object : LinearLayoutManager(context, android.support.v7.widget.LinearLayoutManager.HORIZONTAL, false) {
+        layoutManager = object : LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false) {
             override fun supportsPredictiveItemAnimations(): Boolean {
                 return true
             }
