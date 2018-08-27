@@ -8,9 +8,6 @@ A UI framework for adding XYO themed toolbars and dialogs to your existing code.
 * Android SDK
   - Kotlin
   - Build Tools 27+
-  
-[![Build Status](https://semaphoreapp.com/api/v1/projects/d4cca506-99be-44d2-b19e-176f36ec8cf1/128505/shields_badge.svg)](https://semaphoreapp.com/boennemann/badges)
-[![GitHub version](https://badge.fury.io/gh/boennemann%2Fbadges.svg)](http://badge.fury.io/gh/boennemann%2Fbadges)
 
 ### Installing
 
@@ -29,7 +26,7 @@ allprojects {
 ```
 ```gradle
 dependencies {
-    implementation 'com.github.XYOracleNetwork:sdk-ui-android:[GitHub version]'
+    implementation 'com.github.XYOracleNetwork:sdk-ui-android:v1.0'
 }
 ```
 
