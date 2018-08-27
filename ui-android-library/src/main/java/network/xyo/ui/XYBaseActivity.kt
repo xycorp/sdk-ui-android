@@ -263,7 +263,7 @@ abstract class XYBaseActivity : AppCompatActivity() {
 
         var _activityCount = 0
 
-        fun classNameFromObject(objectToCheck: Any) : String {
+        fun classNameFromObject(objectToCheck: Any): String {
             val parts = objectToCheck.javaClass.kotlin.simpleName?.split('.')
             if (parts == null) {
                 return "Unknown"
@@ -271,7 +271,7 @@ abstract class XYBaseActivity : AppCompatActivity() {
             return parts[parts.lastIndex]
         }
 
-        fun sourceNameFromAny(source: Any) : String {
+        fun sourceNameFromAny(source: Any): String {
             return (source as? String) ?: classNameFromObject(source)
         }
 

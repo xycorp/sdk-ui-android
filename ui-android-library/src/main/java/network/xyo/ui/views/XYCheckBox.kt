@@ -1,9 +1,9 @@
 package network.xyo.ui.views
 
 import android.content.Context
+import androidx.appcompat.widget.AppCompatCheckBox
 import android.util.AttributeSet
 import android.view.ContextThemeWrapper
-import androidx.appcompat.widget.AppCompatCheckBox
 import network.xyo.ui.R
 
 import network.xyo.ui.XYGlobalFonts

@@ -5,10 +5,10 @@ import android.graphics.Canvas
 import android.graphics.Paint
 import android.graphics.Rect
 import android.graphics.drawable.Drawable
+import androidx.appcompat.widget.AppCompatEditText
 import android.util.AttributeSet
 import android.view.ContextThemeWrapper
 import android.view.inputmethod.InputMethodManager
-import androidx.appcompat.widget.AppCompatEditText
 import network.xyo.ui.R
 
 import network.xyo.ui.XYGlobalFonts

@@ -2,9 +2,9 @@
 
 buildscript {
     ext.kotlin_version = '1.2.61'
-    ext.android_plugin_version = '3.1.4'
+    ext.android_plugin_version = '3.2.0-rc02'
+    ext.android_support_version = '27.1.1'
     ext.androidx_version = '1.0.0-rc01'
-    ext.facebook_version = '4.35.0'
 
     repositories {
         jcenter()
@@ -13,7 +13,6 @@ buildscript {
     dependencies {
         classpath "com.android.tools.build:gradle:$android_plugin_version"
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
-        classpath 'com.github.dcendents:android-maven-gradle-plugin:2.1'
 
 
         // NOTE: Do not place your application dependencies here; they belong

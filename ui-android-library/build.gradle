@@ -7,7 +7,7 @@ buildscript {
     }
 
     dependencies {
-        classpath 'com.android.tools.build:gradle:3.1.4'
+        classpath "com.android.tools.build:gradle:$android_plugin_version"
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
         classpath 'com.github.dcendents:android-maven-gradle-plugin:2.1'
     }
@@ -32,25 +32,28 @@ kotlin {
 
 dependencies {
     implementation fileTree(include: ['*.jar'], dir: 'libs')
-    implementation project(path: ':xycore')
+    api project(path: ':xycore')
     //implementation 'com.github.XYOracleNetwork:sdk-core-android:master-SNAPSHOT'
     api "org.jetbrains.kotlin:kotlin-stdlib-jdk8:$kotlin_version"
     api "org.jetbrains.kotlinx:kotlinx-coroutines-core:0.22.5"
-    api "org.jetbrains.kotlin:kotlin-reflect:$kotlin_version"
     api "khttp:khttp:0.1.0"
     api 'org.slf4j:slf4j-nop:1.7.25'
+    api 'com.facebook.android:facebook-android-sdk:4.33.0'
+    api 'androidx.constraintlayout:constraintlayout:2.0.0-alpha2'
 
-    api "androidx.appcompat:appcompat:$androidx_version"
-    api "androidx.recyclerview:recyclerview:$androidx_version"
-    api "androidx.annotation:annotation:$androidx_version"
     api "androidx.cardview:cardview:$androidx_version"
-    api "com.google.android.material:material:$androidx_version"
+    api "androidx.appcompat:appcompat:$androidx_version"
+    api "androidx.browser:browser:$androidx_version"
+    api "androidx.recyclerview:recyclerview:$androidx_version"
+    api "org.jetbrains.kotlin:kotlin-reflect:$kotlin_version"
+
+    api "me.everything:overscroll-decor-android:1.0.4"
 
 }
 
 android {
     compileSdkVersion 28
-    buildToolsVersion '27.0.3'
+    buildToolsVersion '28.0.2'
 
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_8
@@ -79,5 +82,11 @@ android {
             minifyEnabled false
             debuggable true
         }
+    }
+}
+
+configurations.all {
+    resolutionStrategy {
+        force "com.android.support:support-v4:$android_support_version"
     }
 }

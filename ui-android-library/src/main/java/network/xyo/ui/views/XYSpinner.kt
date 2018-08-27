@@ -3,12 +3,12 @@ package network.xyo.ui.views
 import android.content.Context
 import android.content.res.Resources
 import android.database.DataSetObserver
+import androidx.appcompat.widget.AppCompatSpinner
 import android.util.AttributeSet
 import android.util.TypedValue
 import android.view.View
 import android.view.ViewGroup
 import android.widget.SpinnerAdapter
-import androidx.appcompat.widget.AppCompatSpinner
 import network.xyo.ui.R
 
 
