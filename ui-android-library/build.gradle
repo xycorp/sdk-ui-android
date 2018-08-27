@@ -32,8 +32,7 @@ kotlin {
 
 dependencies {
     implementation fileTree(include: ['*.jar'], dir: 'libs')
-    //api project(path: ':xycore')
-    implementation 'com.github.XYOracleNetwork:sdk-core-android:master-SNAPSHOT'
+    implementation 'com.github.XYOracleNetwork:sdk-core-android:v1.0'
     api "org.jetbrains.kotlin:kotlin-stdlib-jdk8:$kotlin_version"
     api "org.jetbrains.kotlinx:kotlinx-coroutines-core:0.22.5"
     api "khttp:khttp:0.1.0"

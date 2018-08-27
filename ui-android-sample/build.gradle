@@ -41,6 +41,5 @@ buildscript {
 dependencies {
     implementation fileTree(include: ['*.jar'], dir: 'libs')
     api project(path: ':ui-android-library')
-    //api project(path: ':xycore')
-    implementation 'com.github.XYOracleNetwork:sdk-core-android:master-SNAPSHOT'
+    implementation 'com.github.XYOracleNetwork:sdk-core-android:v1.0'
 }
