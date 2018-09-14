@@ -1,4 +1,4 @@
-package network.xyo.ui.overscroll
+package network.xyo.ui.helpers.overscroll.adapters
 
 import android.view.View
 import android.widget.AbsListView

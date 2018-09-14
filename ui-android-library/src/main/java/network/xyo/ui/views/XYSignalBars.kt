@@ -11,7 +11,6 @@ import android.util.AttributeSet
 import android.util.TypedValue
 import android.view.View
 import android.view.animation.AlphaAnimation
-import network.xyo.core.XYBase
 import network.xyo.ui.R
 import network.xyo.ui.ui
 
@@ -121,7 +120,7 @@ class XYSignalBars @JvmOverloads constructor(context: Context, attrs: AttributeS
     }
 
     companion object {
-        private val barWidthPercent = 0.70f
+        private const val barWidthPercent = 0.70f
     }
 
 }

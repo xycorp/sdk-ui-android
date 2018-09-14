@@ -11,16 +11,16 @@ import network.xyo.ui.helpers.overscroll.adapters.RecyclerViewOverScrollDecorAda
 import network.xyo.ui.helpers.overscroll.adapters.ScrollViewOverScrollDecorAdapter
 import network.xyo.ui.helpers.overscroll.adapters.StaticOverScrollDecorAdapter
 import network.xyo.ui.helpers.overscroll.adapters.ViewPagerOverScrollDecorAdapter
-import network.xyo.ui.overscroll.AbsListViewOverScrollDecorAdapter
-import network.xyo.ui.overscroll.HorizontalScrollViewOverScrollDecorAdapter
+import network.xyo.ui.helpers.overscroll.adapters.AbsListViewOverScrollDecorAdapter
+import network.xyo.ui.helpers.overscroll.adapters.HorizontalScrollViewOverScrollDecorAdapter
 
 /**
  * @author amit
  */
 object OverScrollDecoratorHelper {
 
-    val ORIENTATION_VERTICAL = 0
-    val ORIENTATION_HORIZONTAL = 1
+    const val ORIENTATION_VERTICAL = 0
+    const val ORIENTATION_HORIZONTAL = 1
 
     /**
      * Set up the over-scroll effect over a specified [RecyclerView] view.
@@ -34,9 +34,9 @@ object OverScrollDecoratorHelper {
      * @return The over-scroll effect 'decorator', enabling further effect configuration.
      */
     fun setUpOverScroll(recyclerView: RecyclerView, orientation: Int): IOverScrollDecor {
-        when (orientation) {
-            ORIENTATION_HORIZONTAL -> return HorizontalOverScrollBounceEffectDecorator(RecyclerViewOverScrollDecorAdapter(recyclerView))
-            ORIENTATION_VERTICAL -> return VerticalOverScrollBounceEffectDecorator(RecyclerViewOverScrollDecorAdapter(recyclerView))
+        return when (orientation) {
+            ORIENTATION_HORIZONTAL -> HorizontalOverScrollBounceEffectDecorator(RecyclerViewOverScrollDecorAdapter(recyclerView))
+            ORIENTATION_VERTICAL -> VerticalOverScrollBounceEffectDecorator(RecyclerViewOverScrollDecorAdapter(recyclerView))
             else -> throw IllegalArgumentException("orientation")
         }
     }
@@ -67,10 +67,10 @@ object OverScrollDecoratorHelper {
      * @return The over-scroll effect 'decorator', enabling further effect configuration.
      */
     fun setUpStaticOverScroll(view: View, orientation: Int): IOverScrollDecor {
-        when (orientation) {
-            ORIENTATION_HORIZONTAL -> return HorizontalOverScrollBounceEffectDecorator(StaticOverScrollDecorAdapter(view))
+        return when (orientation) {
+            ORIENTATION_HORIZONTAL -> HorizontalOverScrollBounceEffectDecorator(StaticOverScrollDecorAdapter(view))
 
-            ORIENTATION_VERTICAL -> return VerticalOverScrollBounceEffectDecorator(StaticOverScrollDecorAdapter(view))
+            ORIENTATION_VERTICAL -> VerticalOverScrollBounceEffectDecorator(StaticOverScrollDecorAdapter(view))
 
             else -> throw IllegalArgumentException("orientation")
         }

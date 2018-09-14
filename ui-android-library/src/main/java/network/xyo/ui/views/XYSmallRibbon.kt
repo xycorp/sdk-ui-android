@@ -90,7 +90,7 @@ open class XYSmallRibbon(context: Context, attrs: AttributeSet?, defStyle: Int) 
 
     companion object {
 
-        private val TAG = "XYSmallRibbon"
+        private const val TAG = "XYSmallRibbon"
 
     }
 }

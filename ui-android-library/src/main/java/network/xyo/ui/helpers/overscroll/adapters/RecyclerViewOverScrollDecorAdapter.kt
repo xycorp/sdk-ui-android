@@ -44,17 +44,17 @@ class RecyclerViewOverScrollDecorAdapter : IOverScrollDecoratorAdapter {
 
         mRecyclerView = recyclerView
 
-        val layoutManager = recyclerView.getLayoutManager()
-        if (layoutManager is LinearLayoutManager || layoutManager is StaggeredGridLayoutManager) {
+        val layoutManager = recyclerView.layoutManager
+        mImpl = if (layoutManager is LinearLayoutManager || layoutManager is StaggeredGridLayoutManager) {
             val orientation = if (layoutManager is LinearLayoutManager)
-                (layoutManager).getOrientation()
+                (layoutManager).orientation
             else
-                (layoutManager as StaggeredGridLayoutManager).getOrientation()
+                (layoutManager as StaggeredGridLayoutManager).orientation
 
             if (orientation == LinearLayoutManager.HORIZONTAL) {
-                mImpl = ImplHorizLayout()
+                ImplHorizLayout()
             } else {
-                mImpl = ImplVerticalLayout()
+                ImplVerticalLayout()
             }
         } else {
             throw IllegalArgumentException("Recycler views with custom layout managers are not supported by this adapter out of the box." + "Try implementing and providing an explicit 'impl' parameter to the other c'tors, or otherwise create a custom adapter subclass of your own.")

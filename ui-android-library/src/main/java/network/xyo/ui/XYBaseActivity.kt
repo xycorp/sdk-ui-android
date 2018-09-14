@@ -164,7 +164,7 @@ abstract class XYBaseActivity : AppCompatActivity() {
             }
             val chunkSize = 20
             var chunkCounter = 0
-            firmwareByteArray[i] = emptyArray<ByteArray>()
+            firmwareByteArray[i] = emptyArray()
             var j = 0
             while (j < blockSize) {
                 var tempChunkSize = chunkSize
@@ -220,7 +220,7 @@ abstract class XYBaseActivity : AppCompatActivity() {
             }
             val chunkSize = 20
             var chunkCounter = 0
-            firmwareByteArray[i] = emptyArray<ByteArray>()
+            firmwareByteArray[i] = emptyArray()
             var j = 0
             while (j < blockSize) {
                 var tempChunkSize = chunkSize
@@ -264,10 +264,7 @@ abstract class XYBaseActivity : AppCompatActivity() {
         var _activityCount = 0
 
         fun classNameFromObject(objectToCheck: Any): String {
-            val parts = objectToCheck.javaClass.kotlin.simpleName?.split('.')
-            if (parts == null) {
-                return "Unknown"
-            }
+            val parts = objectToCheck.javaClass.kotlin.simpleName?.split('.') ?: return "Unknown"
             return parts[parts.lastIndex]
         }
 

@@ -242,8 +242,8 @@ abstract class OverScrollBounceEffectDecoratorBase(protected val mViewAdapter: I
                 return true
             }
 
-            if (view.getParent() != null) {
-                view.getParent().requestDisallowInterceptTouchEvent(true)
+            if (view.parent != null) {
+                view.parent.requestDisallowInterceptTouchEvent(true)
             }
 
             val dt = event.eventTime - event.getHistoricalEventTime(0)
@@ -400,11 +400,11 @@ abstract class OverScrollBounceEffectDecoratorBase(protected val mViewAdapter: I
     }
 
     override fun setOverScrollStateListener(listener: IOverScrollStateListener?) {
-        mStateListener = if (listener != null) listener else ListenerStubs.OverScrollStateListenerStub()
+        mStateListener = listener ?: ListenerStubs.OverScrollStateListenerStub()
     }
 
     override fun setOverScrollUpdateListener(listener: IOverScrollUpdateListener?) {
-        mUpdateListener = if (listener != null) listener else ListenerStubs.OverScrollUpdateListenerStub()
+        mUpdateListener = listener ?: ListenerStubs.OverScrollUpdateListenerStub()
     }
 
     protected fun issueStateTransition(state: IDecoratorState) {
@@ -433,13 +433,13 @@ abstract class OverScrollBounceEffectDecoratorBase(protected val mViewAdapter: I
 
     companion object {
 
-        val TAG = "OverScrollDecor"
+        const val TAG = "OverScrollDecor"
 
-        val DEFAULT_TOUCH_DRAG_MOVE_RATIO_FWD = 3f
-        val DEFAULT_TOUCH_DRAG_MOVE_RATIO_BCK = 1f
-        val DEFAULT_DECELERATE_FACTOR = -2f
+        const val DEFAULT_TOUCH_DRAG_MOVE_RATIO_FWD = 3f
+        const val DEFAULT_TOUCH_DRAG_MOVE_RATIO_BCK = 1f
+        const val DEFAULT_DECELERATE_FACTOR = -2f
 
-        protected val MAX_BOUNCE_BACK_DURATION_MS = 800
-        protected val MIN_BOUNCE_BACK_DURATION_MS = 200
+        protected const val MAX_BOUNCE_BACK_DURATION_MS = 800
+        protected const val MIN_BOUNCE_BACK_DURATION_MS = 200
     }
 }

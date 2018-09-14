@@ -31,7 +31,7 @@ class XYSpinner @JvmOverloads constructor(context: Context, attrs: AttributeSet?
             }
         }
 
-    constructor(context: Context) : this(context, null, 0) {}
+    constructor(context: Context) : this(context, null, 0)
 
     init {
 
