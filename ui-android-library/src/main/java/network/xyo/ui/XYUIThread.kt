@@ -28,8 +28,8 @@ object UIThread : AbstractCoroutineContextElement(ContinuationInterceptor), Cont
 fun ui(
         context: CoroutineContext = UIThread,
         start: CoroutineStart = CoroutineStart.DEFAULT,
-        parent: Job? = null,
+        onCompletion: CompletionHandler? = null,
         block: suspend CoroutineScope.() -> Unit
 ): Job {
-    return launch(context, start, parent, block)
+    return GlobalScope.launch(context, start, onCompletion, block)
 }

@@ -29,17 +29,16 @@ open class XYSmallRibbon(context: Context, attrs: AttributeSet?, defStyle: Int) 
 
     init {
         XYBase.logInfo(TAG, "init")
-        setAdapter(adapter)
+
         layoutManager = object : LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false) {
             override fun supportsPredictiveItemAnimations(): Boolean {
                 return true
             }
         }
 
-        initRecyclerView()
+        this.initRecyclerView()
 
         _bounceTrigger = dpToPx(50)
-
     }
 
     fun dpToPx(dp: Int): Int {
@@ -48,7 +47,7 @@ open class XYSmallRibbon(context: Context, attrs: AttributeSet?, defStyle: Int) 
 
     open fun initRecyclerView() {
         XYBase.logInfo(TAG, "initRecyclerView")
-
+        setAdapter(adapter)
         this.itemAnimator = null
 
         val decor = OverScrollDecoratorHelper.setUpOverScroll(this, OverScrollDecoratorHelper.ORIENTATION_HORIZONTAL)
