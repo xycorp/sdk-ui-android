@@ -36,7 +36,7 @@ dependencies {
     api project(path: ':xycore')
     //implementation 'com.github.XYOracleNetwork:sdk-core-android:master-SNAPSHOT'
     api "org.jetbrains.kotlin:kotlin-stdlib-jdk8:$kotlin_version"
-    api "org.jetbrains.kotlinx:kotlinx-coroutines-core:0.27.0-eap13"
+    api "org.jetbrains.kotlinx:kotlinx-coroutines-core:1.0.0"
     api "khttp:khttp:0.1.0"
     api 'org.slf4j:slf4j-nop:1.7.25'
     api 'com.facebook.android:facebook-android-sdk:4.33.0'
