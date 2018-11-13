@@ -90,7 +90,7 @@ abstract class XYBaseActivity : AppCompatActivity() {
         XYBase.logStatus(tag, "Activity Resumed: $tag")
         super.onResume()
         _activityCount++
-        XYBase.logInfo(tag, "onResume:" + _activityCount + ":$tag")
+        XYBase.logInfo(tag, "onResume:$_activityCount:$tag")
     }
 
     public override fun onStart() {
