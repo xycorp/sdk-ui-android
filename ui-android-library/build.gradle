@@ -25,12 +25,6 @@ apply plugin: 'kotlin-android-extensions'
 apply plugin: 'com.github.dcendents.android-maven'
 group='com.github.XYOracleNetwork'
 
-kotlin {
-    experimental {
-        coroutines 'enable'
-    }
-}
-
 dependencies {
     implementation fileTree(include: ['*.jar'], dir: 'libs')
     api project(path: ':xycore')
@@ -43,7 +37,7 @@ dependencies {
     api 'androidx.constraintlayout:constraintlayout:2.0.0-alpha2'
 
     api "androidx.cardview:cardview:$androidx_version"
-    api "androidx.appcompat:appcompat:$androidx_version"
+    api "androidx.appcompat:appcompat:$androidx_appcompat_version"
     api "androidx.browser:browser:$androidx_version"
     api "androidx.recyclerview:recyclerview:$androidx_version"
     api "org.jetbrains.kotlin:kotlin-reflect:$kotlin_version"
