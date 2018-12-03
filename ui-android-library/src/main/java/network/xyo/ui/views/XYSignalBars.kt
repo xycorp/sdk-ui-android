@@ -11,6 +11,7 @@ import android.util.AttributeSet
 import android.util.TypedValue
 import android.view.View
 import android.view.animation.AlphaAnimation
+import androidx.core.content.ContextCompat
 import network.xyo.ui.R
 import network.xyo.ui.ui
 
@@ -21,9 +22,7 @@ class XYSignalBars @JvmOverloads constructor(context: Context, attrs: AttributeS
     private var barCount = 0
 
     private var paintStroke: Paint? = null
-
     private var paintEmpty: Paint? = null
-
     private var paintFill: Paint? = null
 
     private val rect = RectF()
@@ -34,7 +33,7 @@ class XYSignalBars @JvmOverloads constructor(context: Context, attrs: AttributeS
         if (attrs != null) {
             val value = attrs.getAttributeResourceValue("http://schemas.android.com/apk/res/android", "color", 0)
             color = if (value != 0) {
-                @Suppress("DEPRECATION")resources.getColor(value)
+                ContextCompat.getColor(context, value)
             } else {
                 attrs.getAttributeIntValue("http://schemas.android.com/apk/res/android", "color", Color.WHITE)
             }
@@ -53,27 +52,27 @@ class XYSignalBars @JvmOverloads constructor(context: Context, attrs: AttributeS
         }
 
         paintStroke = Paint(Paint.ANTI_ALIAS_FLAG)
-        paintStroke!!.style = Style.STROKE
-        paintStroke!!.strokeWidth = 2f
+        paintStroke?.style = Style.STROKE
+        paintStroke?.strokeWidth = 2f
 
         paintEmpty = Paint(Paint.ANTI_ALIAS_FLAG)
-        paintEmpty!!.alpha = 96
-        paintEmpty!!.style = Style.FILL
+        paintEmpty?.alpha = 96
+        paintEmpty?.style = Style.FILL
 
         paintFill = Paint(Paint.ANTI_ALIAS_FLAG)
-        paintFill!!.alpha = 192
-        paintFill!!.style = Style.FILL
+        paintFill?.alpha = 192
+        paintFill?.style = Style.FILL
 
         setColor(color)
     }
 
-    fun setColor(color: Int) {
-        paintStroke!!.color = color
-        paintStroke!!.alpha = 255
-        paintEmpty!!.color = color
-        paintEmpty!!.alpha = 96
-        paintFill!!.color = color
-        paintFill!!.alpha = 192
+    private fun setColor(color: Int) {
+        paintStroke?.color = color
+        paintStroke?.alpha = 255
+        paintEmpty?.color = color
+        paintEmpty?.alpha = 96
+        paintFill?.color = color
+        paintFill?.alpha = 192
     }
 
     override fun onDraw(canvas: Canvas) {
@@ -101,7 +100,7 @@ class XYSignalBars @JvmOverloads constructor(context: Context, attrs: AttributeS
         }
     }
 
-    fun setBarCount(updatedBarCount: Int, animate:Boolean) {
+    fun setBarCount(updatedBarCount: Int, animate: Boolean) {
         ui {
             if (barCount != updatedBarCount) {
                 barCount = updatedBarCount
