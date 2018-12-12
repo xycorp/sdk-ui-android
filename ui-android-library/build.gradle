@@ -27,8 +27,8 @@ group='com.github.XYOracleNetwork'
 
 dependencies {
     implementation fileTree(include: ['*.jar'], dir: 'libs')
-    api project(path: ':xycore')
-    //implementation 'com.github.XYOracleNetwork:sdk-core-android:master-SNAPSHOT'
+    // api project(path: ':xycore')
+    implementation 'com.github.XYOracleNetwork:sdk-core-android:develop-SNAPSHOT'
     api "org.jetbrains.kotlin:kotlin-stdlib-jdk8:$kotlin_version"
     api "org.jetbrains.kotlin:kotlin-reflect:$kotlin_version"
     api "org.jetbrains.kotlinx:kotlinx-coroutines-core:1.0.0"
