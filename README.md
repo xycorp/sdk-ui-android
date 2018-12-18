@@ -1,5 +1,7 @@
 # sdk-ui-android
 
+[![](https://jitpack.io/v/XYOracleNetwork/sdk-ui-android.svg)](https://jitpack.io/#XYOracleNetwork/sdk-ui-android)
+
 A UI framework for adding XYO themed toolbars and dialogs to your existing code. Built on Kotlin
 
 ### PREREQUISITES
