@@ -2,6 +2,23 @@ apply plugin: 'com.android.application'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-kapt'
 
+/**
+ * If set to true, will build with local versions of the dependencies.
+ */
+def buildWithLocalProjects = false
+
+ext {
+    if (!project.hasProperty('local')) {
+        local = buildWithLocalProjects
+    }
+}
+
+subprojects {
+    ext {
+        local=this.ext.local
+    }
+}
+
 
 android {
     compileSdkVersion 28
@@ -40,7 +57,11 @@ buildscript {
 
 dependencies {
     implementation fileTree(include: ['*.jar'], dir: 'libs')
-    api project(path: ':ui-android-library')
-    api project(path: ':xycore')
-    //implementation 'com.github.XYOracleNetwork:sdk-core-android:master-SNAPSHOT'
+    implementation project(path: ':ui-android-library')
+
+    if (local) {
+        implementation project(':xycore')
+    } else {
+        implementation 'com.github.XYOracleNetwork:sdk-core-android:0763fe7c4b'
+    }
 }
