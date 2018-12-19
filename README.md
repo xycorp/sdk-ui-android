@@ -1,3 +1,7 @@
+[logo]: https://www.xy.company/img/home/logo_xy.png "XYAccount"
+
+![logo]
+
 # sdk-ui-android
 
 [![](https://jitpack.io/v/XYOracleNetwork/sdk-ui-android.svg)](https://jitpack.io/#XYOracleNetwork/sdk-ui-android)
