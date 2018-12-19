@@ -15,21 +15,22 @@ buildscript {
         classpath "com.android.tools.build:gradle:$android_plugin_version"
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
 
-
         // NOTE: Do not place your application dependencies here; they belong
         // in the individual module build.gradle files
     }
     ext {
         pluginDependencies = [
-                android: "com.android.tools.build:gradle:$android_plugin_version",
-                kotlin : "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
+                android      : "com.android.tools.build:gradle:$android_plugin_version",
+                kotlin       : "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
         ]
     }
+
 }
+
 allprojects {
     repositories {
-        google()
         jcenter()
         maven { url 'https://jitpack.io' }
+        google()
     }
 }

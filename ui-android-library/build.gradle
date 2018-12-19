@@ -1,3 +1,9 @@
+apply plugin: 'com.android.library'
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-kapt'
+apply plugin: 'kotlin-android-extensions'
+apply plugin: 'com.github.dcendents.android-maven'
+group='com.github.XYOracleNetwork'
 
 /**
  * If set to true, will build with local versions of the dependencies.
@@ -35,13 +41,6 @@ repositories {
     mavenCentral()
     maven { url 'https://jitpack.io' }
 }
-
-apply plugin: 'com.android.library'
-apply plugin: 'kotlin-android'
-apply plugin: 'kotlin-kapt'
-apply plugin: 'kotlin-android-extensions'
-apply plugin: 'com.github.dcendents.android-maven'
-group='com.github.XYOracleNetwork'
 
 dependencies {
     implementation fileTree(include: ['*.jar'], dir: 'libs')
