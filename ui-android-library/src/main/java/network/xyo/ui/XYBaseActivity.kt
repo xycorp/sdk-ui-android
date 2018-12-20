@@ -89,8 +89,8 @@ abstract class XYBaseActivity : AppCompatActivity() {
     override fun onResume() {
         XYBase.logStatus(tag, "Activity Resumed: $tag")
         super.onResume()
-        _activityCount++
-        XYBase.logInfo(tag, "onResume:$_activityCount:$tag")
+        activityCount++
+        XYBase.logInfo(tag, "onResume:$activityCount:$tag")
     }
 
     public override fun onStart() {
@@ -102,7 +102,7 @@ abstract class XYBaseActivity : AppCompatActivity() {
         XYBase.logStatus(tag, "Activity Stopped: $tag")
         throbber?.dismiss()
         super.onStop()
-        _activityCount--
+        activityCount--
     }
 
     override fun onDestroy() {
@@ -261,7 +261,7 @@ abstract class XYBaseActivity : AppCompatActivity() {
 
         private val TAG = XYBaseActivity::class.java.simpleName
 
-        var _activityCount = 0
+        var activityCount = 0
 
         fun classNameFromObject(objectToCheck: Any): String {
             val parts = objectToCheck.javaClass.kotlin.simpleName?.split('.') ?: return "Unknown"
@@ -273,7 +273,7 @@ abstract class XYBaseActivity : AppCompatActivity() {
         }
 
         val isForeground: Boolean
-            get() = _activityCount > 0
+            get() = activityCount > 0
     }
 }
 
