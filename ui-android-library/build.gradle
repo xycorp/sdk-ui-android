@@ -8,7 +8,7 @@ group='com.github.XYOracleNetwork'
 /**
  * If set to true, will build with local versions of the dependencies.
  */
-def buildWithLocalProjects = false
+def buildWithLocalProjects = true
 
 ext {
     if (!project.hasProperty('local')) {
