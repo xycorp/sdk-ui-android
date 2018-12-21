@@ -15,7 +15,7 @@ open class XYSmallRibbon(context: Context, attrs: AttributeSet?, defStyle: Int) 
     private var _reloadTriggered = false
     private var _pendingAnimation = false
 
-    private var _bounceTrigger = 50
+    private var _bounceTrigger = 40 //TODO - make configurable via attrs
 
     open class Listener : XYPanel.Listener () {
         open fun pull() {
@@ -38,7 +38,7 @@ open class XYSmallRibbon(context: Context, attrs: AttributeSet?, defStyle: Int) 
 
         this.initRecyclerView()
 
-        _bounceTrigger = dpToPx(50)
+        _bounceTrigger = dpToPx(40)
     }
 
     fun dpToPx(dp: Int): Int {
