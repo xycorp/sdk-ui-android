@@ -61,7 +61,7 @@ dependencies {
     api "androidx.browser:browser:$androidx_version"
     api "androidx.recyclerview:recyclerview:$androidx_version"
 
-    api 'com.facebook.android:facebook-android-sdk:4.35.0'
+    api 'com.facebook.android:facebook-android-sdk:4.39.0'
     api "me.everything:overscroll-decor-android:1.0.4"
 }
 
