@@ -3,7 +3,7 @@ package network.xyo.ui.views
 import android.content.Context
 import android.content.res.Resources
 import android.database.DataSetObserver
-import android.support.v7.widget.AppCompatSpinner
+import androidx.appcompat.widget.AppCompatSpinner
 import android.util.AttributeSet
 import android.util.TypedValue
 import android.view.View
@@ -16,7 +16,7 @@ import network.xyo.ui.R
  * Created by arietrouw on 1/15/17.
  */
 
-class XYSpinner @JvmOverloads constructor(context: Context, attrs: AttributeSet?, defStyle: Int = android.support.v7.appcompat.R.attr.spinnerStyle) : AppCompatSpinner(context, attrs, defStyle) {
+class XYSpinner @JvmOverloads constructor(context: Context, attrs: AttributeSet?, defStyle: Int = androidx.appcompat.R.attr.spinnerStyle) : AppCompatSpinner(context, attrs, defStyle) {
     private var _entries = arrayOf<String?>()
     private var _values = arrayOf<String?>()
     private var _hint: String? = null
@@ -31,7 +31,7 @@ class XYSpinner @JvmOverloads constructor(context: Context, attrs: AttributeSet?
             }
         }
 
-    constructor(context: Context) : this(context, null, 0) {}
+    constructor(context: Context) : this(context, null, 0)
 
     init {
 

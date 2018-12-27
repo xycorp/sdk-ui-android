@@ -1,7 +1,7 @@
 package network.xyo.ui.views
 
 import android.content.Context
-import android.support.v7.widget.LinearLayoutManager
+import androidx.recyclerview.widget.LinearLayoutManager
 import android.util.AttributeSet
 import android.util.TypedValue
 import android.view.View
@@ -15,7 +15,7 @@ open class XYSmallRibbon(context: Context, attrs: AttributeSet?, defStyle: Int) 
     private var _reloadTriggered = false
     private var _pendingAnimation = false
 
-    private var _bounceTrigger = 50
+    private var _bounceTrigger = 40 //TODO - make configurable via attrs
 
     open class Listener : XYPanel.Listener () {
         open fun pull() {
@@ -29,17 +29,16 @@ open class XYSmallRibbon(context: Context, attrs: AttributeSet?, defStyle: Int) 
 
     init {
         XYBase.logInfo(TAG, "init")
-        setAdapter(adapter)
-        layoutManager = object : LinearLayoutManager(context, android.support.v7.widget.LinearLayoutManager.HORIZONTAL, false) {
+
+        layoutManager = object : LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false) {
             override fun supportsPredictiveItemAnimations(): Boolean {
                 return true
             }
         }
 
-        initRecyclerView()
+        this.initRecyclerView()
 
-        _bounceTrigger = dpToPx(50)
-
+        _bounceTrigger = dpToPx(40)
     }
 
     fun dpToPx(dp: Int): Int {
@@ -48,7 +47,7 @@ open class XYSmallRibbon(context: Context, attrs: AttributeSet?, defStyle: Int) 
 
     open fun initRecyclerView() {
         XYBase.logInfo(TAG, "initRecyclerView")
-
+        setAdapter(adapter)
         this.itemAnimator = null
 
         val decor = OverScrollDecoratorHelper.setUpOverScroll(this, OverScrollDecoratorHelper.ORIENTATION_HORIZONTAL)
@@ -90,7 +89,7 @@ open class XYSmallRibbon(context: Context, attrs: AttributeSet?, defStyle: Int) 
 
     companion object {
 
-        private val TAG = "XYSmallRibbon"
+        private const val TAG = "XYSmallRibbon"
 
     }
 }

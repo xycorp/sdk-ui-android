@@ -5,7 +5,7 @@ import android.graphics.Canvas
 import android.graphics.Paint
 import android.graphics.Rect
 import android.graphics.drawable.Drawable
-import android.support.v7.widget.AppCompatEditText
+import androidx.appcompat.widget.AppCompatEditText
 import android.util.AttributeSet
 import android.view.ContextThemeWrapper
 import android.view.inputmethod.InputMethodManager
@@ -87,6 +87,7 @@ class XYEditText @JvmOverloads constructor(context: Context, attrs: AttributeSet
     override fun onDraw(canvas: Canvas) {
         super.onDraw(canvas)
         val hint = hint
+        val text = text
         if (text != null && text.isNotEmpty() && hint != null && hint.isNotEmpty()) {
             _hintPaint.getTextBounds(hint.toString(), 0, hint.toString().length, _hintRect)
             canvas.drawText(getHint().toString(), _hintMargin.toFloat(), (_hintRect.height() + _hintMargin).toFloat(), _hintPaint)

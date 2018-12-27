@@ -2,22 +2,18 @@ package network.xyo.ui
 
 import android.os.Handler
 import android.os.Looper
-import kotlinx.coroutines.experimental.*
-import kotlin.coroutines.experimental.AbstractCoroutineContextElement
-import kotlin.coroutines.experimental.Continuation
-import kotlin.coroutines.experimental.ContinuationInterceptor
-import kotlin.coroutines.experimental.CoroutineContext
+import kotlinx.coroutines.*
+import kotlin.coroutines.AbstractCoroutineContextElement
+import kotlin.coroutines.Continuation
+import kotlin.coroutines.ContinuationInterceptor
+import kotlin.coroutines.CoroutineContext
 
 private class AndroidContinuation<T>(val cont: Continuation<T>) : Continuation<T> by cont {
-    override fun resume(value: T) {
-        if (Looper.myLooper() == Looper.getMainLooper()) cont.resume(value)
-        else Handler(Looper.getMainLooper()).post { cont.resume(value) }
+    override fun resumeWith(result: Result<T>) {
+        if (Looper.myLooper() == Looper.getMainLooper()) cont.resumeWith(result)
+        else Handler(Looper.getMainLooper()).post { cont.resumeWith(result) }
     }
 
-    override fun resumeWithException(exception: Throwable) {
-        if (Looper.myLooper() == Looper.getMainLooper()) cont.resumeWithException(exception)
-        else Handler(Looper.getMainLooper()).post { cont.resumeWithException(exception) }
-    }
 }
 
 object UIThread : AbstractCoroutineContextElement(ContinuationInterceptor), ContinuationInterceptor {
@@ -28,8 +24,7 @@ object UIThread : AbstractCoroutineContextElement(ContinuationInterceptor), Cont
 fun ui(
         context: CoroutineContext = UIThread,
         start: CoroutineStart = CoroutineStart.DEFAULT,
-        parent: Job? = null,
         block: suspend CoroutineScope.() -> Unit
 ): Job {
-    return launch(context, start, parent, block)
+    return GlobalScope.launch(context, start, block)
 }
