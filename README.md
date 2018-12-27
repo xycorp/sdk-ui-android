@@ -8,17 +8,17 @@
 
 | Branches        | Status           |
 | ------------- |:-------------:|
-| Master      | [![](https://circleci.com/gh/XYOracleNetwork/sdk-ui-android.svg?style=shield)](https://circleci.com/gh/XYOracleNetwork/sdk-ui-android) |
-| Develop      | [![](https://circleci.com/gh/XYOracleNetwork/sdk-ui-android/tree/develop.svg?style=shield)](https://circleci.com/gh/XYOracleNetwork/sdk-ui-android/tree/develop)      |
+| Master      | [![Build Status](https://travis-ci.com/XYOracleNetwork/sdk-ui-android.svg?branch=master)](https://travis-ci.com/XYOracleNetwork/sdk-ui-android) |
+| Develop      | [![Build Status](https://travis-ci.com/XYOracleNetwork/sdk-ui-android.svg?branch=develop)](https://travis-ci.com/XYOracleNetwork/sdk-ui-android)      |
 
-A UI framework for adding XYO themed toolbars and dialogs to your existing code. Built on Kotlin
+A UI framework for adding XYO themed toolbars and dialogs to your android application.
 
 ### PREREQUISITES
 
 * JDK 1.8
 * Android SDK
   - Kotlin
-  - Build Tools 27+
+  - Build Tools 28+
 
 ### Installing
 
