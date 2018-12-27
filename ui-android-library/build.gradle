@@ -76,7 +76,7 @@ android {
         }
     }
 
-    publishNonDefault true
+    defaultPublishConfig "jitpackRelease"
 
     flavorDimensions "xylibs"
     productFlavors {

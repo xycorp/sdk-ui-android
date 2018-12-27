@@ -1,9 +1,0 @@
-jdk:
-  - openjdk8
-before_install:
-   - ./prepareEnvironment.sh
-install:
-   - echo "Running a custom install command"
-   - ./gradlew install
-env:
-   MYVAR: "custom environment variable"
