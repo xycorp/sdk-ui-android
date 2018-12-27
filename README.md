@@ -37,7 +37,7 @@ allprojects {
 ```
 ```gradle
 dependencies {
-    implementation 'com.github.XYOracleNetwork:sdk-ui-android:v1.0'
+    implementation 'com.github.XYOracleNetwork:sdk-ui-android:1.0.2'
 }
 ```
 
