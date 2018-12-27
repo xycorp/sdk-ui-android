@@ -1,4 +1,15 @@
+[logo]: https://www.xy.company/img/home/logo_xy.png "XYAccount"
+
+![logo]
+
 # sdk-ui-android
+
+[![](https://jitpack.io/v/XYOracleNetwork/sdk-ui-android.svg)](https://jitpack.io/#XYOracleNetwork/sdk-ui-android) <a href="https://codeclimate.com/github/XYOracleNetwork/sdk-ui-android/maintainability"><img src="https://api.codeclimate.com/v1/badges/4738f16c7d074fca669b/maintainability" /></a>
+
+| Branches        | Status           |
+| ------------- |:-------------:|
+| Master      | [![](https://circleci.com/gh/XYOracleNetwork/sdk-ui-android.svg?style=shield)](https://circleci.com/gh/XYOracleNetwork/sdk-ui-android) |
+| Develop      | [![](https://circleci.com/gh/XYOracleNetwork/sdk-ui-android/tree/develop.svg?style=shield)](https://circleci.com/gh/XYOracleNetwork/sdk-ui-android/tree/develop)      |
 
 A UI framework for adding XYO themed toolbars and dialogs to your existing code. Built on Kotlin
 
@@ -8,7 +19,7 @@ A UI framework for adding XYO themed toolbars and dialogs to your existing code.
 * Android SDK
   - Kotlin
   - Build Tools 27+
-  
+
 ### Installing
 
 You can add sdk-ui-android to your existing app by cloning the project and manually adding it
@@ -26,7 +37,7 @@ allprojects {
 ```
 ```gradle
 dependencies {
-    implementation 'com.github.XYOracleNetwork:sdk-ui-android:master-SNAPSHOT'
+    implementation 'com.github.XYOracleNetwork:sdk-ui-android:v1.0'
 }
 ```
 
@@ -44,3 +55,6 @@ folder for examples
 ### License
 
 This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details
+
+<br><hr><br>
+<p align="center">Made with  ❤️  by [<b>XY - The Persistent Company</b>] (https://xy.company)</p>

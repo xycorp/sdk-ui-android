@@ -59,4 +59,5 @@ dependencies {
 
     localImplementation files('../sdk-core-android/core-android-library')
     jitpackApi 'com.github.XYOracleNetwork:sdk-core-android:v1.0.1'
+
 }
