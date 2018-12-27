@@ -2,10 +2,6 @@ apply plugin: 'com.android.application'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-kapt'
 
-/**
- * If set to true, will build with local versions of the dependencies.
- */
-def buildWithLocalProjects = false
 
 android {
     compileSdkVersion 28
@@ -23,14 +19,9 @@ android {
     productFlavors {
         local {
             dimension "xylibs"
-            ext {
-                local=true
-            }
         }
         jitpack {
             dimension "xylibs"
-            ext {
-            }
         }
     }
 
