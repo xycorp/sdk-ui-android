@@ -7,19 +7,6 @@ apply plugin: 'kotlin-kapt'
  */
 def buildWithLocalProjects = false
 
-ext {
-    if (!project.hasProperty('local')) {
-        local = buildWithLocalProjects
-    }
-}
-
-subprojects {
-    ext {
-        local=this.ext.local
-    }
-}
-
-
 android {
     compileSdkVersion 28
     buildToolsVersion '28.0.3'
@@ -70,13 +57,15 @@ buildscript {
     }
 }
 
+configurations {
+    localImplementation
+    jitpackApi
+}
+
 dependencies {
     implementation fileTree(include: ['*.jar'], dir: 'libs')
     implementation project(path: ':ui-android-library')
 
-    if (local) {
-        implementation project(':xycore')
-    } else {
-        implementation 'com.github.XYOracleNetwork:sdk-core-android:0763fe7c4b'
-    }
+    localImplementation project(':xycore')
+    jitpackApi 'com.github.XYOracleNetwork:sdk-core-android:v1.0.1'
 }
