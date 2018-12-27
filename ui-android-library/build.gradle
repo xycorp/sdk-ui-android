@@ -76,6 +76,8 @@ android {
         }
     }
 
+    publishNonDefault true
+
     flavorDimensions "xylibs"
     productFlavors {
         local {
