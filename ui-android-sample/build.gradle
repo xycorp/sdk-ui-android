@@ -1,7 +1,9 @@
 apply plugin: 'com.android.application'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-kapt'
+apply plugin: 'com.github.dcendents.android-maven'
 
+group = 'com.github.XYOracleNetwork'
 
 android {
     compileSdkVersion 28
@@ -10,8 +12,8 @@ android {
         applicationId "network.xyo.ui.sample"
         minSdkVersion 21
         targetSdkVersion 28
-        versionCode 1
-        versionName "1.0"
+        versionCode 100002
+        versionName "1.0.2"
 
     }
 
