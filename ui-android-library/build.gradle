@@ -33,7 +33,7 @@ configurations {
 dependencies {
     implementation fileTree(include: ['*.jar'], dir: 'libs')
 
-    localImplementation files('../sdk-core-android/core-android-library')
+    localImplementation project(':xycore')
     jitpackApi 'com.github.XYOracleNetwork:sdk-core-android:v1.0.1'
 
     api "org.jetbrains.kotlin:kotlin-stdlib-jdk8:$kotlinVersion"
@@ -41,10 +41,10 @@ dependencies {
     api "org.jetbrains.kotlinx:kotlinx-coroutines-core:1.0.1"
 
     api 'androidx.constraintlayout:constraintlayout:2.0.0-alpha3'
-    api "androidx.cardview:cardview:$androidxVersion"
-    api "androidx.appcompat:appcompat:$androidxAppcompatVersion"
-    api "androidx.browser:browser:$androidxVersion"
-    api "androidx.recyclerview:recyclerview:$androidxVersion"
+    api "androidx.cardview:cardview:1.0.0"
+    api "androidx.appcompat:appcompat:1.0.2"
+    api "androidx.browser:browser:1.0.0"
+    api "androidx.recyclerview:recyclerview:1.0.0"
 
     api 'com.facebook.android:facebook-android-sdk:4.39.0'
     api "me.everything:overscroll-decor-android:1.0.4"
@@ -65,9 +65,6 @@ android {
     defaultConfig {
         minSdkVersion 21
         targetSdkVersion 28
-        defaultPublishConfig 'release'
-        versionCode 100002
-        versionName "1.0.2"
 
         javaCompileOptions {
             annotationProcessorOptions {
