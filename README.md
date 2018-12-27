@@ -1,10 +1,10 @@
-[logo]: https://www.xy.company/img/home/logo_xy.png "XYAccount"
+[logo]: https://www.xy.company/img/home/logo_xy.png
 
 ![logo]
 
 # sdk-ui-android
 
-[![](https://jitpack.io/v/XYOracleNetwork/sdk-ui-android.svg)](https://jitpack.io/#XYOracleNetwork/sdk-ui-android) <a href="https://codeclimate.com/github/XYOracleNetwork/sdk-ui-android/maintainability"><img src="https://api.codeclimate.com/v1/badges/4738f16c7d074fca669b/maintainability" /></a>
+[![](https://jitpack.io/v/XYOracleNetwork/sdk-ui-android.svg)](https://jitpack.io/#XYOracleNetwork/sdk-ui-android) [![Maintainability](https://api.codeclimate.com/v1/badges/4738f16c7d074fca669b/maintainability)](https://codeclimate.com/github/XYOracleNetwork/sdk-ui-android/maintainability)
 
 | Branches        | Status           |
 | ------------- |:-------------:|
