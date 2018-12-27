@@ -33,7 +33,7 @@ configurations {
 dependencies {
     implementation fileTree(include: ['*.jar'], dir: 'libs')
 
-    localImplementation project(':xycore')
+    localImplementation files('../sdk-core-android/core-android-library')
     jitpackApi 'com.github.XYOracleNetwork:sdk-core-android:v1.0.1'
 
     api "org.jetbrains.kotlin:kotlin-stdlib-jdk8:$kotlinVersion"
