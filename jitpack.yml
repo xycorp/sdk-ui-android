@@ -4,6 +4,6 @@ before_install:
    - ./prepareEnvironment.sh
 install:
    - echo "Running a custom install command"
-   - ./gradlew assembleJitpack
+   - ./gradlew install
 env:
    MYVAR: "custom environment variable"
