@@ -59,6 +59,6 @@ dependencies {
     implementation project(path: ':ui-android-library')
 
     localImplementation project(':xycore')
-    jitpackApi 'com.github.XYOracleNetwork:sdk-core-android:v1.0.1'
+    jitpackApi 'com.github.XYOracleNetwork:sdk-core-android:1.0.3'
 
 }
