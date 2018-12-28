@@ -14,7 +14,6 @@ android {
         targetSdkVersion 28
         versionCode 100002
         versionName "1.0.2"
-
     }
 
     flavorDimensions "xylibs"
@@ -59,7 +58,7 @@ dependencies {
     implementation fileTree(include: ['*.jar'], dir: 'libs')
     implementation project(path: ':ui-android-library')
 
-    localImplementation files('../sdk-core-android/core-android-library')
+    localImplementation project(':xycore')
     jitpackApi 'com.github.XYOracleNetwork:sdk-core-android:v1.0.1'
 
 }
