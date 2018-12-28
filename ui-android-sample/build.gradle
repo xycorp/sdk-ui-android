@@ -12,8 +12,6 @@ android {
         applicationId "network.xyo.ui.sample"
         minSdkVersion 21
         targetSdkVersion 28
-        versionCode 100002
-        versionName "1.0.2"
     }
 
     flavorDimensions "xylibs"
