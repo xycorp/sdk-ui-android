@@ -3,7 +3,6 @@ apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-kapt'
 apply plugin: 'kotlin-android-extensions'
 apply plugin: 'com.github.dcendents.android-maven'
-
 group = 'com.github.XYOracleNetwork'
 
 buildscript {
@@ -45,12 +44,6 @@ android {
     defaultConfig {
         minSdkVersion 21
         targetSdkVersion 28
-
-        javaCompileOptions {
-            annotationProcessorOptions {
-                includeCompileClasspath = true
-            }
-        }
     }
 
     defaultPublishConfig "jitpackRelease"
