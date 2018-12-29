@@ -5,6 +5,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import android.util.AttributeSet
 import android.util.TypedValue
 import android.view.View
+import me.everything.android.ui.overscroll.IOverScrollDecor
 import me.everything.android.ui.overscroll.IOverScrollState
 import me.everything.android.ui.overscroll.OverScrollDecoratorHelper
 import network.xyo.core.XYBase
@@ -46,21 +47,15 @@ open class XYSmallRibbon(context: Context, attrs: AttributeSet?, defStyle: Int) 
         return TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, dp.toFloat(), resources.displayMetrics).toInt()
     }
 
-    open fun initRecyclerView() {
-        log.info("initRecyclerView")
-        setAdapter(adapter)
-        this.itemAnimator = null
-
-        val decor = OverScrollDecoratorHelper.setUpOverScroll(this, OverScrollDecoratorHelper.ORIENTATION_HORIZONTAL)
-
-        this.overScrollMode = View.OVER_SCROLL_ALWAYS
-
+    private fun setOverScrollUpdateListener(decor: IOverScrollDecor) {
         decor.setOverScrollUpdateListener { _, _, offset ->
             if (offset > _bounceTrigger) {
                 _reloadTriggered = true
             }
         }
+    }
 
+    private fun setOverScrollStateListener(decor: IOverScrollDecor) {
         decor.setOverScrollStateListener { _, _, newState ->
             when (newState) {
                 IOverScrollState.STATE_IDLE -> {
@@ -79,9 +74,21 @@ open class XYSmallRibbon(context: Context, attrs: AttributeSet?, defStyle: Int) 
                 IOverScrollState.STATE_BOUNCE_BACK -> log.info("onOverScrollUpdate: STATE_BOUNCE_BACK")
                 else -> {
                 }
-            }// Dragging started at the left-end.
-            // Dragging started at the right-end.
+            }
         }
+    }
+
+    open fun initRecyclerView() {
+        log.info("initRecyclerView")
+        setAdapter(adapter)
+        this.itemAnimator = null
+
+        val decor = OverScrollDecoratorHelper.setUpOverScroll(this, OverScrollDecoratorHelper.ORIENTATION_HORIZONTAL)
+
+        this.overScrollMode = View.OVER_SCROLL_ALWAYS
+
+        setOverScrollUpdateListener(decor)
+        setOverScrollStateListener(decor)
     }
 
     override fun scrollToPosition(position: Int) {
