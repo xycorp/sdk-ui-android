@@ -7,6 +7,7 @@ import android.view.inputmethod.InputMethodManager
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import network.xyo.core.XYBase
+import network.xyo.core.XYLogging
 
 import network.xyo.ui.dialogs.XYThrobberDialog
 import network.xyo.ui.views.XYToolbar
@@ -24,55 +25,17 @@ abstract class XYBaseActivity : AppCompatActivity() {
             return sourceNameFromAny(this)
         }
 
-    fun logInfo(message: String) {
-        XYBase.logInfo(tag, message)
-    }
-
-    fun logExtreme(message: String) {
-        XYBase.logExtreme(tag, message)
-    }
-
-    fun logError(message: String, debug: Boolean) {
-        XYBase.logError(tag, message, debug)
-    }
-
-    fun logError(exception: Exception, debug: Boolean) {
-        XYBase.logError(tag, exception, debug)
-    }
-
-    fun logError(tag: String, exception: Exception, debug: Boolean) {
-        XYBase.logError(tag, exception, debug)
-    }
-
-    fun logStatus(tag: String, message: String, debug: Boolean) {
-        XYBase.logError(tag, message, debug)
-    }
-
-    fun logInfo(tag: String, message: String) {
-        XYBase.logInfo(tag, message)
-    }
-
-    fun logExtreme(tag: String, message: String) {
-        XYBase.logExtreme(tag, message)
-    }
-
-    fun logError(tag: String, message: String, debug: Boolean) {
-        XYBase.logError(tag, message, debug)
-    }
-
-    fun logStatus(message: String, debug: Boolean) {
-        XYBase.logError(tag, message, debug)
-    }
+    val log = XYLogging(tag)
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        XYBase.logStatus(tag, "Activity Created: $tag")
+        log.status("Activity Created: $tag")
         throbber = XYThrobberDialog(this)
     }
 
     override fun onCreate(savedInstanceState: Bundle?, persistentState: PersistableBundle?) {
         super.onCreate(savedInstanceState, persistentState)
-        XYBase.logStatus(tag, "Activity Created: $tag")
+        log.status("Activity Created: $tag")
         throbber = XYThrobberDialog(this)
     }
 
@@ -87,32 +50,32 @@ abstract class XYBaseActivity : AppCompatActivity() {
     }
 
     override fun onResume() {
-        XYBase.logStatus(tag, "Activity Resumed: $tag")
+        log.status("Activity Resumed: $tag")
         super.onResume()
         activityCount++
-        XYBase.logInfo(tag, "onResume:$activityCount:$tag")
+        log.info("onResume:$activityCount:$tag")
     }
 
     public override fun onStart() {
-        XYBase.logStatus(tag, "Activity Started: $tag")
+        log.status("Activity Started: $tag")
         super.onStart()
     }
 
     public override fun onStop() {
-        XYBase.logStatus(tag, "Activity Stopped: $tag")
+        log.status("Activity Stopped: $tag")
         throbber?.dismiss()
         super.onStop()
         activityCount--
     }
 
     override fun onDestroy() {
-        XYBase.logStatus(tag, "Activity Destroyed: $tag")
+        log.status("Activity Destroyed: $tag")
         throbber?.dismiss()
         super.onDestroy()
     }
 
     override fun onPause() {
-        XYBase.logStatus(tag, "Activity Paused: $tag")
+        log.status("Activity Paused: $tag")
         throbber?.dismiss()
         hideKeyboard()
         super.onPause()
@@ -194,7 +157,7 @@ abstract class XYBaseActivity : AppCompatActivity() {
             }
         }
 
-        logExtreme(TAG, "testOta-length of result: " + result.size / 2)
+        log.info("testOta-length of result: " + result.size / 2)
 
         val xor = getXorValue(result)
         val xorArray = byteArrayOf(xor)
@@ -241,12 +204,12 @@ abstract class XYBaseActivity : AppCompatActivity() {
     }
 
     fun showToast(message: String) {
-        XYBase.logInfo(tag, "showProgressBar")
+        log.info("showProgressBar")
         ui { Toast.makeText(this@XYBaseActivity, message, Toast.LENGTH_LONG).show() }
     }
 
     fun hideKeyboard() {
-        XYBase.logInfo(tag, "hideKeyboard")
+        log.info("hideKeyboard")
         val imm = getSystemService(AppCompatActivity.INPUT_METHOD_SERVICE) as InputMethodManager
         //Find the currently focused view, so we can grab the correct window token from it.
         var view = currentFocus
@@ -257,9 +220,7 @@ abstract class XYBaseActivity : AppCompatActivity() {
         imm.hideSoftInputFromWindow(view.windowToken, 0)
     }
 
-    companion object {
-
-        private val TAG = XYBaseActivity::class.java.simpleName
+    companion object: XYBase() {
 
         var activityCount = 0
 

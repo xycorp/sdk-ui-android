@@ -11,55 +11,16 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import network.xyo.core.XYBase
+import network.xyo.core.XYLogging
 
 import network.xyo.ui.dialogs.XYThrobberDialog
 
 open class XYBaseFragment : Fragment() {
 
-    fun logInfo(message: String) {
-        XYBase.logInfo(TAG, message)
-    }
-
-    fun logExtreme(message: String) {
-        XYBase.logExtreme(TAG, message)
-    }
-
-    fun logError(message: String, debug: Boolean) {
-        XYBase.logError(TAG, message, debug)
-    }
-
-    fun logError(exception: Exception, debug: Boolean) {
-        XYBase.logError(TAG, exception, debug)
-    }
-
-    fun logError(tag: String, exception: Exception, debug: Boolean) {
-        XYBase.logError(tag, exception, debug)
-    }
-
-    fun logStatus(tag: String, message: String, debug: Boolean) {
-        XYBase.logError(tag, message, debug)
-    }
-
-    fun logInfo(tag: String, message: String) {
-        XYBase.logInfo(tag, message)
-    }
-
-    fun logExtreme(tag: String, message: String) {
-        XYBase.logExtreme(tag, message)
-    }
-
-    fun logError(tag: String, message: String, debug: Boolean) {
-        XYBase.logError(tag, message, debug)
-    }
-
-    fun logStatus(message: String, debug: Boolean) {
-        XYBase.logError(TAG, message, debug)
-    }
-
     var throbber: XYThrobberDialog? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
-        XYBase.logInfo(TAG, "onCreate")
+        log.info("onCreate")
         super.onCreate(savedInstanceState)
         throbber = XYThrobberDialog(activity as Activity)
     }
@@ -69,7 +30,7 @@ open class XYBaseFragment : Fragment() {
     }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        XYBase.logInfo(TAG, "onCreateView")
+        log.info("onCreateView")
         return super.onCreateView(inflater, container, savedInstanceState)
     }
 
@@ -82,28 +43,28 @@ open class XYBaseFragment : Fragment() {
     }
 
     override fun onResume() {
-        XYBase.logInfo(TAG, "onResume")
+        log.info("onResume")
         super.onResume()
     }
 
     override fun onPause() {
-        XYBase.logInfo(TAG, "onPause")
+        log.info("onPause")
         super.onPause()
         throbber?.dismiss()
     }
 
     protected fun showToast(message: String) {
-        XYBase.logInfo(TAG, "showToast")
+        log.info("showToast")
         Toast.makeText(activity, message, Toast.LENGTH_LONG).show()
     }
 
     override fun onAttach(context: Context) {
-        XYBase.logInfo(TAG, "onAttach")
+        log.info("onAttach")
         super.onAttach(context)
     }
 
     companion object {
-        private val TAG = XYBaseFragment::class.java.simpleName
+        private val log = XYLogging(XYBaseFragment::class.java.simpleName)
     }
 }
 
