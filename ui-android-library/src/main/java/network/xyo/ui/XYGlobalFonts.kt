@@ -7,7 +7,7 @@ import android.widget.TextView
 import network.xyo.core.XYBase
 
 class XYGlobalFonts : XYBase() {
-    companion object {
+    companion object : XYBase() {
         private var _font: Array<Typeface>? = null
         private var _awesome: Array<Typeface>? = null
 
@@ -21,7 +21,7 @@ class XYGlobalFonts : XYBase() {
                         awesome[Typeface.NORMAL] = Typeface.createFromAsset(context.assets, "fonts/FontAwesome.otf")
                     } catch (ex: Exception) {
                         awesome[Typeface.NORMAL] = Typeface.DEFAULT
-                        logError("XYGlobalFonts", "Exception: ${ex.toString()}", true)
+                        log.error(ex, true)
                     }
 
                     for (i in 1..3) {
@@ -42,7 +42,7 @@ class XYGlobalFonts : XYBase() {
                         font[Typeface.NORMAL] = Typeface.createFromAsset(context.assets, "fonts/Quicksand.otf")
                     } catch (ex: Exception) {
                         font[Typeface.NORMAL] = Typeface.DEFAULT
-                        logError("XYGlobalFonts", ex, true)
+                        log.error(ex, true)
                     }
 
                     for (i in 1..3) {

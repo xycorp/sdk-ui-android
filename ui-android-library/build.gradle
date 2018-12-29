@@ -3,7 +3,6 @@ apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-kapt'
 apply plugin: 'kotlin-android-extensions'
 apply plugin: 'com.github.dcendents.android-maven'
-
 group = 'com.github.XYOracleNetwork'
 
 buildscript {
@@ -30,26 +29,6 @@ configurations {
     jitpackApi
 }
 
-dependencies {
-    implementation fileTree(include: ['*.jar'], dir: 'libs')
-
-    localImplementation project(':xycore')
-    jitpackApi 'com.github.XYOracleNetwork:sdk-core-android:1.0.3'
-
-    api "org.jetbrains.kotlin:kotlin-stdlib-jdk8:$kotlinVersion"
-    api "org.jetbrains.kotlin:kotlin-reflect:$kotlinVersion"
-    api "org.jetbrains.kotlinx:kotlinx-coroutines-core:1.0.1"
-
-    api 'androidx.constraintlayout:constraintlayout:2.0.0-alpha3'
-    api "androidx.cardview:cardview:1.0.0"
-    api "androidx.appcompat:appcompat:1.0.2"
-    api "androidx.browser:browser:1.0.0"
-    api "androidx.recyclerview:recyclerview:1.0.0"
-
-    api 'com.facebook.android:facebook-android-sdk:4.39.0'
-    api "me.everything:overscroll-decor-android:1.0.4"
-}
-
 android {
     compileSdkVersion 28
     buildToolsVersion '28.0.3'
@@ -65,12 +44,6 @@ android {
     defaultConfig {
         minSdkVersion 21
         targetSdkVersion 28
-
-        javaCompileOptions {
-            annotationProcessorOptions {
-                includeCompileClasspath = true
-            }
-        }
     }
 
     defaultPublishConfig "jitpackRelease"
@@ -96,4 +69,24 @@ android {
             debuggable true
         }
     }
+}
+
+dependencies {
+    implementation fileTree(include: ['*.jar'], dir: 'libs')
+
+    localImplementation project(':xycore')
+    jitpackApi 'com.github.XYOracleNetwork:sdk-core-android:1.1.0'
+
+    api "org.jetbrains.kotlin:kotlin-stdlib-jdk8:$kotlinVersion"
+    api "org.jetbrains.kotlin:kotlin-reflect:$kotlinVersion"
+    api "org.jetbrains.kotlinx:kotlinx-coroutines-core:1.0.1"
+
+    api 'androidx.constraintlayout:constraintlayout:2.0.0-alpha3'
+    api "androidx.cardview:cardview:1.0.0"
+    api "androidx.appcompat:appcompat:1.0.2"
+    api "androidx.browser:browser:1.0.0"
+    api "androidx.recyclerview:recyclerview:1.0.0"
+
+    api 'com.facebook.android:facebook-android-sdk:4.39.0'
+    api "me.everything:overscroll-decor-android:1.0.4"
 }

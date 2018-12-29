@@ -8,6 +8,7 @@ import android.view.View
 import me.everything.android.ui.overscroll.IOverScrollState
 import me.everything.android.ui.overscroll.OverScrollDecoratorHelper
 import network.xyo.core.XYBase
+import network.xyo.core.XYLogging
 import network.xyo.ui.ui
 
 open class XYSmallRibbon(context: Context, attrs: AttributeSet?, defStyle: Int) : XYRibbon(context, attrs, defStyle) {
@@ -28,7 +29,7 @@ open class XYSmallRibbon(context: Context, attrs: AttributeSet?, defStyle: Int) 
     constructor(context: Context, attrs: AttributeSet) : this(context, attrs, 0)
 
     init {
-        XYBase.logInfo(TAG, "init")
+        log.info("init")
 
         layoutManager = object : LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false) {
             override fun supportsPredictiveItemAnimations(): Boolean {
@@ -46,7 +47,7 @@ open class XYSmallRibbon(context: Context, attrs: AttributeSet?, defStyle: Int) 
     }
 
     open fun initRecyclerView() {
-        XYBase.logInfo(TAG, "initRecyclerView")
+        log.info("initRecyclerView")
         setAdapter(adapter)
         this.itemAnimator = null
 
@@ -63,9 +64,9 @@ open class XYSmallRibbon(context: Context, attrs: AttributeSet?, defStyle: Int) 
         decor.setOverScrollStateListener { _, _, newState ->
             when (newState) {
                 IOverScrollState.STATE_IDLE -> {
-                    XYBase.logInfo(TAG, "onOverScrollStateChange: STATE_IDLE")
+                    log.info("onOverScrollStateChange: STATE_IDLE")
                     if (_reloadTriggered) {
-                        XYBase.logInfo(TAG, "onOverScrollStateChange: _reloadTriggered")
+                        log.info("onOverScrollStateChange: _reloadTriggered")
 
                         (listener as Listener).pull()
 
@@ -73,9 +74,9 @@ open class XYSmallRibbon(context: Context, attrs: AttributeSet?, defStyle: Int) 
                         _pendingAnimation = true
                     }
                 }
-                IOverScrollState.STATE_DRAG_START_SIDE -> XYBase.logInfo(TAG, "onOverScrollUpdate: STATE_DRAG_START_SIDE")
-                IOverScrollState.STATE_DRAG_END_SIDE -> XYBase.logInfo(TAG, "onOverScrollUpdate: STATE_DRAG_END_SIDE")
-                IOverScrollState.STATE_BOUNCE_BACK -> XYBase.logInfo(TAG, "onOverScrollUpdate: STATE_BOUNCE_BACK")
+                IOverScrollState.STATE_DRAG_START_SIDE -> log.info( "onOverScrollUpdate: STATE_DRAG_START_SIDE")
+                IOverScrollState.STATE_DRAG_END_SIDE -> log.info( "onOverScrollUpdate: STATE_DRAG_END_SIDE")
+                IOverScrollState.STATE_BOUNCE_BACK -> log.info("onOverScrollUpdate: STATE_BOUNCE_BACK")
                 else -> {
                 }
             }// Dragging started at the left-end.
@@ -87,9 +88,5 @@ open class XYSmallRibbon(context: Context, attrs: AttributeSet?, defStyle: Int) 
         ui { smoothScrollToPosition(position) }
     }
 
-    companion object {
-
-        private const val TAG = "XYSmallRibbon"
-
-    }
+    companion object: XYBase()
 }
