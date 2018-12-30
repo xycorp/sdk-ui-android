@@ -9,10 +9,6 @@ import androidx.core.content.ContextCompat
 import network.xyo.ui.R
 import network.xyo.ui.XYBaseActivity
 
-/**
- * Created by arietrouw on 1/23/17.
- */
-
 class XYToolbar : Toolbar {
 
     var isBackNavigationEnabled = false

@@ -10,9 +10,7 @@ import android.view.ContextThemeWrapper
 import android.view.View
 import android.view.inputmethod.InputMethodManager
 import network.xyo.ui.R
-
 import network.xyo.ui.XYGlobalFonts
-
 
 open class XYButton @JvmOverloads constructor(context: Context, attrs: AttributeSet? = null, defStyle: Int = 0) :
         AppCompatButton(ContextThemeWrapper(context, R.style.xy_button), attrs, defStyle) {

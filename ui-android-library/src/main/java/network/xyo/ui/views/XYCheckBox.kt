@@ -5,7 +5,6 @@ import androidx.appcompat.widget.AppCompatCheckBox
 import android.util.AttributeSet
 import android.view.ContextThemeWrapper
 import network.xyo.ui.R
-
 import network.xyo.ui.XYGlobalFonts
 
 /**

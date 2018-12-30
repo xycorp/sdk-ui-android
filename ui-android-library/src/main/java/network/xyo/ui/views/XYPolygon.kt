@@ -6,7 +6,6 @@ import android.util.AttributeSet
 import android.view.View
 import network.xyo.ui.R
 
-
 class XYPolygon : View {
 
     private var sides = 2
@@ -112,29 +111,12 @@ class XYPolygon : View {
     }
 
     override fun onMeasure(widthMeasureSpec: Int, heightMeasureSpec: Int) {
-        val measuredWidth = measureWidth(widthMeasureSpec)
-        val measuredHeight = measureHeight(heightMeasureSpec)
+        val measuredWidth = measureHeightWidth(widthMeasureSpec)
+        val measuredHeight = measureHeightWidth(heightMeasureSpec)
         setMeasuredDimension(measuredWidth, measuredHeight)
     }
 
-    private fun measureWidth(measureSpec: Int): Int {
-        val specMode = View.MeasureSpec.getMode(measureSpec)
-        val specSize = View.MeasureSpec.getSize(measureSpec)
-
-        val result: Int
-
-        result = when (specMode) {
-            View.MeasureSpec.AT_MOST -> specSize
-            View.MeasureSpec.EXACTLY -> specSize
-            View.MeasureSpec.UNSPECIFIED ->
-                // random size if nothing is specified
-                500
-            else -> 500
-        }
-        return result
-    }
-
-    private fun measureHeight(measureSpec: Int): Int {
+    private fun measureHeightWidth(measureSpec: Int): Int {
         val specMode = View.MeasureSpec.getMode(measureSpec)
         val specSize = View.MeasureSpec.getSize(measureSpec)
 

@@ -9,7 +9,6 @@ import me.everything.android.ui.overscroll.IOverScrollDecor
 import me.everything.android.ui.overscroll.IOverScrollState
 import me.everything.android.ui.overscroll.OverScrollDecoratorHelper
 import network.xyo.core.XYBase
-import network.xyo.core.XYLogging
 import network.xyo.ui.ui
 
 open class XYSmallRibbon(context: Context, attrs: AttributeSet?, defStyle: Int) : XYRibbon(context, attrs, defStyle) {
@@ -40,11 +39,7 @@ open class XYSmallRibbon(context: Context, attrs: AttributeSet?, defStyle: Int) 
 
         this.initRecyclerView()
 
-        _bounceTrigger = dpToPx(40)
-    }
-
-    fun dpToPx(dp: Int): Int {
-        return TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, dp.toFloat(), resources.displayMetrics).toInt()
+        _bounceTrigger = dpToPx(40f)
     }
 
     private fun setOverScrollUpdateListener(decor: IOverScrollDecor) {
@@ -95,5 +90,8 @@ open class XYSmallRibbon(context: Context, attrs: AttributeSet?, defStyle: Int) 
         ui { smoothScrollToPosition(position) }
     }
 
-    companion object: XYBase()
+    companion object: XYBase() {
+        fun Context.dpToPx(dp: Float): Int = TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, dp, resources.displayMetrics).toInt()
+        fun View.dpToPx(dp: Float): Int = context.dpToPx(dp)
+    }
 }

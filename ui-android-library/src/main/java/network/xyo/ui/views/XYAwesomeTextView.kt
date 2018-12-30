@@ -1,11 +1,9 @@
 package network.xyo.ui.views
 
-
 import android.content.Context
 import android.util.AttributeSet
 import android.view.ContextThemeWrapper
 import network.xyo.ui.R
-
 import network.xyo.ui.XYGlobalFonts
 
 /**
