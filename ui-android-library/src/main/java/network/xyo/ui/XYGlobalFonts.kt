@@ -11,22 +11,26 @@ class XYGlobalFonts : XYBase() {
         private var _font: Array<Typeface>? = null
         private var _awesome: Array<Typeface>? = null
 
+        private fun getTypefaces(context: Context, fontPath: String): Array<Typeface> {
+            val result = Array(4) { _ -> Typeface.DEFAULT }
+            try {
+                result[Typeface.NORMAL] = Typeface.createFromAsset(context.assets, fontPath)
+            } catch (ex: Exception) {
+                result[Typeface.NORMAL] = Typeface.DEFAULT
+                log.error(ex, true)
+            }
+
+            for (i in 1..3) {
+                result[i] = Typeface.create(result[Typeface.NORMAL], i)
+            }
+            return result
+        }
+
         @JvmOverloads
         fun getFontAwesome(context: Context, style: Int = Typeface.NORMAL): Typeface {
             synchronized(XYGlobalFonts::class.java) {
                 if (_awesome == null) {
-                    _awesome = Array(4) { _ -> Typeface.DEFAULT }
-                    val awesome = _awesome!!
-                    try {
-                        awesome[Typeface.NORMAL] = Typeface.createFromAsset(context.assets, "fonts/FontAwesome.otf")
-                    } catch (ex: Exception) {
-                        awesome[Typeface.NORMAL] = Typeface.DEFAULT
-                        log.error(ex, true)
-                    }
-
-                    for (i in 1..3) {
-                        awesome[i] = Typeface.create(awesome[Typeface.NORMAL], i)
-                    }
+                    _awesome = getTypefaces(context, "fonts/FontAwesome.otf")
                 }
             }
             return _awesome!![style]
@@ -36,30 +40,10 @@ class XYGlobalFonts : XYBase() {
         fun getFont(context: Context, style: Int = Typeface.NORMAL): Typeface {
             synchronized(XYGlobalFonts::class.java) {
                 if (_font == null) {
-                    _font = Array(4) { _ -> Typeface.DEFAULT }
-                    val font = _font!!
-                    try {
-                        font[Typeface.NORMAL] = Typeface.createFromAsset(context.assets, "fonts/Quicksand.otf")
-                    } catch (ex: Exception) {
-                        font[Typeface.NORMAL] = Typeface.DEFAULT
-                        log.error(ex, true)
-                    }
-
-                    for (i in 1..3) {
-                        font[i] = Typeface.create(font[Typeface.NORMAL], i)
-                    }
+                    _font = getTypefaces(context, "fonts/Quicksand.otf")
                 }
             }
             return _font!![style]
-        }
-
-        fun setViewFont(context: Context, view: TextView) {
-            val typeFace = view.typeface
-            if (typeFace != null) {
-                view.typeface = getFont(context, typeFace.style)
-            } else {
-                view.typeface = getFont(context)
-            }
         }
 
         fun setPreferenceFont(context: Context, view: View) {
@@ -71,6 +55,15 @@ class XYGlobalFonts : XYBase() {
             val summaryView = view.findViewById<View>(android.R.id.summary) as? TextView
             if (summaryView != null) {
                 XYGlobalFonts.setViewFont(context, summaryView)
+            }
+        }
+
+        fun setViewFont(context: Context, view: TextView) {
+            val typeFace = view.typeface
+            if (typeFace != null) {
+                view.typeface = getFont(context, typeFace.style)
+            } else {
+                view.typeface = getFont(context)
             }
         }
 

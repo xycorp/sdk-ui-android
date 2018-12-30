@@ -38,10 +38,6 @@ open class XYBaseFragment : Fragment() {
         loadViews()
     }
 
-    open fun dpToPx(res: Resources, dp: Int): Int {
-        return TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, dp.toFloat(), res.displayMetrics).toInt()
-    }
-
     override fun onResume() {
         log.info("onResume")
         super.onResume()
@@ -63,8 +59,6 @@ open class XYBaseFragment : Fragment() {
         super.onAttach(context)
     }
 
-    companion object {
-        private val log = XYLogging(XYBaseFragment::class.java.simpleName)
-    }
+    companion object: XYBase()
 }
 

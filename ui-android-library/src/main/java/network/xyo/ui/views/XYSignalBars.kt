@@ -12,6 +12,7 @@ import android.util.TypedValue
 import android.view.View
 import android.view.animation.AlphaAnimation
 import androidx.core.content.ContextCompat
+import network.xyo.core.XYBase
 import network.xyo.ui.R
 import network.xyo.ui.ui
 
@@ -95,7 +96,7 @@ class XYSignalBars @JvmOverloads constructor(context: Context, attrs: AttributeS
             rect.bottom = (measuredHeight - paddingBottom).toFloat()
 
             val currPaint = (if (i < barCount) paintFill else paintEmpty) ?: return
-            val radius = dpToPx(resources, 2)
+            val radius = dpToPx(2f)
             canvas.drawRoundRect(rect, radius.toFloat(), radius.toFloat(), currPaint)
         }
     }
@@ -114,12 +115,10 @@ class XYSignalBars @JvmOverloads constructor(context: Context, attrs: AttributeS
         }
     }
 
-    fun dpToPx(res: Resources, dp: Int): Int {
-        return TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, dp.toFloat(), res.displayMetrics).toInt()
-    }
-
-    companion object {
+    companion object: XYBase() {
         private const val barWidthPercent = 0.70f
+        fun Context.dpToPx(dp: Float): Int = TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, dp, resources.displayMetrics).toInt()
+        fun View.dpToPx(dp: Float): Int = context.dpToPx(dp)
     }
 
 }

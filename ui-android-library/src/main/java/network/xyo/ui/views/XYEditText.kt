@@ -10,7 +10,6 @@ import android.util.AttributeSet
 import android.view.ContextThemeWrapper
 import android.view.inputmethod.InputMethodManager
 import network.xyo.ui.R
-
 import network.xyo.ui.XYGlobalFonts
 
 /**
