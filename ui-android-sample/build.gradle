@@ -1,6 +1,5 @@
 apply plugin: 'com.android.application'
 apply plugin: 'kotlin-android'
-apply plugin: 'kotlin-kapt'
 apply plugin: 'com.github.dcendents.android-maven'
 
 group = 'com.github.XYOracleNetwork'
@@ -31,9 +30,8 @@ android {
         }
     }
 
-    compileOptions {
-        sourceCompatibility JavaVersion.VERSION_1_8
-        targetCompatibility JavaVersion.VERSION_1_8
+    sourceSets {
+        main.java.srcDirs += 'src/main/kotlin'
     }
 }
 
@@ -43,7 +41,7 @@ buildscript {
         google()
     }
     dependencies {
-        classpath "com.android.tools.build:gradle:$androidPluginVersion"
+        classpath "com.android.tools.build:gradle:3.2.1"
     }
 }
 
@@ -56,7 +54,7 @@ dependencies {
     implementation fileTree(include: ['*.jar'], dir: 'libs')
     implementation project(path: ':ui-android-library')
 
-    localImplementation project(':xycore')
-    jitpackApi 'com.github.XYOracleNetwork:sdk-core-android:1.1.1'
+    localImplementation project(':core-android-library')
+    jitpackApi 'com.github.XYOracleNetwork:sdk-core-android:1.2.0'
 
 }
