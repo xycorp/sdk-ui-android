@@ -54,7 +54,7 @@ dependencies {
     implementation fileTree(include: ['*.jar'], dir: 'libs')
     implementation project(path: ':ui-android-library')
 
-    localImplementation project(':xycore')
+    localImplementation project(':core-android-library')
     jitpackApi 'com.github.XYOracleNetwork:sdk-core-android:1.1.1'
 
 }
