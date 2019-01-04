@@ -6,8 +6,7 @@ import android.os.Bundle
 import android.view.View
 import android.view.animation.Animation
 import android.view.animation.AnimationUtils
-import android.widget.ImageView
-import android.widget.RelativeLayout
+import kotlinx.android.synthetic.main.dialog_splash.*
 import network.xyo.ui.R
 
 
@@ -42,7 +41,6 @@ class XYSplashDialog(context: Context) : Dialog(context, R.style.xy_full_screen_
             }
 
             override fun onAnimationRepeat(animation: Animation) {
-                // TODO Auto-generated method stub
 
             }
 
@@ -50,29 +48,15 @@ class XYSplashDialog(context: Context) : Dialog(context, R.style.xy_full_screen_
     }
 
     fun startAnimation() {
-        val still_splash_layout = findViewById<RelativeLayout>(R.id.still_splash_layout)
         still_splash_layout.visibility = View.INVISIBLE
-
-        val animation_splash_layout = findViewById<RelativeLayout>(R.id.animation_splash_layout)
         animation_splash_layout.visibility = View.VISIBLE
 
-        val outerRing = findViewById<ImageView>(R.id.splash_ring2)
-        outerRing.startAnimation(AnimationUtils.loadAnimation(context, R.anim.full_rotate_reverse_infinite))
+        splash_ring2.startAnimation(AnimationUtils.loadAnimation(context, R.anim.full_rotate_reverse_infinite))
+        splash_ring1.startAnimation(AnimationUtils.loadAnimation(context, R.anim.full_rotate_infinite))
 
-        val middleRing = findViewById<ImageView>(R.id.splash_ring1)
-        middleRing.startAnimation(AnimationUtils.loadAnimation(context, R.anim.full_rotate_infinite))
-
-        val signalLarge = findViewById<ImageView>(R.id.splash_signal1)
-
-        val signalLargeTwo = findViewById<ImageView>(R.id.splash_signal0)
-
-        val signalLargeThree = findViewById<ImageView>(R.id.splash_signal2)
-
-        val signalSmall = findViewById<ImageView>(R.id.splash_signal_small)
-
-        animate(signalLarge, R.animator.scale_outer)
-        animate(signalLargeTwo, R.animator.scale_outer2)
-        animate(signalLargeThree, R.animator.scale_outer_reverse)
-        animate(signalSmall, R.animator.scale_inner)
+        animate(splash_signal1, R.animator.scale_outer)
+        animate(splash_signal0, R.animator.scale_outer2)
+        animate(splash_signal2, R.animator.scale_outer_reverse)
+        animate(splash_signal_small, R.animator.scale_inner)
     }
 }

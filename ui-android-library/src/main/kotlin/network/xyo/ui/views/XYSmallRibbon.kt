@@ -16,7 +16,7 @@ open class XYSmallRibbon(context: Context, attrs: AttributeSet?, defStyle: Int) 
     private var _reloadTriggered = false
     private var _pendingAnimation = false
 
-    private var _bounceTrigger = 40 //TODO - make configurable via attrs
+    private var _bounceTrigger = 40
 
     open class Listener : XYPanel.Listener () {
         open fun pull() {
