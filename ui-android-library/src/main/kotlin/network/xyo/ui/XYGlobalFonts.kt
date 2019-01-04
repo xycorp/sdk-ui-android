@@ -26,7 +26,6 @@ class XYGlobalFonts : XYBase() {
             return result
         }
 
-        @JvmOverloads
         fun getFontAwesome(context: Context, style: Int = Typeface.NORMAL): Typeface {
             synchronized(XYGlobalFonts::class.java) {
                 if (_awesome == null) {
@@ -36,7 +35,6 @@ class XYGlobalFonts : XYBase() {
             return _awesome!![style]
         }
 
-        @JvmOverloads
         fun getFont(context: Context, style: Int = Typeface.NORMAL): Typeface {
             synchronized(XYGlobalFonts::class.java) {
                 if (_font == null) {
@@ -76,9 +74,8 @@ class XYGlobalFonts : XYBase() {
             }
         }
 
-        @JvmOverloads
-        fun getFontAwesomeDrawable(context: Context, text: Int, color: Int, size: Float, style: Int = Typeface.NORMAL): XYDrawableText {
-            return XYDrawableText(context.resources.getString(text), @Suppress("DEPRECATION") context.resources.getColor(color), size, getFontAwesome(context, style))
+        fun getFontAwesomeDrawable(context: Context, text: Int, color: Int, size: Float): XYDrawableText {
+            return XYDrawableText(context.resources.getString(text), @Suppress("DEPRECATION") context.resources.getColor(color), size, getFontAwesome(context, Typeface.NORMAL))
         }
     }
 }
