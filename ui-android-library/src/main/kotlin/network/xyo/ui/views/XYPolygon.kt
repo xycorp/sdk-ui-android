@@ -142,11 +142,16 @@ class XYPolygon : View {
         canvas.restore()
     }
 
+    private fun addInscribedCircle(canvas: Canvas, radius: Int) {
+        if (showInscribedCircle) {
+            canvas.drawCircle(x.toFloat(), y.toFloat(), radius.toFloat(), inscribedCirclePaint!!)
+        }
+    }
+
     // The poly is created as a shape in a path.
     // If there is a hole in the poly, draw a 2nd shape inset from the first
     override fun onDraw(canvas: Canvas) {
-        val polyPath = polyPath
-        if (polyPath != null) {
+        polyPath?.let { polyPath ->
             val x = measuredWidth / 2
             val y = measuredHeight / 2
             val radius = Math.min(x, y)
@@ -170,10 +175,7 @@ class XYPolygon : View {
             }
 
             updateCanvas(canvas, polyPath)
-
-            if (showInscribedCircle) {
-                canvas.drawCircle(x.toFloat(), y.toFloat(), radius.toFloat(), inscribedCirclePaint!!)
-            }
+            addInscribedCircle(canvas, radius)
         }
 
         super.onDraw(canvas)
