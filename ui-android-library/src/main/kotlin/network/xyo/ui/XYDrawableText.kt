@@ -8,30 +8,28 @@ import android.graphics.Typeface
 import android.graphics.drawable.Drawable
 
 class XYDrawableText(private val _text: String, color: Int, private val _size: Float, typeFace: Typeface) : Drawable() {
-    private val _paint: Paint
+    private val paint = Paint()
 
     init {
-
-        _paint = Paint()
-        _paint.typeface = typeFace
-        _paint.color = color
-        _paint.textSize = _size
-        _paint.isAntiAlias = true
-        _paint.isFakeBoldText = true
-        _paint.style = Paint.Style.FILL
-        _paint.textAlign = Paint.Align.LEFT
+        paint.typeface = typeFace
+        paint.color = color
+        paint.textSize = _size
+        paint.isAntiAlias = true
+        paint.isFakeBoldText = true
+        paint.style = Paint.Style.FILL
+        paint.textAlign = Paint.Align.LEFT
     }
 
     override fun draw(canvas: Canvas) {
-        canvas.drawText(_text, 0f, _size, _paint)
+        canvas.drawText(_text, 0f, _size, paint)
     }
 
     override fun setAlpha(alpha: Int) {
-        _paint.alpha = alpha
+        paint.alpha = alpha
     }
 
     override fun setColorFilter(cf: ColorFilter?) {
-        _paint.colorFilter = cf
+        paint.colorFilter = cf
     }
 
     override fun getOpacity(): Int {

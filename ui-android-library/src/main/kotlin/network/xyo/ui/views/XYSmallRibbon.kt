@@ -75,7 +75,7 @@ open class XYSmallRibbon(context: Context, attrs: AttributeSet?, defStyle: Int) 
 
     open fun initRecyclerView() {
         log.info("initRecyclerView")
-        setAdapter(adapter)
+        adapter = adapter
         this.itemAnimator = null
 
         val decor = OverScrollDecoratorHelper.setUpOverScroll(this, OverScrollDecoratorHelper.ORIENTATION_HORIZONTAL)

@@ -16,10 +16,10 @@ import androidx.recyclerview.widget.StaggeredGridLayoutManager
  */
 class RecyclerViewOverScrollDecorAdapter : IOverScrollDecoratorAdapter {
 
-    protected val mRecyclerView: RecyclerView
-    protected val mImpl: Impl
+    private val mRecyclerView: RecyclerView
+    private val mImpl: Impl
 
-    protected var mIsItemTouchInEffect = false
+    private var mIsItemTouchInEffect = false
 
     override val view: View
         get() = mRecyclerView
@@ -74,7 +74,7 @@ class RecyclerViewOverScrollDecorAdapter : IOverScrollDecoratorAdapter {
         setUpTouchHelperCallback(itemTouchHelperCallback)
     }
 
-    protected fun setUpTouchHelperCallback(itemTouchHelperCallback: ItemTouchHelper.Callback) {
+    private fun setUpTouchHelperCallback(itemTouchHelperCallback: ItemTouchHelper.Callback) {
         ItemTouchHelper(object : ItemTouchHelperCallbackWrapper(itemTouchHelperCallback) {
             override fun onSelectedChanged(viewHolder: RecyclerView.ViewHolder?, actionState: Int) {
                 mIsItemTouchInEffect = actionState != 0
@@ -83,7 +83,7 @@ class RecyclerViewOverScrollDecorAdapter : IOverScrollDecoratorAdapter {
         }).attachToRecyclerView(mRecyclerView)
     }
 
-    protected inner class ImplHorizLayout : Impl {
+    private inner class ImplHorizLayout : Impl {
 
         override val isInAbsoluteStart: Boolean
             get() = !mRecyclerView.canScrollHorizontally(-1)
@@ -92,7 +92,7 @@ class RecyclerViewOverScrollDecorAdapter : IOverScrollDecoratorAdapter {
             get() = !mRecyclerView.canScrollHorizontally(1)
     }
 
-    protected inner class ImplVerticalLayout : Impl {
+    private inner class ImplVerticalLayout : Impl {
 
         override val isInAbsoluteStart: Boolean
             get() = !mRecyclerView.canScrollVertically(-1)

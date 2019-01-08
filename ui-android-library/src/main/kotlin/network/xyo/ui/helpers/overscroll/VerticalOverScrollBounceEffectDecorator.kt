@@ -47,7 +47,7 @@ class VerticalOverScrollBounceEffectDecorator
         }
     }
 
-    protected class AnimationAttributesVertical : AnimationAttributes() {
+    private class AnimationAttributesVertical : AnimationAttributes() {
         init {
             mProperty = View.TRANSLATION_Y
         }

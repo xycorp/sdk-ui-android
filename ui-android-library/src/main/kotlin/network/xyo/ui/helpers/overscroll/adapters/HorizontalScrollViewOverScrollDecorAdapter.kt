@@ -3,8 +3,6 @@ package network.xyo.ui.helpers.overscroll.adapters
 import android.view.View
 import android.widget.HorizontalScrollView
 
-import network.xyo.ui.helpers.overscroll.adapters.IOverScrollDecoratorAdapter
-
 /**
  * An adapter that enables over-scrolling support over a [HorizontalScrollView].
  * <br></br>Seeing that [HorizontalScrollView] only supports horizontal scrolling, this adapter
@@ -16,7 +14,7 @@ import network.xyo.ui.helpers.overscroll.adapters.IOverScrollDecoratorAdapter
  *
  * @see VerticalOverScrollBounceEffectDecorator
  */
-class HorizontalScrollViewOverScrollDecorAdapter(protected val mView: HorizontalScrollView) : IOverScrollDecoratorAdapter {
+class HorizontalScrollViewOverScrollDecorAdapter(private val mView: HorizontalScrollView) : IOverScrollDecoratorAdapter {
 
     override val view: View
         get() = mView

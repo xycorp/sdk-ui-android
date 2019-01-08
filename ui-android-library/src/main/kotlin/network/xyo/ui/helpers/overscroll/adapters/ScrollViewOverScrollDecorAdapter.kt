@@ -16,7 +16,7 @@ import android.widget.ScrollView
  *
  * @see VerticalOverScrollBounceEffectDecorator
  */
-class ScrollViewOverScrollDecorAdapter(protected val mView: ScrollView) : IOverScrollDecoratorAdapter {
+class ScrollViewOverScrollDecorAdapter(private val mView: ScrollView) : IOverScrollDecoratorAdapter {
 
     override val view: View
         get() = mView

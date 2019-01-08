@@ -59,9 +59,8 @@ class XYPolygon : View {
 
     private fun initFillBitmap() {
         if (fillBitmapResourceId != -1) {
-            val opt: BitmapFactory.Options
-
-            opt = BitmapFactory.Options()
+            val opt = BitmapFactory.Options()
+            
             opt.inTempStorage = ByteArray(16 * 1024)
             opt.inSampleSize = 4
 
@@ -135,7 +134,7 @@ class XYPolygon : View {
 
     private fun updateCanvas(canvas: Canvas, polyPath:Path) {
         canvas.save()
-        canvas.translate(x.toFloat(), y.toFloat())
+        canvas.translate(x, y)
         canvas.rotate(startAngle)
         canvas.drawPath(polyPath, fillPaint!!)
 
@@ -144,7 +143,7 @@ class XYPolygon : View {
 
     private fun addInscribedCircle(canvas: Canvas, radius: Int) {
         if (showInscribedCircle) {
-            canvas.drawCircle(x.toFloat(), y.toFloat(), radius.toFloat(), inscribedCirclePaint!!)
+            canvas.drawCircle(x, y, radius.toFloat(), inscribedCirclePaint!!)
         }
     }
 

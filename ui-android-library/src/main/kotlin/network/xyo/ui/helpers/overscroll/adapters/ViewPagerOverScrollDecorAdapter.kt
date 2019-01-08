@@ -12,10 +12,10 @@ import androidx.viewpager.widget.ViewPager
  *
  * @see HorizontalOverScrollBounceEffectDecorator
  */
-class ViewPagerOverScrollDecorAdapter(protected val mViewPager: ViewPager) : IOverScrollDecoratorAdapter, ViewPager.OnPageChangeListener {
+class ViewPagerOverScrollDecorAdapter(private val mViewPager: ViewPager) : IOverScrollDecoratorAdapter, ViewPager.OnPageChangeListener {
 
-    protected var mLastPagerPosition = 0
-    protected var mLastPagerScrollOffset: Float = 0.toFloat()
+    private var mLastPagerPosition = 0
+    private var mLastPagerScrollOffset: Float = 0.toFloat()
 
     override val view: View
         get() = mViewPager
