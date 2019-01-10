@@ -59,9 +59,8 @@ class XYPolygon : View {
 
     private fun initFillBitmap() {
         if (fillBitmapResourceId != -1) {
-            val opt: BitmapFactory.Options
-
-            opt = BitmapFactory.Options()
+            val opt = BitmapFactory.Options()
+            
             opt.inTempStorage = ByteArray(16 * 1024)
             opt.inSampleSize = 4
 
@@ -135,18 +134,36 @@ class XYPolygon : View {
 
     private fun updateCanvas(canvas: Canvas, polyPath:Path) {
         canvas.save()
-        canvas.translate(x.toFloat(), y.toFloat())
+        canvas.translate(x, y)
         canvas.rotate(startAngle)
         canvas.drawPath(polyPath, fillPaint!!)
 
         canvas.restore()
     }
 
+    private fun addInscribedCircle(canvas: Canvas, radius: Int) {
+        if (showInscribedCircle) {
+            canvas.drawCircle(x, y, radius.toFloat(), inscribedCirclePaint!!)
+        }
+    }
+
+    private fun drawArc(workingRadius: Float, radius: Int, a: Float): Float {
+        polyPath?.let {
+            it.moveTo(workingRadius, 0f)
+            for (i in 1 until sides) {
+                it.lineTo((workingRadius * Math.cos((a * i).toDouble())).toFloat(),
+                        (workingRadius * Math.sin((a * i).toDouble())).toFloat())
+            }
+            it.close()
+        }
+
+        return workingRadius - (radius * fillPercent).toInt()
+    }
+
     // The poly is created as a shape in a path.
     // If there is a hole in the poly, draw a 2nd shape inset from the first
     override fun onDraw(canvas: Canvas) {
-        val polyPath = polyPath
-        if (polyPath != null) {
+        polyPath?.let { polyPath ->
             val x = measuredWidth / 2
             val y = measuredHeight / 2
             val radius = Math.min(x, y)
@@ -154,26 +171,16 @@ class XYPolygon : View {
             if (sides < 3) return
 
             var a = (Math.PI * 2).toFloat() / sides
-            var workingRadius = radius
+            var workingRadius = radius.toFloat()
             polyPath.reset()
 
             for (j in 0 until if (fillPercent < 1) 2 else 1) {
-                polyPath.moveTo(workingRadius.toFloat(), 0f)
-                for (i in 1 until sides) {
-                    polyPath.lineTo((workingRadius * Math.cos((a * i).toDouble())).toFloat(),
-                            (workingRadius * Math.sin((a * i).toDouble())).toFloat())
-                }
-                polyPath.close()
-
-                workingRadius -= (radius * fillPercent).toInt()
+                workingRadius = drawArc(workingRadius, radius, a)
                 a = -a
             }
 
             updateCanvas(canvas, polyPath)
-
-            if (showInscribedCircle) {
-                canvas.drawCircle(x.toFloat(), y.toFloat(), radius.toFloat(), inscribedCirclePaint!!)
-            }
+            addInscribedCircle(canvas, radius)
         }
 
         super.onDraw(canvas)

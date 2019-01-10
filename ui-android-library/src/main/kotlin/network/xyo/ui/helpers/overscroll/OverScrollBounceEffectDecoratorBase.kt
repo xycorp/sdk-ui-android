@@ -150,14 +150,10 @@ abstract class OverScrollBounceEffectDecoratorBase(protected val mViewAdapter: I
      */
     protected inner class IdleState : IDecoratorState {
 
-        internal val mMoveAttr: MotionAttributes
+        private val mMoveAttr = createMotionAttributes()
 
         override val stateId: Int
             get() = IOverScrollState.STATE_IDLE
-
-        init {
-            mMoveAttr = createMotionAttributes()
-        }
 
         override fun handleMoveTouchEvent(event: MotionEvent): Boolean {
 
@@ -201,17 +197,13 @@ abstract class OverScrollBounceEffectDecoratorBase(protected val mViewAdapter: I
      * normal over-scroll-less environment (thus preventing under-scrolling and potentially regaining
      * regular scrolling).
      */
-    protected inner class OverScrollingState(protected val mTouchDragRatioFwd: Float, protected val mTouchDragRatioBck: Float) : IDecoratorState {
+    protected inner class OverScrollingState(private val mTouchDragRatioFwd: Float, private val mTouchDragRatioBck: Float) : IDecoratorState {
 
-        internal val mMoveAttr: MotionAttributes
+        private val mMoveAttr = createMotionAttributes()
         override// This is really a single class that implements 2 states, so our ID depends on what
         // it was during the last invocation.
         var stateId: Int = 0
             internal set
-
-        init {
-            mMoveAttr = createMotionAttributes()
-        }
 
         override fun handleMoveTouchEvent(event: MotionEvent): Boolean {
 
@@ -274,21 +266,15 @@ abstract class OverScrollBounceEffectDecoratorBase(protected val mViewAdapter: I
      * registering itself as an animation listener.
      * <br></br>In the meantime, blocks (intercepts) all touch events.
      */
-    protected inner class BounceBackState(protected val mDecelerateFactor: Float) : IDecoratorState, Animator.AnimatorListener, ValueAnimator.AnimatorUpdateListener {
+    protected inner class BounceBackState(private val mDecelerateFactor: Float) : IDecoratorState, Animator.AnimatorListener, ValueAnimator.AnimatorUpdateListener {
 
-        protected val mBounceBackInterpolator: Interpolator = DecelerateInterpolator()
-        protected val mDoubleDecelerateFactor: Float
-
-        protected val mAnimAttributes: AnimationAttributes
+        private val mBounceBackInterpolator: Interpolator = DecelerateInterpolator()
+        private val mDoubleDecelerateFactor: Float = 2f * mDecelerateFactor
+        private val mAnimAttributes: AnimationAttributes = createAnimationAttributes()
 
         override val stateId: Int
             get() = IOverScrollState.STATE_BOUNCE_BACK
 
-        init {
-            mDoubleDecelerateFactor = 2f * mDecelerateFactor
-
-            mAnimAttributes = createAnimationAttributes()
-        }
 
         override fun handleEntryTransition(fromState: IDecoratorState) {
 
@@ -322,7 +308,7 @@ abstract class OverScrollBounceEffectDecoratorBase(protected val mViewAdapter: I
         override fun onAnimationCancel(animation: Animator) {}
         override fun onAnimationRepeat(animation: Animator) {}
 
-        protected fun createAnimator(): Animator {
+        private fun createAnimator(): Animator {
 
             val view = mViewAdapter.view
 
@@ -356,7 +342,7 @@ abstract class OverScrollBounceEffectDecoratorBase(protected val mViewAdapter: I
             return wholeAnim
         }
 
-        protected fun createSlowdownAnimator(view: View, slowdownDuration: Int, slowdownEndOffset: Float): ObjectAnimator {
+        private fun createSlowdownAnimator(view: View, slowdownDuration: Int, slowdownEndOffset: Float): ObjectAnimator {
             val slowdownAnim = ObjectAnimator.ofFloat(view, mAnimAttributes.mProperty, slowdownEndOffset)
             slowdownAnim.duration = slowdownDuration.toLong()
             slowdownAnim.interpolator = mBounceBackInterpolator
@@ -364,7 +350,7 @@ abstract class OverScrollBounceEffectDecoratorBase(protected val mViewAdapter: I
             return slowdownAnim
         }
 
-        protected fun createBounceBackAnimator(startOffset: Float): ObjectAnimator {
+        private fun createBounceBackAnimator(startOffset: Float): ObjectAnimator {
 
             val view = mViewAdapter.view
 

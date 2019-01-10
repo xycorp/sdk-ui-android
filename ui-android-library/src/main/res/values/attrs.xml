@@ -8,7 +8,7 @@
         <attr name="maxBars" format="integer"/>
     </declare-styleable>
 
-    <declare-styleable name="XYEditView">
+    <declare-styleable name="XYEditText">
         <attr name="readOnly" format="boolean"/>
     </declare-styleable>
 

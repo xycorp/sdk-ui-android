@@ -8,11 +8,11 @@ import network.xyo.core.XYBase
 
 class XYGlobalFonts : XYBase() {
     companion object : XYBase() {
-        private var _font: Array<Typeface>? = null
-        private var _awesome: Array<Typeface>? = null
+        private var font: Array<Typeface>? = null
+        private var awesome: Array<Typeface>? = null
 
         private fun getTypefaces(context: Context, fontPath: String): Array<Typeface> {
-            val result = Array(4) { _ -> Typeface.DEFAULT }
+            val result = Array(4) { Typeface.DEFAULT }
             try {
                 result[Typeface.NORMAL] = Typeface.createFromAsset(context.assets, fontPath)
             } catch (ex: Exception) {
@@ -26,24 +26,22 @@ class XYGlobalFonts : XYBase() {
             return result
         }
 
-        @JvmOverloads
         fun getFontAwesome(context: Context, style: Int = Typeface.NORMAL): Typeface {
             synchronized(XYGlobalFonts::class.java) {
-                if (_awesome == null) {
-                    _awesome = getTypefaces(context, "fonts/FontAwesome.otf")
+                if (awesome == null) {
+                    awesome = getTypefaces(context, "fonts/FontAwesome.otf")
                 }
             }
-            return _awesome!![style]
+            return awesome!![style]
         }
 
-        @JvmOverloads
         fun getFont(context: Context, style: Int = Typeface.NORMAL): Typeface {
             synchronized(XYGlobalFonts::class.java) {
-                if (_font == null) {
-                    _font = getTypefaces(context, "fonts/Quicksand.otf")
+                if (font == null) {
+                    font = getTypefaces(context, "fonts/Quicksand.otf")
                 }
             }
-            return _font!![style]
+            return font!![style]
         }
 
         fun setPreferenceFont(context: Context, view: View) {
@@ -76,9 +74,8 @@ class XYGlobalFonts : XYBase() {
             }
         }
 
-        @JvmOverloads
-        fun getFontAwesomeDrawable(context: Context, text: Int, color: Int, size: Float, style: Int = Typeface.NORMAL): XYDrawableText {
-            return XYDrawableText(context.resources.getString(text), @Suppress("DEPRECATION") context.resources.getColor(color), size, getFontAwesome(context, style))
+        fun getFontAwesomeDrawable(context: Context, text: Int, color: Int, size: Float): XYDrawableText {
+            return XYDrawableText(context.resources.getString(text), @Suppress("DEPRECATION") context.resources.getColor(color), size, getFontAwesome(context, Typeface.NORMAL))
         }
     }
 }

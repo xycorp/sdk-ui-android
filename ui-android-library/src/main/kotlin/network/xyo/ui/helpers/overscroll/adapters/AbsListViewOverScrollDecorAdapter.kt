@@ -3,8 +3,6 @@ package network.xyo.ui.helpers.overscroll.adapters
 import android.view.View
 import android.widget.AbsListView
 
-import network.xyo.ui.helpers.overscroll.adapters.IOverScrollDecoratorAdapter
-
 /**
  * An adapter to enable over-scrolling over object of [AbsListView], namely [ ] and it's extensions, and [android.widget.GridView].
  *
@@ -14,7 +12,7 @@ import network.xyo.ui.helpers.overscroll.adapters.IOverScrollDecoratorAdapter
  *
  * @see VerticalOverScrollBounceEffectDecorator
  */
-class AbsListViewOverScrollDecorAdapter(protected val mView: AbsListView) : IOverScrollDecoratorAdapter {
+class AbsListViewOverScrollDecorAdapter(private val mView: AbsListView) : IOverScrollDecoratorAdapter {
 
     override val view: View
         get() = mView

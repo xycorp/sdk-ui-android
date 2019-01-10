@@ -42,10 +42,10 @@ class XYEditText @JvmOverloads constructor(context: Context, attrs: AttributeSet
         if (attrs != null) {
             val attributyeArray = getContext().obtainStyledAttributes(
                     attrs,
-                    R.styleable.XYEditView,
+                    R.styleable.XYEditText,
                     0, 0)
             if (attributyeArray != null) {
-                _readOnly = attributyeArray.getBoolean(R.styleable.XYEditView_readOnly, false)
+                _readOnly = attributyeArray.getBoolean(R.styleable.XYEditText_readOnly, false)
                 attributyeArray.recycle()
             }
         }

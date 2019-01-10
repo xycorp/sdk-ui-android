@@ -1,14 +1,13 @@
 package network.xyo.ui.views
 
 import android.content.Context
-import android.content.res.Resources
 import android.database.DataSetObserver
-import androidx.appcompat.widget.AppCompatSpinner
 import android.util.AttributeSet
 import android.util.TypedValue
 import android.view.View
 import android.view.ViewGroup
 import android.widget.SpinnerAdapter
+import androidx.appcompat.widget.AppCompatSpinner
 import network.xyo.core.XYBase
 import network.xyo.ui.R
 
@@ -37,21 +36,21 @@ class XYSpinner @JvmOverloads constructor(context: Context, attrs: AttributeSet?
                 _entries = context.resources.getStringArray(idEntries)
             }
 
-            val attributyeArray = getContext().obtainStyledAttributes(
+            val attributeArray = getContext().obtainStyledAttributes(
                     attrs,
                     R.styleable.XYSpinner,
                     0, 0)
 
-            if (attributyeArray != null) {
+            if (attributeArray != null) {
 
-                val idValues = attributyeArray.getResourceId(R.styleable.XYSpinner_values, 0)
+                val idValues = attributeArray.getResourceId(R.styleable.XYSpinner_values, 0)
                 if (idValues != 0) {
                     _values = context.resources.getStringArray(idValues)
                 }
 
                 val hintId = attrs.getAttributeResourceValue("http://schemas.android.com/apk/res/android", "hint", 0)
                 _hint = resources.getString(hintId)
-                attributyeArray.recycle()
+                attributeArray.recycle()
             }
         }
 
