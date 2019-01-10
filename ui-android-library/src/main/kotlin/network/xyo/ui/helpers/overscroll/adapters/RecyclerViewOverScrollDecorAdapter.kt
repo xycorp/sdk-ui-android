@@ -19,16 +19,26 @@ class RecyclerViewOverScrollDecorAdapter : IOverScrollDecoratorAdapter {
     private val mRecyclerView: RecyclerView
     private val mImpl: Impl
 
-    private var mIsItemTouchInEffect = false
-
     override val view: View
         get() = mRecyclerView
 
+    var helperCallback: ItemTouchHelperCallback? = null
+
     override val isInAbsoluteStart: Boolean
-        get() = !mIsItemTouchInEffect && mImpl.isInAbsoluteStart
+        get() {
+            helperCallback?.mIsItemTouchInEffect?.let {
+                return !it && mImpl.isInAbsoluteStart
+            }
+            return false
+        }
 
     override val isInAbsoluteEnd: Boolean
-        get() = !mIsItemTouchInEffect && mImpl.isInAbsoluteEnd
+        get() {
+            helperCallback?.mIsItemTouchInEffect?.let {
+                return !it && mImpl.isInAbsoluteEnd
+            }
+            return false
+        }
 
     /**
      * A delegation of the adapter implementation of this view that should provide the processing
@@ -66,21 +76,27 @@ class RecyclerViewOverScrollDecorAdapter : IOverScrollDecoratorAdapter {
         mImpl = impl
     }
 
-    constructor(recyclerView: RecyclerView, itemTouchHelperCallback: ItemTouchHelper.Callback) : this(recyclerView) {
+    constructor(recyclerView: RecyclerView, itemTouchHelperCallback: ItemTouchHelperCallback) : this(recyclerView) {
         setUpTouchHelperCallback(itemTouchHelperCallback)
     }
 
-    constructor(recyclerView: RecyclerView, impl: Impl, itemTouchHelperCallback: ItemTouchHelper.Callback) : this(recyclerView, impl) {
+    constructor(recyclerView: RecyclerView, impl: Impl, itemTouchHelperCallback: ItemTouchHelperCallback) : this(recyclerView, impl) {
         setUpTouchHelperCallback(itemTouchHelperCallback)
     }
 
-    private fun setUpTouchHelperCallback(itemTouchHelperCallback: ItemTouchHelper.Callback) {
-        ItemTouchHelper(object : ItemTouchHelperCallbackWrapper(itemTouchHelperCallback) {
-            override fun onSelectedChanged(viewHolder: RecyclerView.ViewHolder?, actionState: Int) {
-                mIsItemTouchInEffect = actionState != 0
-                super.onSelectedChanged(viewHolder, actionState)
-            }
-        }).attachToRecyclerView(mRecyclerView)
+    abstract class ItemTouchHelperCallback: ItemTouchHelper.Callback() {
+
+        var mIsItemTouchInEffect = false
+
+        override fun onSelectedChanged(viewHolder: RecyclerView.ViewHolder?, actionState: Int) {
+            mIsItemTouchInEffect = actionState != 0
+            super.onSelectedChanged(viewHolder, actionState)
+        }
+    }
+
+    private fun setUpTouchHelperCallback(itemTouchHelperCallback: ItemTouchHelperCallback) {
+        helperCallback = itemTouchHelperCallback
+        ItemTouchHelper(itemTouchHelperCallback).attachToRecyclerView(mRecyclerView)
     }
 
     private inner class ImplHorizLayout : Impl {
@@ -99,77 +115,5 @@ class RecyclerViewOverScrollDecorAdapter : IOverScrollDecoratorAdapter {
 
         override val isInAbsoluteEnd: Boolean
             get() = !mRecyclerView.canScrollVertically(1)
-    }
-
-    private open class ItemTouchHelperCallbackWrapper constructor(internal val mCallback: ItemTouchHelper.Callback) : ItemTouchHelper.Callback() {
-
-        override fun isLongPressDragEnabled(): Boolean
-                = mCallback.isLongPressDragEnabled
-
-        override fun isItemViewSwipeEnabled(): Boolean
-                = mCallback.isItemViewSwipeEnabled
-
-        fun boundingBoxMargin(): Int
-                = mCallback.boundingBoxMargin
-
-        override fun getMovementFlags(recyclerView: RecyclerView, viewHolder: RecyclerView.ViewHolder): Int {
-            return mCallback.getMovementFlags(recyclerView, viewHolder)
-        }
-
-        override fun onMove(recyclerView: RecyclerView, viewHolder: RecyclerView.ViewHolder, target: RecyclerView.ViewHolder): Boolean {
-            return mCallback.onMove(recyclerView, viewHolder, target)
-        }
-
-        override fun onSwiped(viewHolder: RecyclerView.ViewHolder, direction: Int) {
-            mCallback.onSwiped(viewHolder, direction)
-        }
-
-        override fun convertToAbsoluteDirection(flags: Int, layoutDirection: Int): Int {
-            return mCallback.convertToAbsoluteDirection(flags, layoutDirection)
-        }
-
-        override fun canDropOver(recyclerView: RecyclerView, current: RecyclerView.ViewHolder, target: RecyclerView.ViewHolder): Boolean {
-            return mCallback.canDropOver(recyclerView, current, target)
-        }
-
-        override fun getSwipeThreshold(viewHolder: RecyclerView.ViewHolder): Float {
-            return mCallback.getSwipeThreshold(viewHolder)
-        }
-
-        override fun getMoveThreshold(viewHolder: RecyclerView.ViewHolder): Float {
-            return mCallback.getMoveThreshold(viewHolder)
-        }
-
-        override fun chooseDropTarget(selected: RecyclerView.ViewHolder, dropTargets: List<RecyclerView.ViewHolder>, curX: Int, curY: Int): RecyclerView.ViewHolder {
-            return mCallback.chooseDropTarget(selected, dropTargets, curX, curY)
-        }
-
-        override fun onSelectedChanged(viewHolder: RecyclerView.ViewHolder?, actionState: Int) {
-            mCallback.onSelectedChanged(viewHolder, actionState)
-        }
-
-        override fun onMoved(recyclerView: RecyclerView, viewHolder: RecyclerView.ViewHolder, fromPos: Int, target: RecyclerView.ViewHolder, toPos: Int, x: Int, y: Int) {
-            mCallback.onMoved(recyclerView, viewHolder, fromPos, target, toPos, x, y)
-        }
-
-        override fun clearView(recyclerView: RecyclerView, viewHolder: RecyclerView.ViewHolder) {
-            mCallback.clearView(recyclerView, viewHolder)
-        }
-
-        override fun onChildDraw(c: Canvas, recyclerView: RecyclerView, viewHolder: RecyclerView.ViewHolder, dX: Float, dY: Float, actionState: Int, isCurrentlyActive: Boolean) {
-            mCallback.onChildDraw(c, recyclerView, viewHolder, dX, dY, actionState, isCurrentlyActive)
-        }
-
-        override fun onChildDrawOver(c: Canvas, recyclerView: RecyclerView, viewHolder: RecyclerView.ViewHolder, dX: Float, dY: Float, actionState: Int, isCurrentlyActive: Boolean) {
-            mCallback.onChildDrawOver(c, recyclerView, viewHolder, dX, dY, actionState, isCurrentlyActive)
-        }
-
-        override fun getAnimationDuration(recyclerView: RecyclerView, animationType: Int, animateDx: Float, animateDy: Float): Long {
-            return mCallback.getAnimationDuration(recyclerView, animationType, animateDx, animateDy)
-        }
-
-        override fun interpolateOutOfBoundsScroll(recyclerView: RecyclerView, viewSize: Int, viewSizeOutOfBounds: Int, totalSize: Int, msSinceStartScroll: Long): Int {
-            return mCallback.interpolateOutOfBoundsScroll(recyclerView, viewSize, viewSizeOutOfBounds, totalSize, msSinceStartScroll)
-        }
     }
 }

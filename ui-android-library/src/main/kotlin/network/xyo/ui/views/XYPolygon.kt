@@ -147,6 +147,19 @@ class XYPolygon : View {
         }
     }
 
+    private fun drawArc(workingRadius: Float, radius: Int, a: Float): Float {
+        polyPath?.let {
+            it.moveTo(workingRadius, 0f)
+            for (i in 1 until sides) {
+                it.lineTo((workingRadius * Math.cos((a * i).toDouble())).toFloat(),
+                        (workingRadius * Math.sin((a * i).toDouble())).toFloat())
+            }
+            it.close()
+        }
+
+        return workingRadius - (radius * fillPercent).toInt()
+    }
+
     // The poly is created as a shape in a path.
     // If there is a hole in the poly, draw a 2nd shape inset from the first
     override fun onDraw(canvas: Canvas) {
@@ -158,18 +171,11 @@ class XYPolygon : View {
             if (sides < 3) return
 
             var a = (Math.PI * 2).toFloat() / sides
-            var workingRadius = radius
+            var workingRadius = radius.toFloat()
             polyPath.reset()
 
             for (j in 0 until if (fillPercent < 1) 2 else 1) {
-                polyPath.moveTo(workingRadius.toFloat(), 0f)
-                for (i in 1 until sides) {
-                    polyPath.lineTo((workingRadius * Math.cos((a * i).toDouble())).toFloat(),
-                            (workingRadius * Math.sin((a * i).toDouble())).toFloat())
-                }
-                polyPath.close()
-
-                workingRadius -= (radius * fillPercent).toInt()
+                workingRadius = drawArc(workingRadius, radius, a)
                 a = -a
             }
 
