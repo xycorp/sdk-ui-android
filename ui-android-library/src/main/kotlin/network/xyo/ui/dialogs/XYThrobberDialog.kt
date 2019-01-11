@@ -4,15 +4,15 @@ package network.xyo.ui.dialogs
  Created by arietrouw on 12/27/17.
  */
 
-import android.app.Dialog
 import android.content.Context
 import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
 import android.view.View
+import androidx.appcompat.app.AppCompatDialog
 import network.xyo.ui.R
 import network.xyo.ui.ui
 
-class XYThrobberDialog(context: Context) : Dialog(context) {
+class XYThrobberDialog(context: Context) : AppCompatDialog(context) {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

@@ -1,16 +1,16 @@
 package network.xyo.ui.dialogs
 
-import android.app.Dialog
 import android.content.Context
 import android.os.Bundle
 import android.view.View
 import android.view.animation.Animation
 import android.view.animation.AnimationUtils
+import androidx.appcompat.app.AppCompatDialog
 import kotlinx.android.synthetic.main.dialog_splash.*
 import network.xyo.ui.R
 
 
-class XYSplashDialog(context: Context) : Dialog(context, R.style.xy_full_screen_dialog) {
+class XYSplashDialog(context: Context) : AppCompatDialog(context, R.style.xy_full_screen_dialog) {
 
     public override fun onCreate(savedInstance: Bundle?) {
         super.onCreate(savedInstance)
