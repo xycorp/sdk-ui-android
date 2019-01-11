@@ -214,37 +214,37 @@ abstract class OverScrollBounceEffectDecoratorBase(protected val mViewAdapter: I
                 return true
             }
 
-            val view = mViewAdapter.view
-            if (!mMoveAttr.initialize(view, event)) {
-                // Keep intercepting the touch event as long as we're still over-scrolling...
-                return true
+            mViewAdapter.view.let {
+                if (!mMoveAttr.initialize(it, event)) {
+                    // Keep intercepting the touch event as long as we're still over-scrolling...
+                    return true
+                }
+
+                val deltaOffset = mMoveAttr.mDeltaOffset / if (mMoveAttr.mDir == mStartAttr.mDir) mTouchDragRatioFwd else mTouchDragRatioBck
+                val newOffset = mMoveAttr.mAbsOffset + deltaOffset
+
+                // If moved in counter direction onto a potential under-scroll state -- don't. Instead, abort
+                // over-scrolling abruptly, thus returning control to which-ever touch handlers there
+                // are waiting (e.g. regular scroller handlers).
+                if (mStartAttr.mDir && !mMoveAttr.mDir && newOffset <= mStartAttr.mAbsOffset || !mStartAttr.mDir && mMoveAttr.mDir && newOffset >= mStartAttr.mAbsOffset) {
+                    translateViewAndEvent(it, mStartAttr.mAbsOffset, event)
+                    mUpdateListener.onOverScrollUpdate(this@OverScrollBounceEffectDecoratorBase, stateId, 0.0f)
+
+                    issueStateTransition(mIdleState)
+                    return true
+                }
+
+                it.parent?.requestDisallowInterceptTouchEvent(true)
+
+                val dt = event.eventTime - event.getHistoricalEventTime(0)
+
+                if (dt > 0) { // Sometimes (though rarely) dt==0 cause originally timing is in nanos, but is presented in millis.
+                    mVelocity = deltaOffset / dt
+                }
+
+                translateView(it, newOffset)
+                mUpdateListener.onOverScrollUpdate(this@OverScrollBounceEffectDecoratorBase, stateId, newOffset)
             }
-
-            val deltaOffset = mMoveAttr.mDeltaOffset / if (mMoveAttr.mDir == mStartAttr.mDir) mTouchDragRatioFwd else mTouchDragRatioBck
-            val newOffset = mMoveAttr.mAbsOffset + deltaOffset
-
-            // If moved in counter direction onto a potential under-scroll state -- don't. Instead, abort
-            // over-scrolling abruptly, thus returning control to which-ever touch handlers there
-            // are waiting (e.g. regular scroller handlers).
-            if (mStartAttr.mDir && !mMoveAttr.mDir && newOffset <= mStartAttr.mAbsOffset || !mStartAttr.mDir && mMoveAttr.mDir && newOffset >= mStartAttr.mAbsOffset) {
-                translateViewAndEvent(view, mStartAttr.mAbsOffset, event)
-                mUpdateListener.onOverScrollUpdate(this@OverScrollBounceEffectDecoratorBase, stateId, 0.0f)
-
-                issueStateTransition(mIdleState)
-                return true
-            }
-
-            if (view.parent != null) {
-                view.parent.requestDisallowInterceptTouchEvent(true)
-            }
-
-            val dt = event.eventTime - event.getHistoricalEventTime(0)
-            if (dt > 0) { // Sometimes (though rarely) dt==0 cause originally timing is in nanos, but is presented in millis.
-                mVelocity = deltaOffset / dt
-            }
-
-            translateView(view, newOffset)
-            mUpdateListener.onOverScrollUpdate(this@OverScrollBounceEffectDecoratorBase, stateId, newOffset)
 
             return true
         }

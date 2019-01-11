@@ -22,17 +22,6 @@ object OverScrollDecoratorHelper {
     const val ORIENTATION_VERTICAL = 0
     const val ORIENTATION_HORIZONTAL = 1
 
-    /**
-     * Set up the over-scroll effect over a specified [RecyclerView] view.
-     * <br></br>Only recycler-views using **native** Android layout managers (i.e. [LinearLayoutManager],
-     * [GridLayoutManager] and [StaggeredGridLayoutManager]) are currently supported
-     * by this convenience method.
-     *
-     * @param recyclerView The view.
-     * @param orientation Either [.ORIENTATION_HORIZONTAL] or [.ORIENTATION_VERTICAL].
-     *
-     * @return The over-scroll effect 'decorator', enabling further effect configuration.
-     */
     fun setUpOverScroll(recyclerView: RecyclerView, orientation: Int): IOverScrollDecor {
         return when (orientation) {
             ORIENTATION_HORIZONTAL -> HorizontalOverScrollBounceEffectDecorator(RecyclerViewOverScrollDecorAdapter(recyclerView))
@@ -56,16 +45,7 @@ object OverScrollDecoratorHelper {
     fun setUpOverScroll(scrollView: HorizontalScrollView): IOverScrollDecor {
         return HorizontalOverScrollBounceEffectDecorator(HorizontalScrollViewOverScrollDecorAdapter(scrollView))
     }
-
-    /**
-     * Set up the over-scroll over a generic view, assumed to always be over-scroll ready (e.g.
-     * a plain text field, image view).
-     *
-     * @param view The view.
-     * @param orientation One of [.ORIENTATION_HORIZONTAL] or [.ORIENTATION_VERTICAL].
-     *
-     * @return The over-scroll effect 'decorator', enabling further effect configuration.
-     */
+    
     fun setUpStaticOverScroll(view: View, orientation: Int): IOverScrollDecor {
         return when (orientation) {
             ORIENTATION_HORIZONTAL -> HorizontalOverScrollBounceEffectDecorator(StaticOverScrollDecorAdapter(view))

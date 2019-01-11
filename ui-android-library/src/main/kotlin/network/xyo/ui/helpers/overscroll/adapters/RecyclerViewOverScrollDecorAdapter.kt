@@ -61,11 +61,7 @@ class RecyclerViewOverScrollDecorAdapter : IOverScrollDecoratorAdapter {
             else
                 (layoutManager as StaggeredGridLayoutManager).orientation
 
-            if (orientation == LinearLayoutManager.HORIZONTAL) {
-                ImplHorizLayout()
-            } else {
-                ImplVerticalLayout()
-            }
+            ImplLayout(orientation)
         } else {
             throw IllegalArgumentException("Recycler views with custom layout managers are not supported by this adapter out of the box." + "Try implementing and providing an explicit 'impl' parameter to the other c'tors, or otherwise create a custom adapter subclass of your own.")
         }
@@ -99,21 +95,18 @@ class RecyclerViewOverScrollDecorAdapter : IOverScrollDecoratorAdapter {
         ItemTouchHelper(itemTouchHelperCallback).attachToRecyclerView(mRecyclerView)
     }
 
-    private inner class ImplHorizLayout : Impl {
+    private inner class ImplLayout(val orientation: Int) : Impl {
 
         override val isInAbsoluteStart: Boolean
-            get() = !mRecyclerView.canScrollHorizontally(-1)
+            get() = when(orientation) {
+                LinearLayoutManager.HORIZONTAL -> !mRecyclerView.canScrollHorizontally(-1)
+                else -> !mRecyclerView.canScrollVertically(-1)
+            }
 
         override val isInAbsoluteEnd: Boolean
-            get() = !mRecyclerView.canScrollHorizontally(1)
-    }
-
-    private inner class ImplVerticalLayout : Impl {
-
-        override val isInAbsoluteStart: Boolean
-            get() = !mRecyclerView.canScrollVertically(-1)
-
-        override val isInAbsoluteEnd: Boolean
-            get() = !mRecyclerView.canScrollVertically(1)
+            get() = when(orientation) {
+                LinearLayoutManager.HORIZONTAL -> !mRecyclerView.canScrollHorizontally(1)
+                else -> !mRecyclerView.canScrollVertically(1)
+            }
     }
 }
