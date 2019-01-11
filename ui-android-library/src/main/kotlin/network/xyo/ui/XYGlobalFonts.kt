@@ -5,11 +5,11 @@ import android.graphics.Typeface
 import android.view.View
 import android.widget.TextView
 import network.xyo.core.XYBase
+import java.lang.NullPointerException
 
 class XYGlobalFonts : XYBase() {
     companion object : XYBase() {
-        private var font: Array<Typeface>? = null
-        private var awesome: Array<Typeface>? = null
+        private var fonts = HashMap<String, Array<Typeface>>()
 
         private fun getTypefaces(context: Context, fontPath: String): Array<Typeface> {
             val result = Array(4) { Typeface.DEFAULT }
@@ -26,56 +26,41 @@ class XYGlobalFonts : XYBase() {
             return result
         }
 
-        fun getFontAwesome(context: Context, style: Int = Typeface.NORMAL): Typeface {
-            synchronized(XYGlobalFonts::class.java) {
-                if (awesome == null) {
-                    awesome = getTypefaces(context, "fonts/FontAwesome.otf")
+        private fun getFontFromName(context: Context, name:String, path: String): Typeface {
+            synchronized(fonts) {
+                if (fonts[name] == null) {
+                    fonts[name] = getTypefaces(context, path)
                 }
             }
-            return awesome!![style]
+            fonts[name]?.let {
+                return it[Typeface.NORMAL]
+            }
+            throw NullPointerException()
         }
 
-        fun getFont(context: Context, style: Int = Typeface.NORMAL): Typeface {
-            synchronized(XYGlobalFonts::class.java) {
-                if (font == null) {
-                    font = getTypefaces(context, "fonts/Quicksand.otf")
-                }
-            }
-            return font!![style]
+        fun getFontAwesome(context: Context): Typeface {
+            return getFontFromName(context, "awesome", "fonts/FontAwesome.otf")
+        }
+
+        fun getFont(context: Context): Typeface {
+            return getFontFromName(context, "font", "fonts/Quicksand.otf")
         }
 
         fun setPreferenceFont(context: Context, view: View) {
-            val titleView = view.findViewById<View>(android.R.id.title) as? TextView
-            if (titleView != null) {
-                XYGlobalFonts.setViewFont(context, titleView)
-            }
-
-            val summaryView = view.findViewById<View>(android.R.id.summary) as? TextView
-            if (summaryView != null) {
-                XYGlobalFonts.setViewFont(context, summaryView)
-            }
+            setViewFont(context, view.findViewById<View>(android.R.id.title) as? TextView)
+            setViewFont(context, view.findViewById<View>(android.R.id.summary) as? TextView)
         }
 
-        fun setViewFont(context: Context, view: TextView) {
-            val typeFace = view.typeface
-            if (typeFace != null) {
-                view.typeface = getFont(context, typeFace.style)
-            } else {
-                view.typeface = getFont(context)
-            }
+        fun setViewFont(context: Context, view: TextView?) {
+            view?.typeface = getFont(context)
         }
 
-        fun setViewFontAwesome(context: Context, view: TextView) {
-            val typeFace = view.typeface
-            if (typeFace != null) {
-                view.typeface = getFontAwesome(context, typeFace.style)
-            } else {
-                view.typeface = getFontAwesome(context)
-            }
+        fun setViewFontAwesome(context: Context, view: TextView?) {
+            view?.typeface = getFontAwesome(context)
         }
 
         fun getFontAwesomeDrawable(context: Context, text: Int, color: Int, size: Float): XYDrawableText {
-            return XYDrawableText(context.resources.getString(text), @Suppress("DEPRECATION") context.resources.getColor(color), size, getFontAwesome(context, Typeface.NORMAL))
+            return XYDrawableText(context.resources.getString(text), @Suppress("DEPRECATION") context.resources.getColor(color), size, getFontAwesome(context))
         }
     }
 }
