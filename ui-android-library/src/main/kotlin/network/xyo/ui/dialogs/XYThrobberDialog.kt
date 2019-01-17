@@ -27,6 +27,8 @@ class XYThrobberDialog(context: Context) : AppCompatDialog(context) {
                 divider.visibility = View.GONE
             }
         }
+
+        setCanceledOnTouchOutside(false)
     }
 
     override fun show() {
