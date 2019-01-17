@@ -48,7 +48,9 @@ open class XYBaseFragment : Fragment() {
 
     protected fun showToast(message: String) {
         log.info("showToast")
-        Toast.makeText(activity, message, Toast.LENGTH_LONG).show()
+        if (isVisible) {
+            Toast.makeText(activity, message, Toast.LENGTH_LONG).show()
+        }
     }
 
     override fun onAttach(context: Context) {
