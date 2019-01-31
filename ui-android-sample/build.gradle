@@ -13,16 +13,6 @@ android {
         targetSdkVersion 28
     }
 
-    flavorDimensions "xylibs"
-    productFlavors {
-        local {
-            dimension "xylibs"
-        }
-        jitpack {
-            dimension "xylibs"
-        }
-    }
-
     buildTypes {
         release {
             minifyEnabled false
@@ -54,7 +44,6 @@ dependencies {
     implementation fileTree(include: ['*.jar'], dir: 'libs')
     implementation project(path: ':ui-android-library')
 
-    localImplementation project(':core-android-library')
-    jitpackApi 'com.github.XYOracleNetwork:sdk-core-android:1.2.4'
+    api 'com.github.XYOracleNetwork:sdk-core-android:1.2.5'
 
 }
