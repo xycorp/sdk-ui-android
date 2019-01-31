@@ -13,7 +13,7 @@ buildscript {
     }
 
     dependencies {
-        classpath "com.android.tools.build:gradle:3.2.1"
+        classpath "com.android.tools.build:gradle:3.3.0"
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlinVersion"
     }
 }
@@ -76,7 +76,7 @@ dependencies {
     implementation fileTree(include: ['*.jar'], dir: 'libs')
 
     localImplementation project(':core-android-library')
-    jitpackApi 'com.github.XYOracleNetwork:sdk-core-android:1.2.3'
+    jitpackApi 'com.github.XYOracleNetwork:sdk-core-android:1.2.4'
 
     api "org.jetbrains.kotlin:kotlin-stdlib-jdk8:$kotlinVersion"
     api "org.jetbrains.kotlin:kotlin-reflect:$kotlinVersion"

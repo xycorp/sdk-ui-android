@@ -4,6 +4,7 @@ import android.content.Context
 import android.graphics.Typeface
 import android.view.View
 import android.widget.TextView
+import androidx.core.content.ContextCompat
 import network.xyo.core.XYBase
 import java.lang.NullPointerException
 
@@ -60,7 +61,7 @@ class XYGlobalFonts : XYBase() {
         }
 
         fun getFontAwesomeDrawable(context: Context, text: Int, color: Int, size: Float): XYDrawableText {
-            return XYDrawableText(context.resources.getString(text), @Suppress("DEPRECATION") context.resources.getColor(color), size, getFontAwesome(context))
+            return XYDrawableText(context.resources.getString(text), ContextCompat.getColor(context, color), size, getFontAwesome(context))
         }
     }
 }
