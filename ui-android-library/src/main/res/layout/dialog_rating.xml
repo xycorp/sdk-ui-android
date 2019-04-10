@@ -12,6 +12,7 @@
         android:background="@drawable/rectangle_rating">
 
         <ImageView
+            android:contentDescription="@string/rating_dialog_content_description"
             android:id="@+id/iv_dialog_rating"
             android:layout_width="100dp"
             android:layout_height="100dp"
@@ -67,6 +68,8 @@
             android:background="@drawable/background_rating_text"
             android:gravity="top|start"
             android:inputType="textMultiLine|textCapSentences"
+            android:autofillHints=""
+            android:hint="@string/rating_dialog_feedback_title"
             android:lines="8"
             android:maxLines="10"
             android:minLines="6"

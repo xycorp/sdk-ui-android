@@ -12,7 +12,7 @@ open class XYTextView @JvmOverloads constructor(context: Context, attrs: Attribu
 
     init {
 
-        XYGlobalFonts.setViewFont(context, this)
+        this.typeface = XYGlobalFonts.getFont(context)
     }
 
     override fun performClick(): Boolean {

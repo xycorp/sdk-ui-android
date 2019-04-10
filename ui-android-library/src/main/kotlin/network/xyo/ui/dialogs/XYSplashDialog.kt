@@ -10,7 +10,7 @@ import kotlinx.android.synthetic.main.dialog_splash.*
 import network.xyo.ui.R
 
 
-class XYSplashDialog(context: Context) : AppCompatDialog(context, R.style.xy_full_screen_dialog) {
+open class XYSplashDialog(context: Context) : AppCompatDialog(context, R.style.xy_full_screen_dialog) {
 
     public override fun onCreate(savedInstance: Bundle?) {
         super.onCreate(savedInstance)
@@ -47,7 +47,7 @@ class XYSplashDialog(context: Context) : AppCompatDialog(context, R.style.xy_ful
         })
     }
 
-    fun startAnimation() {
+    open fun startAnimation() {
         still_splash_layout.visibility = View.INVISIBLE
         animation_splash_layout.visibility = View.VISIBLE
 

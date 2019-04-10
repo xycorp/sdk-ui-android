@@ -30,7 +30,7 @@ open class XYButton @JvmOverloads constructor(context: Context, attrs: Attribute
 
     init {
 
-        XYGlobalFonts.setViewFont(context, this)
+        this.typeface = XYGlobalFonts.getFont(context)
 
         super.setOnClickListener { v ->
             hideKeyboard()
@@ -49,7 +49,7 @@ open class XYButton @JvmOverloads constructor(context: Context, attrs: Attribute
         return true
     }
 
-    fun hideKeyboard() {
+    open fun hideKeyboard() {
         Handler().postDelayed({
             val activity = activity
             if (activity != null) {

@@ -116,8 +116,8 @@ class XYSignalBars @JvmOverloads constructor(context: Context, attrs: AttributeS
 
     companion object: XYBase() {
         private const val barWidthPercent = 0.70f
-        fun Context.dpToPx(dp: Float): Int = TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, dp, resources.displayMetrics).toInt()
-        fun View.dpToPx(dp: Float): Int = context.dpToPx(dp)
+        private fun Context.dpToPx(dp: Float): Int = TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, dp, resources.displayMetrics).toInt()
+        private fun View.dpToPx(dp: Float): Int = context.dpToPx(dp)
     }
 
 }

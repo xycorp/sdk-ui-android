@@ -11,7 +11,7 @@ import androidx.appcompat.widget.AppCompatSpinner
 import network.xyo.core.XYBase
 import network.xyo.ui.R
 
-class XYSpinner @JvmOverloads constructor(context: Context, attrs: AttributeSet?, defStyle: Int = androidx.appcompat.R.attr.spinnerStyle) : AppCompatSpinner(context, attrs, defStyle) {
+open class XYSpinner @JvmOverloads constructor(context: Context, attrs: AttributeSet?, defStyle: Int = androidx.appcompat.R.attr.spinnerStyle) : AppCompatSpinner(context, attrs, defStyle) {
     private var _entries = arrayOf<String?>()
     private var _values = arrayOf<String?>()
     private var _hint: String? = null
@@ -113,7 +113,7 @@ class XYSpinner @JvmOverloads constructor(context: Context, attrs: AttributeSet?
 
     }
 
-    fun getValueIndex(value: String): Int {
+    open fun getValueIndex(value: String): Int {
         for (i in _values.indices) {
             if (_values[i] == value) {
                 return i
@@ -141,7 +141,7 @@ class XYSpinner @JvmOverloads constructor(context: Context, attrs: AttributeSet?
     }
 
     companion object: XYBase() {
-        fun Context.dpToPx(dp: Float): Int = TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, dp, resources.displayMetrics).toInt()
-        fun View.dpToPx(dp: Float): Int = context.dpToPx(dp)
+        private fun Context.dpToPx(dp: Float): Int = TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, dp, resources.displayMetrics).toInt()
+        private fun View.dpToPx(dp: Float): Int = context.dpToPx(dp)
     }
 }

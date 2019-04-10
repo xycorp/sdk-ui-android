@@ -37,7 +37,7 @@ class XYEditText @JvmOverloads constructor(context: Context, attrs: AttributeSet
 
     init {
 
-        XYGlobalFonts.setViewFont(context, this)
+        this.typeface = XYGlobalFonts.getFontAwesome(context)
 
         if (attrs != null) {
             val attributyeArray = getContext().obtainStyledAttributes(
@@ -97,7 +97,7 @@ class XYEditText @JvmOverloads constructor(context: Context, attrs: AttributeSet
         setCompoundDrawables(null, null, icon, null)
     }
 
-    fun setImeVisibility(visible: Boolean) {
+    private fun setImeVisibility(visible: Boolean) {
         if (visible) {
             postDelayed(_showImeRunnable, 100)
         } else {

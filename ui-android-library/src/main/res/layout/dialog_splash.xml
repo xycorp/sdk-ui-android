@@ -17,7 +17,7 @@
             android:layout_width="202dp"
             android:layout_height="108dp"
             android:layout_alignParentEnd="true"
-            android:layout_gravity="right|top"
+            android:layout_gravity="end|top"
             android:layout_marginTop="15dp"
             android:background="@drawable/xy_load_logo" />
 
@@ -26,8 +26,8 @@
             android:layout_width="339dp"
             android:layout_height="371dp"
             android:layout_alignParentBottom="true"
-            android:layout_alignParentLeft="true"
-            android:layout_gravity="left|bottom"
+            android:layout_alignParentStart="true"
+            android:layout_gravity="start|bottom"
             android:layout_marginBottom="0dp"
             android:background="@drawable/xy_load_beacon" />
 
@@ -119,8 +119,8 @@
             android:layout_width="70dp"
             android:layout_height="70dp"
             android:layout_alignBottom="@id/splash_center_hex"
-            android:layout_alignLeft="@id/splash_center_hex"
-            android:layout_alignRight="@id/splash_center_hex"
+            android:layout_alignStart="@id/splash_center_hex"
+            android:layout_alignEnd="@id/splash_center_hex"
             android:layout_alignTop="@id/splash_center_hex"
             android:scaleType="fitXY"
             android:src="@drawable/xyicon_white" />

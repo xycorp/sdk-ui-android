@@ -9,10 +9,9 @@ import androidx.core.content.ContextCompat
 import network.xyo.ui.R
 import network.xyo.ui.XYBaseActivity
 
-class XYToolbar : Toolbar {
+open class XYToolbar : Toolbar {
 
-    var isBackNavigationEnabled = false
-        private set
+    open var isBackNavigationEnabled = false
 
     constructor(context: Context) : super(ContextThemeWrapper(context, R.style.xy_toolbar)) {
         init(context)

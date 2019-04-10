@@ -16,16 +16,21 @@ import java.net.URL
 
 abstract class XYBaseActivity : AppCompatActivity() {
 
-    var toolbar: XYToolbar? = null
+    open var toolbar: XYToolbar? = null
 
-    var throbber: XYThrobberDialog? = null
+    open var throbber: XYThrobberDialog? = null
 
-    val tag: String
+    open val tag: String
         get () {
             return sourceNameFromAny(this)
         }
 
-    val log = XYLogging(tag)
+    open val log = XYLogging(this.classNameFromObject())
+
+    private fun classNameFromObject(): String {
+        val parts = this.javaClass.kotlin.simpleName?.split('.') ?: return "Unknown"
+        return parts[parts.lastIndex]
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -104,12 +109,12 @@ abstract class XYBaseActivity : AppCompatActivity() {
         return cooked.toByte()
     }
 
-    fun showToast(message: String) {
+    open fun showToast(message: String) {
         log.info("showProgressBar")
         ui { Toast.makeText(this@XYBaseActivity, message, Toast.LENGTH_LONG).show() }
     }
 
-    fun hideKeyboard() {
+    open fun hideKeyboard() {
         log.info("hideKeyboard")
         val imm = getSystemService(AppCompatActivity.INPUT_METHOD_SERVICE) as InputMethodManager
         //Find the currently focused view, so we can grab the correct window token from it.
@@ -125,12 +130,12 @@ abstract class XYBaseActivity : AppCompatActivity() {
 
         var activityCount = 0
 
-        fun classNameFromObject(objectToCheck: Any): String {
+        private fun classNameFromObject(objectToCheck: Any): String {
             val parts = objectToCheck.javaClass.kotlin.simpleName?.split('.') ?: return "Unknown"
             return parts[parts.lastIndex]
         }
 
-        fun sourceNameFromAny(source: Any): String {
+        private fun sourceNameFromAny(source: Any): String {
             return (source as? String) ?: classNameFromObject(source)
         }
 
