@@ -41,17 +41,14 @@ open class XYSpinner @JvmOverloads constructor(context: Context, attrs: Attribut
                     R.styleable.XYSpinner,
                     0, 0)
 
-            if (attributeArray != null) {
-
-                val idValues = attributeArray.getResourceId(R.styleable.XYSpinner_values, 0)
-                if (idValues != 0) {
-                    _values = context.resources.getStringArray(idValues)
-                }
-
-                val hintId = attrs.getAttributeResourceValue("http://schemas.android.com/apk/res/android", "hint", 0)
-                _hint = resources.getString(hintId)
-                attributeArray.recycle()
+            val idValues = attributeArray.getResourceId(R.styleable.XYSpinner_values, 0)
+            if (idValues != 0) {
+                _values = context.resources.getStringArray(idValues)
             }
+
+            val hintId = attrs.getAttributeResourceValue("http://schemas.android.com/apk/res/android", "hint", 0)
+            _hint = resources.getString(hintId)
+            attributeArray.recycle()
         }
 
         adapter = object : SpinnerAdapter {

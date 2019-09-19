@@ -5,12 +5,12 @@ apply plugin: 'com.github.dcendents.android-maven'
 group = 'com.github.XYOracleNetwork'
 
 android {
-    compileSdkVersion 28
-    buildToolsVersion '28.0.3'
+    compileSdkVersion 29
+    buildToolsVersion '29.0.2'
     defaultConfig {
         applicationId "network.xyo.ui.sample"
         minSdkVersion 21
-        targetSdkVersion 28
+        targetSdkVersion 29
     }
 
     buildTypes {
@@ -31,7 +31,7 @@ buildscript {
         google()
     }
     dependencies {
-        classpath 'com.android.tools.build:gradle:3.3.2'
+        classpath 'com.android.tools.build:gradle:3.5.0'
     }
 }
 
@@ -44,6 +44,6 @@ dependencies {
     implementation fileTree(include: ['*.jar'], dir: 'libs')
     implementation project(path: ':ui-android-library')
 
-    api 'com.github.XYOracleNetwork:sdk-core-android:1.2.5'
+    api 'com.github.XYOracleNetwork:sdk-core-android:1.2.6'
 
 }

@@ -45,10 +45,8 @@ class XYSignalBars @JvmOverloads constructor(context: Context, attrs: AttributeS
                     R.styleable.XYSignalBars,
                     0, 0)
 
-            if (attributeArray != null) {
-                barMaxCount = attributeArray.getInt(R.styleable.XYSignalBars_maxBars, 3)
-                attributeArray.recycle()
-            }
+            barMaxCount = attributeArray.getInt(R.styleable.XYSignalBars_maxBars, 3)
+            attributeArray.recycle()
         }
 
         paintStroke = Paint(Paint.ANTI_ALIAS_FLAG)
