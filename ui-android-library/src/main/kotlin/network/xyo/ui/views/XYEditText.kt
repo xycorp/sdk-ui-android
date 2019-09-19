@@ -37,17 +37,15 @@ class XYEditText @JvmOverloads constructor(context: Context, attrs: AttributeSet
 
     init {
 
-        XYGlobalFonts.setViewFont(context, this)
+        this.typeface = XYGlobalFonts.getFontAwesome(context)
 
         if (attrs != null) {
-            val attributyeArray = getContext().obtainStyledAttributes(
+            val attributeArray = getContext().obtainStyledAttributes(
                     attrs,
                     R.styleable.XYEditText,
                     0, 0)
-            if (attributyeArray != null) {
-                _readOnly = attributyeArray.getBoolean(R.styleable.XYEditText_readOnly, false)
-                attributyeArray.recycle()
-            }
+            _readOnly = attributeArray.getBoolean(R.styleable.XYEditText_readOnly, false)
+            attributeArray.recycle()
         }
 
         _hintPaint = Paint(Paint.ANTI_ALIAS_FLAG)
@@ -97,7 +95,7 @@ class XYEditText @JvmOverloads constructor(context: Context, attrs: AttributeSet
         setCompoundDrawables(null, null, icon, null)
     }
 
-    fun setImeVisibility(visible: Boolean) {
+    private fun setImeVisibility(visible: Boolean) {
         if (visible) {
             postDelayed(_showImeRunnable, 100)
         } else {

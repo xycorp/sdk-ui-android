@@ -14,7 +14,7 @@ import network.xyo.ui.dialogs.XYThrobberDialog
 
 open class XYBaseFragment : Fragment() {
 
-    var throbber: XYThrobberDialog? = null
+    open var throbber: XYThrobberDialog? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         log.info("onCreate")

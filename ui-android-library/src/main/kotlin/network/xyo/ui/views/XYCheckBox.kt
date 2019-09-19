@@ -15,6 +15,6 @@ class XYCheckBox @JvmOverloads constructor(context: Context, attrs: AttributeSet
         AppCompatCheckBox(ContextThemeWrapper(context, R.style.xy_checkbox), attrs, defStyle) {
 
     init {
-        XYGlobalFonts.setViewFont(context, this)
+        this.typeface = XYGlobalFonts.getFontAwesome(context)
     }
 }

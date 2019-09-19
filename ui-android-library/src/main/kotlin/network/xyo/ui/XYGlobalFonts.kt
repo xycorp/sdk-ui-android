@@ -8,7 +8,7 @@ import androidx.core.content.ContextCompat
 import network.xyo.core.XYBase
 import java.lang.NullPointerException
 
-class XYGlobalFonts : XYBase() {
+open class XYGlobalFonts : XYBase() {
     companion object : XYBase() {
         private var fonts = HashMap<String, Array<Typeface>>()
 
@@ -52,11 +52,11 @@ class XYGlobalFonts : XYBase() {
             setViewFont(context, view.findViewById<View>(android.R.id.summary) as? TextView)
         }
 
-        fun setViewFont(context: Context, view: TextView?) {
+        private fun setViewFont(context: Context, view: TextView?) {
             view?.typeface = getFont(context)
         }
 
-        fun setViewFontAwesome(context: Context, view: TextView?) {
+        private fun setViewFontAwesome(context: Context, view: TextView?) {
             view?.typeface = getFontAwesome(context)
         }
 

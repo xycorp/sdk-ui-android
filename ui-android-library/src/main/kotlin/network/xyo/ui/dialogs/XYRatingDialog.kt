@@ -24,7 +24,7 @@ import network.xyo.ui.R
  * App Rating Dialog
  * inspired by: https://github.com/codemybrainsout/smart-app-rate
  */
-class XYRatingDialog(context: Context, var builder: Builder)
+class XYRatingDialog(context: Context, private var builder: Builder)
     : AppCompatDialog(context), RatingBar.OnRatingBarChangeListener, View.OnClickListener {
 
     private var preferences: SharedPreferences = context.getSharedPreferences(SHARED_PREFS, 0)
