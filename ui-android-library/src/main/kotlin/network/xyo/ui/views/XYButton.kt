@@ -7,14 +7,13 @@ import android.os.Handler
 import androidx.appcompat.widget.AppCompatButton
 import android.util.AttributeSet
 import android.view.ContextThemeWrapper
-import android.view.View
 import android.view.inputmethod.InputMethodManager
 import network.xyo.ui.R
 import network.xyo.ui.XYGlobalFonts
 
 open class XYButton @JvmOverloads constructor(context: Context, attrs: AttributeSet? = null, defStyle: Int = 0) :
         AppCompatButton(ContextThemeWrapper(context, R.style.xy_button), attrs, defStyle) {
-    private var _onClickListener: View.OnClickListener? = null
+    private var _onClickListener: OnClickListener? = null
 
     private val activity: Activity?
         get() {
@@ -40,7 +39,7 @@ open class XYButton @JvmOverloads constructor(context: Context, attrs: Attribute
         }
     }
 
-    override fun setOnClickListener(listener: View.OnClickListener?) {
+    override fun setOnClickListener(listener: OnClickListener?) {
         _onClickListener = listener
     }
 

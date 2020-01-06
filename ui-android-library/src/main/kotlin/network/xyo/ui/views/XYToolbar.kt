@@ -3,7 +3,6 @@ package network.xyo.ui.views
 import android.content.Context
 import android.util.AttributeSet
 import android.view.ContextThemeWrapper
-import android.view.View
 import androidx.appcompat.widget.Toolbar
 import androidx.core.content.ContextCompat
 import network.xyo.ui.R
@@ -39,7 +38,7 @@ open class XYToolbar : Toolbar {
         }
     }
 
-    fun enableMenuNavigation(onClickListener: View.OnClickListener) {
+    fun enableMenuNavigation(onClickListener: OnClickListener) {
         isBackNavigationEnabled = false
         navigationIcon = ContextCompat.getDrawable(context, R.drawable.xy_ui_toolbar_menu)
         setNavigationOnClickListener(onClickListener)
@@ -51,7 +50,7 @@ open class XYToolbar : Toolbar {
         setNavigationOnClickListener { activity.onBackPressed() }
     }
 
-    fun enableBackNavigation(onClickListener: View.OnClickListener) {
+    fun enableBackNavigation(onClickListener: OnClickListener) {
         isBackNavigationEnabled = true
         navigationIcon = ContextCompat.getDrawable(context, R.drawable.xy_ui_toolbar_back)
         setNavigationOnClickListener(onClickListener)

@@ -31,7 +31,7 @@ open class XYSmallRibbon(context: Context, attrs: AttributeSet?, defStyle: Int) 
     init {
         log.info("init")
 
-        layoutManager = object : LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false) {
+        layoutManager = object : LinearLayoutManager(context, HORIZONTAL, false) {
             override fun supportsPredictiveItemAnimations(): Boolean {
                 return true
             }
