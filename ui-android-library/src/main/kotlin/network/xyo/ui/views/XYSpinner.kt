@@ -8,7 +8,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.SpinnerAdapter
 import androidx.appcompat.widget.AppCompatSpinner
-import network.xyo.core.XYBase
+import network.xyo.base.XYBase
 import network.xyo.ui.R
 
 open class XYSpinner @JvmOverloads constructor(context: Context, attrs: AttributeSet?, defStyle: Int = androidx.appcompat.R.attr.spinnerStyle) : AppCompatSpinner(context, attrs, defStyle) {

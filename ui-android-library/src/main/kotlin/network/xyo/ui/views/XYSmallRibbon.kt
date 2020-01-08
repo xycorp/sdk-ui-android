@@ -8,7 +8,7 @@ import android.view.View
 import me.everything.android.ui.overscroll.IOverScrollDecor
 import me.everything.android.ui.overscroll.IOverScrollState
 import me.everything.android.ui.overscroll.OverScrollDecoratorHelper
-import network.xyo.core.XYBase
+import network.xyo.base.XYBase
 import network.xyo.ui.ui
 
 open class XYSmallRibbon(context: Context, attrs: AttributeSet?, defStyle: Int) : XYRibbon(context, attrs, defStyle) {

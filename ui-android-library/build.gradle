@@ -20,7 +20,6 @@ buildscript {
 
 repositories {
     mavenCentral()
-    maven { url 'https://jitpack.io' }
 }
 
 android {
@@ -65,7 +64,7 @@ android {
 dependencies {
     implementation fileTree(include: ['*.jar'], dir: 'libs')
 
-    api 'com.github.XYOracleNetwork:sdk-core-android:1.2.6'
+    implementation project(path: ':sdk-base-android')
 
     api "org.jetbrains.kotlin:kotlin-stdlib-jdk8:1.3.50"
     api "org.jetbrains.kotlin:kotlin-reflect:1.3.61"

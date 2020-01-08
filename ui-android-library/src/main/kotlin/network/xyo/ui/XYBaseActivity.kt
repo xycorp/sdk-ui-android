@@ -6,8 +6,8 @@ import android.view.View
 import android.view.inputmethod.InputMethodManager
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import network.xyo.core.XYBase
-import network.xyo.core.XYLogging
+import network.xyo.base.XYBase
+import network.xyo.base.XYLogging
 
 import network.xyo.ui.dialogs.XYThrobberDialog
 import network.xyo.ui.views.XYToolbar

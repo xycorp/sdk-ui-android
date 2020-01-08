@@ -5,7 +5,7 @@ import android.graphics.Typeface
 import android.view.View
 import android.widget.TextView
 import androidx.core.content.ContextCompat
-import network.xyo.core.XYBase
+import network.xyo.base.XYBase
 import java.lang.NullPointerException
 
 open class XYGlobalFonts : XYBase() {

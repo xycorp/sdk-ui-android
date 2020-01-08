@@ -11,7 +11,7 @@ import android.util.TypedValue
 import android.view.View
 import android.view.animation.AlphaAnimation
 import androidx.core.content.ContextCompat
-import network.xyo.core.XYBase
+import network.xyo.base.XYBase
 import network.xyo.ui.R
 import network.xyo.ui.ui
 

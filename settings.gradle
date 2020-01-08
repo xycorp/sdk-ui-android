@@ -1,5 +1,6 @@
 include ':ui-android-sample'
 include ':ui-android-library'
-include 'core-android-library'
+include ':sdk-base-android'
 
+project(':sdk-base-android').projectDir = file('../sdk-base-android/base-android-library')
 
