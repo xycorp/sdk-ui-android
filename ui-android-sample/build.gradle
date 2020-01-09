@@ -47,11 +47,6 @@ buildscript {
     }
 }
 
-configurations {
-    localImplementation
-    jitpackApi
-}
-
 dependencies {
     implementation fileTree(include: ['*.jar'], dir: 'libs')
     implementation project(path: ':ui-android-library')
