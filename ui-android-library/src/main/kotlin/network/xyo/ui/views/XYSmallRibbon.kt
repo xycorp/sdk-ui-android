@@ -8,7 +8,7 @@ import android.view.View
 import me.everything.android.ui.overscroll.IOverScrollDecor
 import me.everything.android.ui.overscroll.IOverScrollState
 import me.everything.android.ui.overscroll.OverScrollDecoratorHelper
-import network.xyo.core.XYBase
+import network.xyo.base.XYBase
 import network.xyo.ui.ui
 
 open class XYSmallRibbon(context: Context, attrs: AttributeSet?, defStyle: Int) : XYRibbon(context, attrs, defStyle) {
@@ -31,7 +31,7 @@ open class XYSmallRibbon(context: Context, attrs: AttributeSet?, defStyle: Int) 
     init {
         log.info("init")
 
-        layoutManager = object : LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false) {
+        layoutManager = object : LinearLayoutManager(context, HORIZONTAL, false) {
             override fun supportsPredictiveItemAnimations(): Boolean {
                 return true
             }
@@ -91,7 +91,7 @@ open class XYSmallRibbon(context: Context, attrs: AttributeSet?, defStyle: Int) 
     }
 
     companion object: XYBase() {
-        private fun Context.dpToPx(dp: Float): Int = TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, dp, resources.displayMetrics).toInt()
-        private fun View.dpToPx(dp: Float): Int = context.dpToPx(dp)
+        fun Context.dpToPx(dp: Float): Int = TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, dp, resources.displayMetrics).toInt()
+        fun View.dpToPx(dp: Float): Int = context.dpToPx(dp)
     }
 }

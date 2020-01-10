@@ -6,8 +6,8 @@ import android.view.View
 import android.view.inputmethod.InputMethodManager
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import network.xyo.core.XYBase
-import network.xyo.core.XYLogging
+import network.xyo.base.XYBase
+import network.xyo.base.XYLogging
 
 import network.xyo.ui.dialogs.XYThrobberDialog
 import network.xyo.ui.views.XYToolbar
@@ -116,7 +116,7 @@ abstract class XYBaseActivity : AppCompatActivity() {
 
     open fun hideKeyboard() {
         log.info("hideKeyboard")
-        val imm = getSystemService(AppCompatActivity.INPUT_METHOD_SERVICE) as InputMethodManager
+        val imm = getSystemService(INPUT_METHOD_SERVICE) as InputMethodManager
         //Find the currently focused view, so we can grab the correct window token from it.
         var view = currentFocus
         //If no view currently has focus, create a new one, just so we can grab a window token from it

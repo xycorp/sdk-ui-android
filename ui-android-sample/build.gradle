@@ -1,8 +1,11 @@
 apply plugin: 'com.android.application'
 apply plugin: 'kotlin-android'
 apply plugin: 'com.github.dcendents.android-maven'
+group = 'company.xy'
 
-group = 'com.github.XYOracleNetwork'
+repositories {
+    mavenCentral()
+}
 
 android {
     compileSdkVersion 29
@@ -23,6 +26,14 @@ android {
     sourceSets {
         main.java.srcDirs += 'src/main/kotlin'
     }
+
+    compileOptions {
+        kotlinOptions {
+            allWarningsAsErrors = true
+        }
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
 }
 
 buildscript {
@@ -31,19 +42,12 @@ buildscript {
         google()
     }
     dependencies {
-        classpath 'com.android.tools.build:gradle:3.5.0'
+        classpath 'com.android.tools.build:gradle:3.5.3'
     }
-}
-
-configurations {
-    localImplementation
-    jitpackApi
 }
 
 dependencies {
     implementation fileTree(include: ['*.jar'], dir: 'libs')
     implementation project(path: ':ui-android-library')
-
-    api 'com.github.XYOracleNetwork:sdk-core-android:1.2.6'
-
+    implementation 'network.xyo:sdk-base-android:2.1.183'
 }

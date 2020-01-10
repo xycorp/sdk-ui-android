@@ -5,6 +5,9 @@ import android.graphics.*
 import android.util.AttributeSet
 import android.view.View
 import network.xyo.ui.R
+import kotlin.math.cos
+import kotlin.math.min
+import kotlin.math.sin
 
 class XYPolygon : View {
 
@@ -116,15 +119,15 @@ class XYPolygon : View {
     }
 
     private fun measureHeightWidth(measureSpec: Int): Int {
-        val specMode = View.MeasureSpec.getMode(measureSpec)
-        val specSize = View.MeasureSpec.getSize(measureSpec)
+        val specMode = MeasureSpec.getMode(measureSpec)
+        val specSize = MeasureSpec.getSize(measureSpec)
 
         val result: Int
 
         result = when (specMode) {
-            View.MeasureSpec.AT_MOST -> specSize
-            View.MeasureSpec.EXACTLY -> specSize
-            View.MeasureSpec.UNSPECIFIED ->
+            MeasureSpec.AT_MOST -> specSize
+            MeasureSpec.EXACTLY -> specSize
+            MeasureSpec.UNSPECIFIED ->
                 // random size if nothing is specified
                 500
             else -> 500
@@ -151,8 +154,8 @@ class XYPolygon : View {
         polyPath?.let {
             it.moveTo(workingRadius, 0f)
             for (i in 1 until sides) {
-                it.lineTo((workingRadius * Math.cos((a * i).toDouble())).toFloat(),
-                        (workingRadius * Math.sin((a * i).toDouble())).toFloat())
+                it.lineTo((workingRadius * cos((a * i).toDouble())).toFloat(),
+                        (workingRadius * sin((a * i).toDouble())).toFloat())
             }
             it.close()
         }
@@ -166,7 +169,7 @@ class XYPolygon : View {
         polyPath?.let { polyPath ->
             val x = measuredWidth / 2
             val y = measuredHeight / 2
-            val radius = Math.min(x, y)
+            val radius = min(x, y)
 
             if (sides < 3) return
 
