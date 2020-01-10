@@ -50,5 +50,5 @@ buildscript {
 dependencies {
     implementation fileTree(include: ['*.jar'], dir: 'libs')
     implementation project(path: ':ui-android-library')
-    implementation project(path: ':sdk-base-android')
+    implementation 'network.xyo:sdk-base-android:2.1.183'
 }
