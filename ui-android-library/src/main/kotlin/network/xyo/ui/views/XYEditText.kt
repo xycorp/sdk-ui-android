@@ -95,7 +95,7 @@ class XYEditText @JvmOverloads constructor(context: Context, attrs: AttributeSet
         setCompoundDrawables(null, null, icon, null)
     }
 
-    private fun setImeVisibility(visible: Boolean) {
+    fun setImeVisibility(visible: Boolean) {
         if (visible) {
             postDelayed(_showImeRunnable, 100)
         } else {
