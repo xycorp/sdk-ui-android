@@ -45,7 +45,7 @@ dependencies {
 Most of the UI components can be added to an existing XML layout file. Look at the ui-android-sample
 folder for examples
 ```xml
-<network.xyo.ui.views.XYButton
+<company.xy.sdk.ui.views.XYButton
         android:id="@+id/myButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
