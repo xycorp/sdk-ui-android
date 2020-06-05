@@ -1,15 +1,10 @@
-[logo]: https://www.xy.company/img/home/logo_xy.png
+[logo]: https://cdn.xy.company/img/brand/XY_Logo_GitHub.png
 
-![logo]
+[![logo]](https://xy.company)
 
 # sdk-ui-android
 
-[![](https://jitpack.io/v/XYOracleNetwork/sdk-ui-android.svg)](https://jitpack.io/#XYOracleNetwork/sdk-ui-android) [![Maintainability](https://api.codeclimate.com/v1/badges/4738f16c7d074fca669b/maintainability)](https://codeclimate.com/github/XYOracleNetwork/sdk-ui-android/maintainability)
-
-| Branches        | Status           |
-| ------------- |:-------------:|
-| Master      | [![Build Status](https://travis-ci.com/XYOracleNetwork/sdk-ui-android.svg?branch=master)](https://travis-ci.com/XYOracleNetwork/sdk-ui-android) |
-| Develop      | [![Build Status](https://travis-ci.com/XYOracleNetwork/sdk-ui-android.svg?branch=develop)](https://travis-ci.com/XYOracleNetwork/sdk-ui-android)      |
+![](https://github.com/xycorp/sdk-ui-android/workflows/Build/badge.svg?branch=develop) [![](https://jitpack.io/v/XYOracleNetwork/sdk-ui-android.svg)](https://jitpack.io/#XYOracleNetwork/sdk-ui-android) [![Maintainability](https://api.codeclimate.com/v1/badges/4738f16c7d074fca669b/maintainability)](https://codeclimate.com/github/XYOracleNetwork/sdk-ui-android/maintainability)
 
 A UI framework for adding XYO themed toolbars and dialogs to your android application.
 
@@ -45,7 +40,7 @@ dependencies {
 Most of the UI components can be added to an existing XML layout file. Look at the ui-android-sample
 folder for examples
 ```xml
-<network.xyo.ui.views.XYButton
+<company.xy.sdk.ui.views.XYButton
         android:id="@+id/myButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"

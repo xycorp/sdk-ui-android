@@ -30,6 +30,6 @@
 -keepattributes *Annotation*
 -keepattributes EnclosingMethod
 
--keep public class network.xyo.** { *; }
+-keep public class company.xy.sdk.ui.** { *; }
 
 -dontwarn java.lang.invoke.**

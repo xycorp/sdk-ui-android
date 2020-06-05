@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<network.xyo.ui.views.XYToolbar
+<company.xy.sdk.ui.views.XYToolbar
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/toolbar"
@@ -20,5 +20,5 @@
         android:layout_gravity="center"
         android:scaleType="center"/>
 
-</network.xyo.ui.views.XYToolbar>
+</company.xy.sdk.ui.views.XYToolbar>
 

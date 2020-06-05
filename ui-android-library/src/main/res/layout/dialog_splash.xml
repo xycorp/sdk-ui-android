@@ -125,7 +125,7 @@
             android:scaleType="fitXY"
             android:src="@drawable/xyicon_white" />
 
-        <network.xyo.ui.views.XYTextView
+        <company.xy.sdk.ui.views.XYTextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_alignParentBottom="true"
