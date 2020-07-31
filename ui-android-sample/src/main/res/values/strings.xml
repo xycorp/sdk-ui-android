@@ -1,3 +1,8 @@
 <resources>
     <string name="app_name">XYO UI Sample</string>
+    <string name="awesome_button">Awesome Button</string>
+    <string name="awesome_textview">Awesome TextView</string>
+    <string name="awesome_checkbox">Awesome CheckBox</string>
+    <string name="xy_checkbox">XY Checkbox</string>
+    <string name="xy_small_ribbon">XY Small Ribbon</string>
 </resources>

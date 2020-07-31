@@ -60,10 +60,4 @@ open class XYButton @JvmOverloads constructor(context: Context, attrs: Attribute
             }
         }, 50)
     }
-
-    companion object {
-
-        private val TAG = XYButton::class.java.simpleName
-    }
-
 }

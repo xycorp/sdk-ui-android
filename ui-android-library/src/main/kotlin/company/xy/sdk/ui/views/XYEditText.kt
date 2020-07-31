@@ -109,9 +109,6 @@ open class XYEditText @JvmOverloads constructor(context: Context, attrs: Attribu
     }
 
     companion object {
-
-        private val TAG = XYEditText::class.java.simpleName
-
         fun convertDpToPixel(dp: Float, context: Context): Float {
             val resources = context.resources
             val metrics = resources.displayMetrics

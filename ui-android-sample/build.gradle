@@ -9,7 +9,7 @@ repositories {
 
 android {
     compileSdkVersion 29
-    buildToolsVersion '29.0.2'
+    buildToolsVersion '29.0.3'
     defaultConfig {
         applicationId "company.xy.sdk.ui.sample"
         minSdkVersion 21
@@ -42,12 +42,12 @@ buildscript {
         google()
     }
     dependencies {
-        classpath 'com.android.tools.build:gradle:3.5.3'
+        classpath 'com.android.tools.build:gradle:4.0.1'
     }
 }
 
 dependencies {
     implementation fileTree(include: ['*.jar'], dir: 'libs')
     implementation project(path: ':ui-android-library')
-    implementation 'network.xyo:sdk-base-android:2.1.183'
+    implementation 'network.xyo:sdk-base-android:2.1.288'
 }

@@ -6,7 +6,9 @@ import android.graphics.Paint
 import android.graphics.PixelFormat
 import android.graphics.Typeface
 import android.graphics.drawable.Drawable
+import androidx.annotation.Keep
 
+@Keep
 class XYDrawableText(private val _text: String, color: Int, private val _size: Float, typeFace: Typeface) : Drawable() {
     private val paint = Paint()
 

@@ -94,7 +94,6 @@
                 android:layout_weight="1"
                 android:clickable="true"
                 android:focusable="true"
-                android:foreground="?attr/selectableItemBackground"
                 android:gravity="center"
                 android:padding="15dp"
                 android:textSize="15sp" />
@@ -106,7 +105,6 @@
                 android:layout_weight="1"
                 android:clickable="true"
                 android:focusable="true"
-                android:foreground="?attr/selectableItemBackground"
                 android:gravity="center"
                 android:padding="15dp"
                 android:textSize="15sp" />

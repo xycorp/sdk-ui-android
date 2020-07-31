@@ -7,11 +7,13 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.annotation.Keep
 import androidx.fragment.app.Fragment
 import network.xyo.base.XYBase
 
 import company.xy.sdk.ui.dialogs.XYThrobberDialog
 
+@Keep
 open class XYBaseFragment : Fragment() {
 
     open var throbber: XYThrobberDialog? = null

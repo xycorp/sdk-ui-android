@@ -5,6 +5,7 @@ import android.os.PersistableBundle
 import android.view.View
 import android.view.inputmethod.InputMethodManager
 import android.widget.Toast
+import androidx.annotation.Keep
 import androidx.appcompat.app.AppCompatActivity
 import network.xyo.base.XYBase
 import network.xyo.base.XYLogging
@@ -14,7 +15,7 @@ import company.xy.sdk.ui.views.XYToolbar
 
 import java.net.URL
 
-abstract class XYBaseActivity : AppCompatActivity() {
+open class XYBaseActivity : AppCompatActivity() {
 
     open var toolbar: XYToolbar? = null
 
@@ -86,7 +87,7 @@ abstract class XYBaseActivity : AppCompatActivity() {
         super.onPause()
     }
 
-    fun getRemoteFile(location: String, useCache: Boolean = true): ByteArray? {
+    open fun getRemoteFile(location: String, useCache: Boolean = true): ByteArray? {
         val url: URL = if (useCache) {
             URL(location)
         } else {

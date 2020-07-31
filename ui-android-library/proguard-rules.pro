@@ -30,6 +30,8 @@
 -keepattributes *Annotation*
 -keepattributes EnclosingMethod
 
--keep public class company.xy.sdk.ui.** { *; }
+-keep public class company.xy.sdk.ui.* { *; }
+-keep public class company.xy.sdk.ui.views.* { *; }
+-keep public class company.xy.sdk.ui.dialogs.* { *; }
 
 -dontwarn java.lang.invoke.**

@@ -4,10 +4,12 @@ import android.content.Context
 import android.graphics.Typeface
 import android.view.View
 import android.widget.TextView
+import androidx.annotation.Keep
 import androidx.core.content.ContextCompat
 import network.xyo.base.XYBase
 import java.lang.NullPointerException
 
+@Keep
 open class XYGlobalFonts : XYBase() {
     companion object : XYBase() {
         private var fonts = HashMap<String, Array<Typeface>>()
